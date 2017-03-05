@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>CSS Performance</title>
+
+		<meta name="description" content="CSS Performance">
+		<meta name="author" content="Mike Selander">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/otm.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<script type="text/javascript">(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');__gaTracker('create','UA-25947533-1','auto');__gaTracker('set','forceSSL',true);__gaTracker('require','displayfeatures');__gaTracker('send','pageview');</script>
+	</head>
+
+	<body>
+
+		<div class="logo"></div>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Faster CSS</h1>
+					<h2>
+						<small><a href="http://mikeselander.com" target="_blank">Mike Selander</a> / <a href="http://twitter.com/Mike_Selander">@Mike_Selander</a><br>
+						<a href='https://oldtownmediainc.com/our-story/culture/'>Old Town Media</a></small>
+					</h2>
+				</section>
+
+				<section>
+
+					<section>
+
+						<h1>Why Care About Performance?</h1>
+
+					</section>
+
+					<section>
+
+						<h2>Slow Sites don't Make Money</h2>
+
+					</section>
+
+					<section>
+						<h3>Each 1-second delay means:</h3>
+
+						<p>
+							<strong class='huge'>11% fewer</strong> page views<br>
+							<span class="fragment"><strong class='huge'>16% decrease</strong> in customer satisfaction</span><br>
+							<span class="fragment"><strong class='huge'>7% loss</strong> in conversions</span>
+						</p>
+					</section>
+
+					<section>
+
+						<img src="images/slow_internet.jpg">
+
+					</section>
+
+				</section>
+
+				<section>
+
+					<h1>Three Principles</h1>
+
+					<h3>1. Less files</h3>
+					<h3>2. Smaller files</h3>
+					<h3>3. Need-to-Know</h3>
+
+				</section>
+
+				<section>
+
+					<h1>Some Benchmarks</h1>
+					<h3><i>(for a production site)</i></h3>
+
+					<h3><strong class='huge'>< 600kB</strong> page weight</h3>
+					<h3><strong class='huge'>< 1.5 sec</strong> load time</h3>
+
+				</section>
+
+				<section>
+
+					<section>
+
+						<h1>1. Write Less CSS</h1>
+
+					</section>
+
+					<section>
+
+						<pre><code>margin-top: 20px;
+margin-right: 30px;
+margin-bottom: 20px;
+margin-left: 30px;</code></pre>
+
+						<h3> Could be:</h3>
+
+						<pre><code>margin: 20px 30px;</code></pre>
+
+					</section>
+
+					<section>
+
+						<pre><code>.oil-gas-section
+	.oil-gas-section-inner
+		.oil-gas-section-content
+			.oil-service-box{}</code></pre>
+
+						<h3> Could be:</h3>
+
+						<pre><code>.oil-service-box{}</code></pre>
+
+					</section>
+
+					<section>
+
+						<pre><code>.alignleft{ float: left; }
+.left{ float left; }
+.image{ float: left; }</code></pre>
+
+						<h3> Could be:</h3>
+
+						<pre><code>.left{ float: left; }</code></pre>
+
+					</section>
+
+					<section>
+
+						<h3>You <u>probably</u> don't need frameworks</h3>
+
+					</section>
+
+					<section>
+
+						<h2>For Example</h2>
+
+						<h3>Skeleton: 12kB</h3>
+						<h3>Whole Site: 24kB</h3>
+
+					</section>
+
+				</section>
+
+				<section>
+
+					<section>
+
+						<h1>2. Browsers Read Backwards</h1>
+
+					</section>
+
+					<section>
+
+						<pre><code>.nav ul li ul li</code></pre>
+
+						<h3>Is Read</h3>
+
+						<pre><code>li ul li ul .nav</code></pre>
+
+					</section>
+
+					<section>
+
+						<pre><code>.nav ul li ul li</code></pre>
+
+						<h3>Could Be</h3>
+
+						<pre><code>.nav .menu{ }
+.nav .submenu{ }
+.nav .sub-submenu{ }
+etc.</code></pre>
+
+					</section>
+
+				</section>
+
+				<section>
+
+					<section>
+
+						<h1>3. Avoid Too Many Paints</h1>
+
+					</section>
+
+					<section>
+						<img src="images/paints.png">
+					</section>
+
+					<section>
+
+						<h3>Browsers paint when you:</h3>
+
+						<p>Load</p>
+						<p>Scroll</p>
+						<p>Change Width</p>
+						<p>Hover/Focus</p>
+
+					</section>
+
+				</section>
+
+				<section>
+
+					<section>
+
+						<h1>4. Fonts Are Heavy</h1>
+
+					</section>
+
+					<section>
+
+						<img src="images/fonts.png">
+
+					</section>
+
+					<section>
+
+						<h3>Flash of Invisible/Unstyled Text</h3>
+
+						<img src="images/foit.gif">
+
+					</section>
+
+					<section>
+
+						<h3>Load fonts in HTML, not @font-face</h3>
+
+					</section>
+
+					<section>
+
+						<h3>Use:</h3>
+						<pre><code><link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'></code></pre>
+
+						<h3>Don't Use:</h3>
+						<pre><code>@import url(https://fonts.googleapis.com/css?family=Open+Sans);</code></pre>
+
+					</section>
+
+					<section>
+
+						<h3>Completely defer loading fonts</h3>
+
+					</section>
+
+					<section>
+
+						<pre><code>body{
+	font-family: sans-serif;
+}
+
+body.loaded{
+	font-family: 'Open Sans', sans-serif;
+}</code></pre>
+
+					</section>
+
+				</section>
+
+				<section>
+
+					<section>
+
+						<h1>5. Critical CSS</h1>
+
+					</section>
+
+					<section>
+
+						<h2>You only need to style above the fold on document load</h2>
+
+					</section>
+
+					<section>
+
+						<a href='https://www.smashingmagazine.com/2015/08/understanding-critical-css/' target='_blank'><img src="images/crit-css.jpg"></a>
+
+					</section>
+
+					<section>
+
+						<pre><code><style> /* inlined critical CSS */ </style>
+<script> loadCSS('non-critical.css'); </script></code></pre>
+
+					</section>
+
+					<section>
+						<h3><a href='https://github.com/filamentgroup/criticalCSS' target='_blank'>CritCSS Script</a></h3>
+					</section>
+
+				</section>
+
+				<section>
+
+					<section>
+
+						<h1>Testing Tools</h1>
+
+					</section>
+
+					<section>
+
+						<h3>The Overview</h3>
+						<a href="http://tools.pingdom.com/fpt/">Pingdom tools</a>
+
+					</section>
+
+					<section>
+
+						<h3>Practical Tips</h3>
+						<a href="https://developers.google.com/speed/pagespeed/insights/">Pagespeed Insights</a>
+
+					</section>
+
+					<section>
+
+						<h3>In Depth</h3>
+						<a href="http://www.webpagetest.org/">Webpage speed test</a>
+
+					</section>
+
+				</section>
+
+				<section>
+
+					<section>
+
+						<h1>Cheba Hut</h1>
+
+					</section>
+
+					<section>
+						<img src="images/site.gif">
+					</section>
+
+					<section>
+
+						<h4>Before</h4>
+						<p>
+							<span class="fragment">Static HTML site on Cloudflare</span><br>
+							<span class="fragment">Average of <strong>23.9 seconds</strong> to load</span><br>
+							<span class="fragment"><strong>~ 15mb</strong> page weight</span><br>
+							<span class="fragment"><strong>170 resources</strong> loaded</span><br><br>
+						</p>
+
+					</section>
+
+					<section>
+
+						<h4><strong class='huge'>2,549 hours</strong>/year of waiting</h4>
+						<h4 class="fragment"><strong class='huge'>4.837 TB</strong>/year</h4>
+						<h4 class="fragment"><strong class='huge'>$368,640</strong>/year in end-user bandwidth</h4>
+
+					</section>
+
+					<section>
+
+						<h4>Results</h4>
+						<p>
+							<span class="fragment">WordPress site on WP Engine</span><br>
+
+							<table class='fragment'>
+								<tr>
+									<th></th>
+									<th>Before</th>
+									<th>After</th>
+								</tr>
+								<tr>
+									<th>Load Time</th>
+									<td>23.9</td>
+									<td>.75</td>
+								</tr>
+								<tr class='fragment'>
+									<th>Page Weight</th>
+									<td>15mb</td>
+									<td>2.4mb</td>
+								</tr>
+								<tr class='fragment'>
+									<th>Resources</th>
+									<td>170</td>
+									<td>61</td>
+								</tr>
+							</table>
+
+						</p>
+
+					</section>
+
+					<section>
+
+						<p>Got rid of everything we could</p>
+
+						<h4 class="fragment"><strong class='huge'>2600 lines</strong> of HTML</h4>
+						<h4 class="fragment"><strong class='huge'>8 js</strong> files</h4>
+						<h4 class="fragment"><strong class='huge'>5 css</strong> files</h4>
+
+					</section>
+
+					<section>
+
+						<h3>Mobile first</h3>
+
+						<div class="fifty">
+							<h3 class="blue">Do</h3>
+							<pre class="smaller"><code>
+@media (min-width: 700px){}
+@media (min-width: 900px){}
+@media (min-width: 1100px){}
+							</code></pre>
+						</div>
+
+						<div class="fifty">
+							<h3 class="blue">Don't</h3>
+							<pre><code class="smaller">
+@media (max-width: 700px){}
+@media (max-width: 1100px){}
+							</code></pre>
+						</div>
+
+					</section>
+
+					<section>
+
+						<div class="fifty">
+							<h3>.jpg - 418 kb</h3>
+							<img src="images/location-bkg.jpg" style="max-width:70% !important;">
+
+						</div>
+
+						<div class="fifty">
+							<h3>.png - 637 kb</h3>
+							<img src="images/location-bkg.png" style="max-width:70% !important;">
+						</div>
+
+					</section>
+
+				</section>
+
+				<section>
+
+					<h1>The End</h1>
+
+					<p>
+						<a href='https://oldtownmediainc.com/our-story/culture/'>Old Town Media</a><br>
+						<a href='https://twitter.com/Mike_Selander'>@Mike_Selander</a>
+					</p>
+
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
