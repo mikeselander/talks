@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>REST API Primer</title>
+
+		<meta name="description" content="A talk on a myriad of ways to secure your WordPress site">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link href="favicon.ico" rel="shortcut icon">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/otm.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<script type="text/javascript">(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');__gaTracker('create','UA-25947533-1','auto');__gaTracker('set','forceSSL',true);__gaTracker('require','displayfeatures');__gaTracker('send','pageview');</script>
+	</head>
+
+	<body>
+
+		<script type="text/template" id="slides_template">
+
+			 <% _.each(slides, function(slide) { %>
+				 <% if (slide.Exists) { %>
+
+				 	<section data-id='<%= slide.id %>' data-background='<%= slide.image %>'>
+
+					 	<% if (slide.subslides) { %>
+
+					 		<section data-id='<%= slide.id %>'>
+
+						 		<h1><%= slide.title.rendered %></h1>
+
+							 	<%= slide.clean_content %>
+
+					 		</section>
+
+					 		 <% _.each(slide.subslides, function(subslide) { %>
+
+					 		 	<section data-id='<%= subslide.id %>'>
+
+							 		<h3><%= subslide.title.rendered %></h3>
+
+								 	<%= subslide.clean_content %>
+
+						 		</section>
+
+					 		 <% }); %>
+
+					 	<% } else { %>
+
+					 		<h1><%= slide.title.rendered %></h1>
+
+						 	<%= slide.clean_content %>
+
+					 	<% } %>
+
+				 	</section>
+				 <% } %>
+			 <% }); %>
+
+		</script>
+
+		<div class="logo"></div>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides" id="slides"></div>
+			<div class='api-call' id='call'>wp-json/wp/v2/slides/?orderby=menu_order&order=ASC</div>
+
+		</div>
+
+		<script src="js/underscore-min.js"></script>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script src="js/api.js"></script>
+
+	</body>
+</html>
