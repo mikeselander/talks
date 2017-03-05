@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Performance Case Study</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link href="favicon.ico" rel="shortcut icon">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/otm.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<script type="text/javascript">(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');__gaTracker('create','UA-25947533-1','auto');__gaTracker('set','forceSSL',true);__gaTracker('require','displayfeatures');__gaTracker('send','pageview');</script>
+	</head>
+
+	<body>
+
+		<div class="logo"></div>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Performance</h1>
+					<h3>Why bigger is not always better</h3>
+					<p>
+						<small>Mike Selander</a></small>
+					</p>
+
+					<p>http://bit.ly/1ReJbyx</p>
+
+				</section>
+
+				<section>
+					<h1>Why Bother?</h1>
+
+					<section>
+
+						<img class="fragment" src="images/make-it-rain.gif">
+
+					</section>
+
+					<section>
+						<h3>Each 1-second delay means:</h3>
+
+						<p>
+							<strong class='huge'>11% fewer</strong> page views<br>
+							<span class="fragment"><strong class='huge'>16% decrease</strong> in customer satisfaction</span><br>
+							<span class="fragment"><strong class='huge'>7% loss</strong> in conversions</span>
+						</p>
+					</section>
+
+					<section>
+						<h2>ROI</h2>
+
+						<p class="smaller">
+							<strong>Amazon:</strong> Increased revenues by <span class="blue">1% for every 100ms</span> of improvement<br>
+							<span class="fragment"><strong>Yahoo:</strong> Increased traffic by <span class="blue">9% for every 400ms</span> of improvement<br></span>
+							<span class="fragment"><strong>Mozilla:</strong> Dropped page load time by 2.2 seconds and saw <span class="blue">60 MILLION</span> more downloads/year
+						</p>
+
+					</section>
+
+				</section>
+
+				<section>
+					<h1>Speed Concepts</h1>
+
+					<section>
+						<h3 class="fragment">Smaller sized objects</h3>
+						<h3 class="fragment">Less http requests</h3>
+						<h3 class="fragment">Optimized rendering path</h3>
+					</section>
+
+				</section>
+
+				<section>
+					<h1>The Site</h1>
+
+					<section>
+						<img src="images/site.gif">
+					</section>
+
+					<section>
+
+						<h4>Before</h4>
+						<p>
+							<span class="fragment">Static HTML site on Cloudflare</span><br>
+							<span class="fragment">Average of <strong>23.9 seconds</strong> to load</span><br>
+							<span class="fragment"><strong>~ 15mb</strong> page weight</span><br>
+							<span class="fragment"><strong>170 resources</strong> loaded</span><br><br>
+						</p>
+
+					</section>
+
+					<section>
+
+						<h4><strong class='huge'>2,549 hours</strong>/year of waiting</h4>
+						<h4 class="fragment"><strong class='huge'>4.837 TB</strong>/year</h4>
+						<h4 class="fragment"><strong class='huge'>$368,640</strong>/year in end-user bandwidth</h4>
+
+					</section>
+
+					<section>
+
+						<h4>Results</h4>
+						<p>
+							<span class="fragment">WordPress site on WP Engine</span><br>
+
+							<table class='fragment'>
+								<tr>
+									<th></th>
+									<th>Before</th>
+									<th>After</th>
+								</tr>
+								<tr>
+									<th>Load Time</th>
+									<td>23.9</td>
+									<td>.75</td>
+								</tr>
+								<tr class='fragment'>
+									<th>Page Weight</th>
+									<td>15mb</td>
+									<td>2.4mb</td>
+								</tr>
+								<tr class='fragment'>
+									<th>Resources</th>
+									<td>170</td>
+									<td>61</td>
+								</tr>
+							</table>
+
+						</p>
+
+					</section>
+
+				</section>
+
+				<section>
+					<h1>Diagnosing</h1>
+
+					<section>
+
+						<h3>The Overview</h3>
+						<a href="http://tools.pingdom.com/fpt/">Pingdom tools</a>
+
+					</section>
+
+					<section>
+
+						<h3>Practical Tips</h3>
+						<a href="https://developers.google.com/speed/pagespeed/insights/">Pagespeed Insights</a>
+
+					</section>
+
+					<section>
+
+						<h3>In Depth</h3>
+						<a href="http://www.webpagetest.org/">Webpage speed test</a>
+
+					</section>
+
+				</section>
+
+				<section>
+
+					<h1>The Build</h1>
+
+					<section>
+
+						<h3>Spring Cleaning!</h3>
+
+						<img src="images/burn-it-all.gif">
+
+					</section>
+
+					<section>
+
+						<p>Got rid of everything we could</p>
+
+						<h4 class="fragment"><strong class='huge'>2600 lines</strong> of HTML</h4>
+						<h4 class="fragment"><strong class='huge'>8 js</strong> files</h4>
+						<h4 class="fragment"><strong class='huge'>5 css</strong> files</h4>
+
+					</section>
+
+					<section>
+
+						<h3>Refactor</h3>
+
+						<img src="images/old-js.gif" class="fragment fifty">
+						<img src="images/new-js.png" class="fragment fifty">
+
+					</section>
+
+					<section>
+
+						<h3>Async/Defer</h3>
+
+						<pre><code>	<script type='text/javascript' async='async'></script>
+	<script type='text/javascript' defer='defer'></script></code></pre>
+
+					</section>
+
+					<section>
+
+						<h3>Mobile first</h3>
+
+						<div class="fifty">
+							<h3 class="blue">Do</h3>
+							<pre class="smaller"><code>
+@media (min-width: 700px){}
+@media (min-width: 900px){}
+@media (min-width: 1100px){}
+							</code></pre>
+						</div>
+
+						<div class="fifty">
+							<h3 class="blue">Don't</h3>
+							<pre><code class="smaller">
+@media (max-width: 700px){}
+@media (max-width: 1100px){}
+							</code></pre>
+						</div>
+
+					</section>
+
+					<section>
+
+						<h3>SVG</h3>
+
+						<div class="fifty">
+
+							<img src="images/map.png">
+
+						</div>
+
+						<div class="fifty">
+							<pre><code>
+<text x="220" y="100" class="medium">Washington</text>
+<path id="US-AL" title="Alabama" class="land" d="M823.25,403.55L831.37,431.02L838.53,452.95L842.13,459.7L844.3,463.54L841.61,467.9L841.4,475.24L842.96,479.38L842.96,483.45L842.88,487.23L844.46,489.98L845.75,492.54L805.82,497.08L794.73,499.45L794.58,501.21L799.58,506.33L798.97,510.92L797.83,514.18L780.04,513.21L776.52,478.48L776.84,441.91L777.66,412.26L775.95,407.99L799.35,405.82z"/></path>
+
+
+							</code></pre>
+						</div>
+
+					</section>
+
+				</section>
+
+				<section>
+					<h1>Images</h1>
+
+					<section>
+
+						<h3>Compress images</h3>
+
+						<div class="fragment">
+							<div class="fifty">
+								<h4>Lossless</h4>
+
+							</div>
+
+							<div class="fifty">
+								<h4>Lossy</h4>
+							</div>
+						</div>
+
+					</section>
+
+					<section>
+
+						<h3>Image compressors</h3>
+
+						<a href='http://compressor.io'>Compressor.io</a><br>
+						<a href='http://tinypng.org'>tinyPNG</a><br>
+						<a href='https://wordpress.org/plugins/wp-smushit/'>WP Smush</a><br>
+						<a href='http://www.macupdate.com/app/mac/28766/imageoptim'>Image Optim</a>
+
+					</section>
+
+					<section>
+
+						<h3>event trigger images</h3>
+
+						<div class='fragment'>
+							<img src="images/menu-items.gif">
+						</div>
+
+					</section>
+
+					<section>
+
+						<h3>CSS Sprites</h3>
+
+						<div class="fifty">
+							<img src="images/sprite-images/close.png">
+							<img src="images/sprite-images/down.png">
+							<img src="images/sprite-images/footer-facebook.png">
+							<img src="images/sprite-images/footer-instagram.png">
+							<img src="images/sprite-images/footer-twitter.png">
+							<img src="images/sprite-images/up.png">
+						</div>
+
+						<div class="fifty">
+							<img src="images/sprite.png">
+						</div>
+
+					</section>
+
+					<section>
+
+
+						<div class="fifty">
+							<h3>.jpg - 418 kb</h3>
+							<img src="images/location-bkg.jpg" style="max-width:70% !important;">
+
+						</div>
+
+						<div class="fifty">
+							<h3>.png - 637 kb</h3>
+							<img src="images/location-bkg.png" style="max-width:70% !important;">
+						</div>
+
+					</section>
+
+				</section>
+
+				<section>
+
+					<h1>Hosting</h1>
+
+					<section>
+
+						<h3>WP Host</h3>
+
+						<p>
+							<a href='https://wpengine.com/' target='_blank'>WP Engine</a><br>
+							<a href='https://pantheon.io/' target='_blank'>Pantheon</a><br>
+							<a href='https://pagely.com/' target='_blank'>Pagely</a>
+						</p>
+
+					</section>
+
+					<section>
+						<h3>
+							Cheap Host?<br>
+							Use a Caching plugin
+						</h3>
+						<p>
+							<a href='http://wp-rocket.me/' target='_blank'>WP Rocket</a><br>
+							<a href='https://wordpress.org/plugins/wp-super-cache/' target='_blank'>WP Super Cache</a><br>
+							<a href='https://wordpress.org/plugins/w3-total-cache/' target='_blank'>W3 Total Cache</a>
+						</p>
+
+					</section>
+
+					<section>
+
+						<h3>CDN</h3>
+
+						<p>
+							<a href='https://www.cloudflare.com/' target='_blank'>Cloudflare</a><br>
+							<a href='https://www.maxcdn.com/' target='_blank'>Max CDN</a><br>
+							<a href='http://www.rackspace.com/' target='_blank'>Rackspace</a>
+						</p>
+
+					</section>
+
+				</section>
+
+				<section>
+					<h1>Still more to do</h1>
+
+					<section>
+
+						<p>Never Ending Battle</p>
+
+					</section>
+
+				</section>
+
+				<section>
+					<h1>Thank you</h1>
+
+					<p>
+					<a href='http://mikeselander.com'>MikeSelander.com</a><br>
+					<a href='http://twitter.com/Mike_Selander'>@Mike_Selander</a><br><br>
+
+					<a href='http://oldtownmediainc.com'>Old Town Media</a><br><br>
+
+					http://bit.ly/1ReJbyx
+					</p>
+
+				</section>
+
+<!--
+
+				<section>
+					<h1>More Resources</h1>
+
+					<a href='https://developer.yahoo.com/performance/rules.html'>Yahoo on speed</a><br>
+					<a href='https://developers.google.com/speed/'>Google on Speed</a>
+				</section>
+-->
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
