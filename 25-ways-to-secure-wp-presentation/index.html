@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>25 Ways to Secure Your WordPress Site</title>
+
+		<meta name="description" content="A talk on a myriad of ways to secure your WordPress site">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link href="favicon.ico" rel="shortcut icon">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/otm.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<script type="text/javascript">(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');__gaTracker('create','UA-25947533-1','auto');__gaTracker('set','forceSSL',true);__gaTracker('require','displayfeatures');__gaTracker('send','pageview');</script>
+	</head>
+
+	<body>
+
+		<div class="logo"></div>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-no-slide-counter>
+					<h1>25 Ways to Secure WordPress</h1>
+<!-- 					<h3>Or, How not to be the Schmuck</h3> -->
+
+					<p>
+						<small>Mike Selander</a></small>
+					</p>
+
+					<p>http://bit.ly/1GdE3Ge</p>
+
+				</section>
+
+
+				<section data-background="images/chrome-hacked.png"></section>
+
+				<!-- Intro -->
+				<section>
+
+					<section>
+						<h1>30,000 Sites Are Hacked Every Day</h1>
+					</section>
+
+					<section>
+						<h3>And... most are WordPress</h3>
+						<h3 class="fragment">And... most are easily preventable</h3>
+					</section>
+
+<!--
+					<section>
+
+						<pre><code class="smaller">
+Code Here
+							</code></pre>
+
+					</section>
+-->
+
+				</section>
+
+				<!-- Method 1 -->
+				<section>
+
+					<h1 class="count">1</h1>
+
+					<section>
+
+						<h1>Use Strong Passwords</h1>
+					</section>
+
+					<section>
+						<h2>Seriously, do it.</h2>
+					</section>
+
+					<section>
+						<img src="images/strong-passwords.png">
+					</section>
+
+					<section>
+						<h2>
+							<a href="https://www.dashlane.com" target="_blank">Dashlane</a><br>
+							<a href="https://lastpass.com/" target="_blank">LastPass</a><br>
+							<a href="https://agilebits.com/onepassword" target="_blank">1Password</a>
+						</h2>
+					</section>
+
+				</section>
+
+
+				<!-- Method 2 -->
+				<section>
+
+					<h1 class="count">2</h1>
+
+					<section>
+						<h1>Delete the "admin" user</h1>
+					</section>
+
+				</section>
+
+
+				<!-- Method 3 -->
+				<section>
+
+					<h1 class="count">3</h1>
+
+					<section>
+
+						<h1>Use 2-factor Authentication</h1>
+					</section>
+
+					<section>
+						<h2>
+							<a href="https://wordpress.org/plugins/google-authenticator/" target="_blank">Google Authenticator</a><br>
+							<a href="https://wordpress.org/plugins/duo-wordpress/" target="_blank">Duo Security</a><br>
+							<a href="https://wordpress.org/plugins/two-factor-auth/" target="_blank">Two Factor Auth</a>
+						</h2>
+					</section>
+
+				</section>
+
+
+				<!-- Method 4 -->
+				<section>
+
+					<h1 class="count">4</h1>
+
+					<section>
+						<h1>Change Your Login URL</h1>
+					</section>
+
+				</section>
+
+
+				<!-- Method 5 -->
+				<section>
+
+					<h1 class="count">5</h1>
+
+					<section>
+						<h1>Keep Your CPU Clean</h1>
+					</section>
+
+					<section>
+						<h2>
+							<a href="http://www.webroot.com/us/en/" target="_blank">Webroot</a><br>
+							<a href="https://www.avast.com/en-us/index" target="_blank">Avast</a><br>
+							<a href="http://free.avg.com/us-en/homepage" target="_blank">AVG</a>
+						</h2>
+
+					</section>
+
+				</section>
+
+
+				<!-- Method 6 -->
+				<section>
+
+					<h1 class="count">6</h1>
+
+					<section>
+						<h1>Update Everything All the Time</h1>
+					</section>
+
+					<section>
+						<h3>Add to wp-config.php</h3>
+						<pre><code>define( 'WP_AUTO_UPDATE_CORE', true );</code></pre>
+					</section>
+
+				</section>
+
+
+				<!-- Method 7 -->
+				<section>
+
+					<h1 class="count">7</h1>
+
+					<section>
+						<h1>Delete Unneeded Plugins</h1>
+					</section>
+
+				</section>
+
+
+				<!-- Method 8 -->
+				<section>
+
+					<h1 class="count">8</h1>
+
+					<section>
+						<h1>Take Backups & Store Offsite</h1>
+					</section>
+
+					<section>
+						<h3>
+							<a href="https://vaultpress.com/" target="_blank">Vaultpress</a><br>
+							<a href="https://ithemes.com/purchase/backupbuddy/" target="_blank">BackupBuddy</a><br>
+							<a href="https://wordpress.org/plugins/backwpup/" target="_blank">BackWPUp</a><br>
+							<a href="https://wordpress.org/plugins/backupwordpress/" target="_blank">BackUpWordPress</a>
+						</h3>
+					</section>
+
+				</section>
+
+
+				<!-- Method 9 -->
+				<section>
+
+					<h1 class="count">9</h1>
+
+					<section>
+						<h1>Use a Secure Theme</h1>
+					</section>
+
+				</section>
+
+
+				<!-- Method 10 -->
+				<section>
+
+					<h1 class="count">10</h1>
+
+					<section>
+						<h1>Install an Auditing/Logging Plugin</h1>
+					</section>
+
+					<section>
+						<h3>
+							<a href="https://wp-stream.com/" target="_blank">Stream</a><br>
+							<a href="https://wordpress.org/plugins/wp-security-audit-log/" target="_blank">WP Security Audit Log</a><br>
+							<a href="https://wordpress.org/plugins/audit-trail/" target="_blank">Audit Trail</a>
+						</h3>
+					</section>
+
+				</section>
+
+
+				<!-- Method 11 -->
+				<section>
+
+					<h1 class="count">11</h1>
+
+					<section>
+						<h1>Install a Security Plugin</h1>
+					</section>
+
+					<section>
+						<h3>
+							<a href="https://wordpress.org/plugins/better-wp-security/" target="_blank">iThemes Security</a><br>
+							<a href="https://wordpress.org/plugins/wordfence/" target="_blank">WordFence*</a><br>
+							<a href="https://wordpress.org/plugins/bulletproof-security/" target="_blank">Bulletproof</a>
+						</h3>
+
+						<p>*I include this with hesitation. It's one of the most compromised plugins in the entire repo</p>
+					</section>
+
+				</section>
+
+
+				<!-- Method 12 -->
+				<section>
+
+					<h1 class="count">12</h1>
+
+					<section>
+						<h1>Use SSL for login & admin / whole site</h1>
+					</section>
+
+					<section>
+						<h3>
+							Easy Way<br>
+							<a href="https://wordpress.org/plugins/wp-force-ssl/">Force SSL</a>
+						</h3>
+					</section>
+
+					<section>
+						<h3>Hard Way</h3>
+
+						<pre><code>define ( 'FORCE_SSL_ADMIN', true );</code></pre>
+
+						<h3>.htaccess</h3>
+
+						<pre><code>RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://example.com/$1 [R=301,L]</code></pre>
+
+					</section>
+
+				</section>
+
+
+				<!-- Method 13 -->
+				<section>
+
+					<h1 class="count">13</h1>
+
+					<section>
+						<h1>Server-side Compromise scanning</h1>
+					</section>
+
+					<section>
+						<h3>
+							<a href="https://sucuri.net/website-antivirus/" target="_blank">Sucuri</a><br>
+						</h3>
+					</section>
+
+				</section>
+
+
+				<!-- Method 14 -->
+				<section>
+
+					<h1 class="count">14</h1>
+
+					<section>
+						<h1>WAF - Web Application Firewall</h1>
+					</section>
+
+					<section>
+						<h3>
+							<a href="https://sucuri.net/website-firewall/" target="_blank">Sucuri</a><br>
+							<a href="https://wordpress.org/plugins/ninjafirewall/" target="_blank">Ninja Firewall</a><br>
+							<a href="https://www.cloudflare.com/waf" target="_blank">Cloudflare</a>
+						</h3>
+					</section>
+
+				</section>
+
+
+				<!-- Method 15 -->
+				<section>
+
+					<h1 class="count">15</h1>
+
+					<section>
+						<h1>Disable File Editors</h1>
+					</section>
+
+					<section>
+						<img src="images/white-screen-of-death.png" style="max-height: 60%;">
+					</section>
+
+					<section>
+						<h3>Add to wp-config.php</h3>
+						<pre><code>define( 'DISALLOW_FILE_EDIT', true );</code></pre>
+					</section>
+
+				</section>
+
+
+				<!-- Method 16 -->
+				<section>
+
+					<h1 class="count">16</h1>
+
+					<section>
+						<h1>Disallow unfiltered HTML</h1>
+					</section>
+
+					<section>
+						<h3>Add to wp-config.php</h3>
+						<pre><code>define( 'DISALLOW_UNFILTERED_HTML', true );</code></pre>
+					</section>
+
+				</section>
+
+
+				<!-- Method 17 -->
+				<section>
+
+					<h1 class="count">17</h1>
+
+					<section>
+						<h1>Block access to XMLRPC</h1>
+					</section>
+
+					<section>
+						<img src="images/xmlrpc.jpg">
+					</section>
+
+					<section>
+						<h3>Add to functions.php (or similar)</h3>
+						<pre><code>add_filter( 'xmlrpc_enabled', '__return_false' );</code></pre>
+					</section>
+
+
+					<section>
+						<h3>Add to .htaccess</h3>
+						<pre><code># START XML RPC BLOCKING
+<Files xmlrpc.php>
+Order Deny,Allow
+Deny from all
+</Files>
+# FINISH XML RPC BLOCKING</code></pre>
+					</section>
+
+				</section>
+
+
+				<!-- Method 18 -->
+				<section>
+
+					<h1 class="count">18</h1>
+
+					<section>
+						<h1>Disable Error Reporting</h1>
+					</section>
+
+					<section>
+						<h3>Add to wp-config.php</h3>
+						<pre><code>ini_set('display_errors',0);
+error_reporting(E_ALL|E_STRICT);</code></pre>
+					</section>
+
+				</section>
+
+
+				<!-- Method 19 -->
+				<section>
+
+					<h1 class="count">19</h1>
+
+					<section>
+						<h1>Move wp-config.php</h1>
+					</section>
+
+				</section>
+
+
+				<!-- Method 20 -->
+				<section>
+
+					<h1 class="count">20</h1>
+
+					<section>
+						<h1>Check Your File Permissions</h1>
+					</section>
+
+					<section>
+						<h3>Mass Overwrite</h3>
+
+						<pre><code>chown www-data:www-data -R *
+find . -type d -exec chmod 755 {} \;
+find . -type f -exec chmod 644 {} \;
+
+chwon -R www-data:ftp-user wp-content (where ftp-user is what user you are using to upload the files)
+chmod -R 775 wp-content</code></pre>
+					</section>
+
+				</section>
+
+
+				<!-- Method 21 -->
+				<section>
+
+					<h1 class="count">21</h1>
+
+					<section>
+						<h1>Change DB Table Prefix</h1>
+					</section>
+
+					<section>
+						<h3>
+							Starts as <i>wp_</i><br>
+							Change to <i>xx_</i>
+						</h3>
+					</section>
+
+				</section>
+
+
+				<!-- Method 22 -->
+				<section>
+
+					<h1 class="count">22</h1>
+
+					<section>
+						<h1>Resalt/Salt WordPress</h1>
+					</section>
+
+					<section>
+						<a href="https://api.wordpress.org/secret-key/1.1/salt/" target="_blank">https://api.wordpress.org/secret-key/1.1/salt/</a>
+					</section>
+
+				</section>
+
+
+				<!-- Method 23 -->
+				<section>
+
+					<h1 class="count">23</h1>
+
+					<section>
+						<h1>Use an Excellent Host</h1>
+					</section>
+
+					<section>
+						<h3>
+						<a href="https://wpengine.com/" target="_blank">WP Engine</a><br>
+						<a href="https://pagely.com/" target="_blank">Pagely</a><br>
+						<a href="https://getflywheel.com/" target="_blank">Flywheel</a>
+						</h3>
+					</section>
+
+				</section>
+
+
+				<!-- Method 24 -->
+				<section>
+
+					<h1 class="count">24</h1>
+
+					<section>
+						<h1>Use a Blacklist/IP blocker</h1>
+					</section>
+
+
+				</section>
+
+
+				<!-- Method 25 -->
+				<section>
+
+					<h1 class="count">25</h1>
+
+					<section>
+						<h1>Disable<br>pingbacks</h1>
+					</section>
+
+					<section>
+						<h3>SQL Query</h3>
+						<pre><code>update wp_posts set ping_status='closed' where ping_status='open'</code></pre>
+					</section>
+
+				</section>
+
+
+				<!-- Wrapping Up -->
+				<section>
+
+					<h1>Thank you</h1>
+
+					<p>
+						<a href='http://mikeselander.com'>MikeSelander.com</a><br>
+						<a href='http://twitter.com/Mike_Selander'>@Mike_Selander</a><br><br>
+
+						<a href='http://oldtownmediainc.com'>Old Town Media</a><br><br>
+
+						http://bit.ly/1GdE3Ge
+					</p>
+
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
