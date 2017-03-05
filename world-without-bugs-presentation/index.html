@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>A World Without Bugs - a talk about testing, QA, and sleeping at night</title>
+
+		<meta name="description" content="A World Without Bugs - a talk about testing, QA, and sleeping at night.">
+		<meta name="author" content="Mike Selander">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<script type="text/javascript">(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');__gaTracker('create','UA-25947533-1','auto');__gaTracker('set','forceSSL',true);__gaTracker('require','displayfeatures');__gaTracker('send','pageview');</script>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>A World Without Bugs</h1>
+					<p>
+						<small><a href="http://mikeselander.com" target="_blank">Mike Selander</a> / <a href="http://twitter.com/Mike_Selander" target="_blank">@Mike_Selander</a></small>
+					</p>
+				</section>
+
+				<section data-background="images/explosion.gif" class='has-background'></section>
+
+				<section>
+
+					<section>
+						<h1>What is a bug?</h1>
+					</section>
+
+					<section data-background="images/bug.jpg" class="has-background">
+						<h3>
+							<u>Scoped</u> Functionality Issues or Visual Bugs<br>
+							<span class="fragment">that can be fixed <u>BEFORE</u> a client sees them</span>
+						</h3>
+
+					</section>
+
+				</section>
+
+				<section data-progress='0'>
+
+					<section data-background="images/droga-bkg-blue.jpg" class='quote'>
+						<blockquote>"Caring is not in scope, but we do it anyway"</blockquote>
+						<p><cite> - David Droga</cite></p>
+					</section>
+
+					<section>
+						<h2>QA is not for the complacent</h2>
+						<h2>You Have to Care, a LOT</h2>
+					</section>
+
+				</section>
+
+				<section data-progress='1' class='align-right'>
+
+					<section>
+						<h1>Start with<br>a Solid Foundation</h1>
+					</section>
+
+<!--
+					<section data-background="images/seth-godin.jpg" class='quote has-background centered'>
+						<blockquote>"We spend a lot of time fixing stuff later, but starting with the right materials makes a huge difference"</blockquote>
+						<p><cite> - Seth Godin</cite></p>
+					</section>
+-->
+
+					<section data-background="images/whoops.jpg" class='has-background'></section>
+
+					<section>
+
+						<h2>Use Engineering Standards</h2>
+
+					</section>
+
+					<section>
+						<h2>Use Libraries for Themes/Plugins</h2>
+					</section>
+
+					<section>
+
+						<h2><img src="images/tools.svg"> Tools</h2>
+
+						<h3>
+							<a href="https://codex.wordpress.org/WordPress_Coding_Standards">WordPress Standards</a><br>
+							<a href="https://10up.github.io/Engineering-Best-Practices/">10up Engineering Standards</a><br>
+							<a href="https://github.com/inpsyde/Codex/blob/master/accepted/styleguide_conventions_bestpractices_EN.md">Inpsyde Standards</a><br>
+						</h3>
+
+					</section>
+
+					<svg class="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path d="M502.906,306.211H388.547V196.648c0-5-4.062-9.094-9.094-9.094H265.109V78.023  c0-5.031-4.086-9.109-9.109-9.109H9.109C4.078,68.914,0,72.992,0,78.023v355.953c0,5.016,4.078,9.109,9.109,9.109h493.797  c5.016,0,9.094-4.094,9.094-9.109V315.32C512,310.305,507.922,306.211,502.906,306.211z M370.344,205.805v100.406h-228.68V205.805  H370.344z M18.211,87.148h228.695v100.406H18.211V87.148z M18.211,205.805h105.242v100.406H18.211V205.805z M246.906,424.867H18.211  V324.43h228.695V424.867z M493.797,424.867H265.109V324.43h228.688V424.867z"></path></svg>
+
+				</section>
+
+				<section data-progress='2' class='align-left'>
+
+					<section>
+						<h1>Content Matters</h1>
+					</section>
+
+					<section data-background="images/no-content.png" class='has-background'></section>
+
+					<section>
+						<h2>Build with Content</h2>
+					</section>
+
+					<section>
+						<h2>Build with <u>a LOT of</u> Content</h2>
+					</section>
+
+					<section>
+						<h2>Build with a LOT of <u>Real</u> Content</h2>
+					</section>
+
+					<section>
+						<h2><img src="images/tools.svg"> Tools</h2>
+
+						<h3><a href='https://github.com/oldtownmedia/test-content-suite' target='_blank'>Test Content Library</a></h3>
+						<h3><a href='https://codex.wordpress.org/Theme_Unit_Test' target='_blank'>Theme Unit Test</a></h3>
+					</section>
+
+					<svg class="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 24 24" x="0px" y="0px"><path d="M5,3H18C19.66,3 21,4.34 21,6V15C21,16.66 19.66,18 18,18H13.41L9.71,21.71C9.53,21.89 9.28,22 9,22C8.45,22 8,21.55 8,21V18H5C3.34,18 2,16.66 2,15V6C2,4.34 3.34,3 5,3M18,4H5C3.9,4 3,4.9 3,6V15C3,16.1 3.9,17 5,17H9V21L13,17H18C19.1,17 20,16.1 20,15V6C20,4.9 19.1,4 18,4M5,7H18V8H5V7M5,10H17V11H5V10M5,13H13V14H5V13Z"></path></svg>
+
+				</section>
+
+				<section data-progress='3' class="align-right">
+
+					<section>
+						<h1>Unit Test<br>All the Things</h1>
+					</section>
+
+					<section>
+						<h2>Unit Test:</h2>
+						<h3>Individually and independently testing the smallest parts of an application</h3>
+					</section>
+
+					<section>
+						<h3>Prove with every push that code still works</h3>
+					</section>
+
+					<section>
+
+						<pre><code>function my_permalink_function( $id ){
+	return str_replace( 'foo', 'bar', get_permalink( $id ) );
+}</code></pre>
+
+						<pre><code>public function my_test(){
+  \WP_Mock::wpFunction( 'get_permalink', array(
+    'args' => 42,
+    'return' => 'http://example.com/foo'
+  ) );
+
+  $result = my_permalink_function( 42 );
+
+  $this->assertEquals( 'https://example.com/bar', $result );
+}</code></pre>
+
+					</section>
+
+					<section>
+
+						<h3><img src="images/tools.svg"> Tools:</h3>
+
+						<h3><a href="https://github.com/10up/wp_mock" target="_blank">WP Mock</a></h3>
+						<h3><a href="https://core.trac.wordpress.org/browser/trunk/tests/phpunit/includes/factory.php" target="_blank">WP Factory</a></h3>
+
+					</section>
+
+					<svg class="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve"><path d="M33.6,21.4h51.5c2.9,0,5.2-2.3,5.2-5.2s-2.3-5.2-5.2-5.2H33.6c-2.9,0-5.2,2.3-5.2,5.2S30.7,21.4,33.6,21.4z"></path><path d="M85.1,34.8H33.6c-2.9,0-5.2,2.3-5.2,5.2s2.3,5.2,5.2,5.2h51.5c2.9,0,5.2-2.3,5.2-5.2S88,34.8,85.1,34.8z"></path><path d="M85.1,58.7H33.6c-2.9,0-5.2,2.3-5.2,5.2s2.3,5.2,5.2,5.2h51.5c2.9,0,5.2-2.3,5.2-5.2S88,58.7,85.1,58.7z"></path><path d="M85.1,82.5H33.6c-2.9,0-5.2,2.3-5.2,5.2s2.3,5.2,5.2,5.2h51.5c2.9,0,5.2-2.3,5.2-5.2S88,82.5,85.1,82.5z"></path><path d="M24.3,7.8l-2.7-2.2c-0.3-0.2-0.7-0.2-0.9,0.1l-7.4,9.1l-2.9-2.6c-0.3-0.2-0.7-0.2-0.9,0l-2.3,2.6c-0.2,0.3-0.2,0.7,0,0.9  l6.2,5.6c0.3,0.2,0.7,0.2,0.9-0.1l2.2-2.7c0,0,0,0,0,0l8-9.9C24.7,8.5,24.6,8.1,24.3,7.8z"></path><path d="M18.9,87.7l3.3-3.3c0.3-0.3,0.3-0.9,0-1.3l-1.9-1.9c-0.3-0.3-0.9-0.3-1.3,0l-3.3,3.3l-3.3-3.3c-0.3-0.3-0.9-0.3-1.3,0  l-1.9,1.9c-0.3,0.3-0.3,0.9,0,1.3l3.3,3.3l-3.3,3.3c-0.3,0.3-0.3,0.9,0,1.3l1.9,1.9c0.3,0.3,0.9,0.3,1.3,0l3.3-3.3l3.3,3.3  c0.3,0.3,0.9,0.3,1.3,0l1.9-1.9c0.3-0.3,0.3-0.9,0-1.3L18.9,87.7z"></path><path d="M18.9,63.9l3.3-3.3c0.3-0.3,0.3-0.9,0-1.3l-1.9-1.9c-0.3-0.3-0.9-0.3-1.3,0l-3.3,3.3l-3.3-3.3c-0.3-0.3-0.9-0.3-1.3,0  l-1.9,1.9c-0.3,0.3-0.3,0.9,0,1.3l3.3,3.3l-3.3,3.3c-0.3,0.3-0.3,0.9,0,1.3l1.9,1.9c0.3,0.3,0.9,0.3,1.3,0l3.3-3.3l3.3,3.3  c0.3,0.3,0.9,0.3,1.3,0l1.9-1.9c0.3-0.3,0.3-0.9,0-1.3L18.9,63.9z"></path><path d="M18.9,39.1l3.3-3.3c0.3-0.3,0.3-0.9,0-1.3l-1.9-1.9c-0.3-0.3-0.9-0.3-1.3,0l-3.3,3.3l-3.3-3.3c-0.3-0.3-0.9-0.3-1.3,0  l-1.9,1.9c-0.3,0.3-0.3,0.9,0,1.3l3.3,3.3l-3.3,3.3c-0.3,0.3-0.3,0.9,0,1.3l1.9,1.9c0.3,0.3,0.9,0.3,1.3,0l3.3-3.3l3.3,3.3  c0.3,0.3,0.9,0.3,1.3,0l1.9-1.9c0.3-0.3,0.3-0.9,0-1.3L18.9,39.1z"></path></svg>
+
+				</section>
+
+				<section data-progress='4' class="align-left">
+
+					<section>
+						<h1>Code Audits</h1>
+					</section>
+
+					<section>
+						<h2>1. Manual Code Audits</h2>
+						<h2>2. Automated Code Reviews</h2>
+					</section>
+
+					<section data-background="images/typing.gif" class='has-background'></section>
+
+					<section>
+
+						<h2>Manual Code Audits for:</h2>
+
+						<ul>
+							<li>Security Issues</li>
+							<li>Comprehensibility</li>
+							<li>Conciseness</li>
+						</ul>
+
+					</section>
+
+					<section>
+
+						<h2>Some Tips:</h2>
+
+						<ul>
+							<li>Review < 400 lines an hour</li>
+							<li>Keep it positive</li>
+							<li>Make everyone accountable</li>
+						</ul>
+
+					</section>
+
+					<section data-background="images/automation.gif" class="has-background">
+						<h2>Automate the Rest</h2>
+					</section>
+
+					<section>
+
+						<h2>Automated Reviews for:</h2>
+
+						<ul>
+							<li>Stylistic Adherence</li>
+							<li>Code Repetition</li>
+							<li>Unused Code</li>
+						</ul>
+
+					</section>
+
+					<section>
+						<h2><img src="images/tools.svg"> Tools:</h2>
+
+						<h3><a href="https://scrutinizer-ci.com/" target="_blank">Scrutinizer</a></h3>
+						<h3><a href="https://vip.wordpress.com/documentation/code-review-what-we-look-for/" target="_blank">WP VIP Audit Guidelines</a></h3>
+						<h3><a href="http://blog.fogcreek.com/increase-defect-detection-with-our-code-review-checklist-example/" target="_blank">Fogcreek Audit Checklist</a></h3>
+					</section>
+
+					<svg class="svg" xmlns="http://www.w3.org/2000/svg" version="1.1" data-icon="code" data-container-transform="translate(0 2)" viewBox="0 0 16 16" x="0px" y="0px"><path d="M7.969 0l-1.969 11.844-.031.156h2.063l1.969-11.844.031-.156h-2.063zm-2.969 1.813l-.531.344-4 2.5-.469.281v2.126l.469.281 4 2.5.531.344v-2.375l-2.906-1.813 2.906-1.813v-2.375zm6 0v2.375l2.906 1.813-2.906 1.813v2.375l.531-.344 4-2.5.469-.281v-2.126l-.469-.281-4-2.5-.531-.344z" transform="translate(0 2)"></path></svg>
+
+				</section>
+
+				<section data-progress='6' class="align-left">
+
+					<section>
+						<h1>Visual Review</h1>
+					</section>
+
+					<section>
+						<h2>Use Checklists</h2>
+
+					</section>
+
+					<section data-background-image="images/browser-logos-blue.jpg" class="has-background">
+						<h2>Browser Test</h2>
+						<h3 class="fragment"><u>Every</u> Browser</h#>
+					</section>
+
+					<section data-background-image="images/device-lab-blue.jpg" class="has-background">
+						<h2>Build a Device Lab</h2>
+					</section>
+
+					<svg class="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve"><path d="M33.6,21.4h51.5c2.9,0,5.2-2.3,5.2-5.2s-2.3-5.2-5.2-5.2H33.6c-2.9,0-5.2,2.3-5.2,5.2S30.7,21.4,33.6,21.4z"></path><path d="M85.1,34.8H33.6c-2.9,0-5.2,2.3-5.2,5.2s2.3,5.2,5.2,5.2h51.5c2.9,0,5.2-2.3,5.2-5.2S88,34.8,85.1,34.8z"></path><path d="M85.1,58.7H33.6c-2.9,0-5.2,2.3-5.2,5.2s2.3,5.2,5.2,5.2h51.5c2.9,0,5.2-2.3,5.2-5.2S88,58.7,85.1,58.7z"></path><path d="M85.1,82.5H33.6c-2.9,0-5.2,2.3-5.2,5.2s2.3,5.2,5.2,5.2h51.5c2.9,0,5.2-2.3,5.2-5.2S88,82.5,85.1,82.5z"></path><path d="M24.3,7.8l-2.7-2.2c-0.3-0.2-0.7-0.2-0.9,0.1l-7.4,9.1l-2.9-2.6c-0.3-0.2-0.7-0.2-0.9,0l-2.3,2.6c-0.2,0.3-0.2,0.7,0,0.9  l6.2,5.6c0.3,0.2,0.7,0.2,0.9-0.1l2.2-2.7c0,0,0,0,0,0l8-9.9C24.7,8.5,24.6,8.1,24.3,7.8z"></path><path d="M18.9,87.7l3.3-3.3c0.3-0.3,0.3-0.9,0-1.3l-1.9-1.9c-0.3-0.3-0.9-0.3-1.3,0l-3.3,3.3l-3.3-3.3c-0.3-0.3-0.9-0.3-1.3,0  l-1.9,1.9c-0.3,0.3-0.3,0.9,0,1.3l3.3,3.3l-3.3,3.3c-0.3,0.3-0.3,0.9,0,1.3l1.9,1.9c0.3,0.3,0.9,0.3,1.3,0l3.3-3.3l3.3,3.3  c0.3,0.3,0.9,0.3,1.3,0l1.9-1.9c0.3-0.3,0.3-0.9,0-1.3L18.9,87.7z"></path><path d="M18.9,63.9l3.3-3.3c0.3-0.3,0.3-0.9,0-1.3l-1.9-1.9c-0.3-0.3-0.9-0.3-1.3,0l-3.3,3.3l-3.3-3.3c-0.3-0.3-0.9-0.3-1.3,0  l-1.9,1.9c-0.3,0.3-0.3,0.9,0,1.3l3.3,3.3l-3.3,3.3c-0.3,0.3-0.3,0.9,0,1.3l1.9,1.9c0.3,0.3,0.9,0.3,1.3,0l3.3-3.3l3.3,3.3  c0.3,0.3,0.9,0.3,1.3,0l1.9-1.9c0.3-0.3,0.3-0.9,0-1.3L18.9,63.9z"></path><path d="M18.9,39.1l3.3-3.3c0.3-0.3,0.3-0.9,0-1.3l-1.9-1.9c-0.3-0.3-0.9-0.3-1.3,0l-3.3,3.3l-3.3-3.3c-0.3-0.3-0.9-0.3-1.3,0  l-1.9,1.9c-0.3,0.3-0.3,0.9,0,1.3l3.3,3.3l-3.3,3.3c-0.3,0.3-0.3,0.9,0,1.3l1.9,1.9c0.3,0.3,0.9,0.3,1.3,0l3.3-3.3l3.3,3.3  c0.3,0.3,0.9,0.3,1.3,0l1.9-1.9c0.3-0.3,0.3-0.9,0-1.3L18.9,39.1z"></path></svg>
+
+				</section>
+
+				<section data-progress='5' class="align-right">
+
+					<section>
+						<h1>Internal<br>Testing</h1>
+					</section>
+
+					<section data-background="images/tunnel.gif" class="has-background"></section>
+
+					<section>
+						<h3>Have a lot of people test at each stage</h3>
+					</section>
+
+					<section>
+						<h3>For Example:</h3>
+
+						<div class='workflow'>
+							<span>Me</span>
+							<span class="fragment">Dev</span>
+							<span class="fragment">PM</span>
+							<span class="fragment">Designer</span>
+<!-- 							<span class="fragment">Operations</span> -->
+						</div>
+					</section>
+
+
+					<svg class="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve"><path d="M61.58,47.513c4.583-3.373,7.559-8.945,7.559-15.072c0-10.235-8.297-18.604-18.532-18.604  c-10.235,0-18.532,8.262-18.532,18.497c0,6.127,2.976,11.824,7.559,15.197c-10.485,4.252-17.868,14.979-17.868,26.979  c0,16,57.683,16,57.683,0C79.448,62.511,72.064,51.765,61.58,47.513z"></path><path d="M82.841,47.976c3.37-2.479,5.557-6.518,5.557-11.023c0-7.525-6.1-13.648-13.625-13.648c-1.69,0-3.307,0.31-4.8,0.871  c1.068,2.522,1.66,5.293,1.66,8.201c0,5.364-2.051,10.508-5.621,14.375c9.789,5.473,15.931,15.89,15.931,27.504  c0,0.458-0.037,0.942-0.121,1.442c7.795-0.98,14.157-3.643,14.157-7.99C95.979,58.355,90.55,51.103,82.841,47.976z"></path><path d="M19.27,74.256c0-11.401,5.927-21.646,15.413-27.193c0.145-0.133,0.286-0.271,0.425-0.409  c-3.512-3.863-5.529-8.984-5.529-14.335c0-2.76,0.541-5.395,1.514-7.812c-1.705-0.77-3.594-1.202-5.585-1.202  c-7.525,0-13.625,6.089-13.625,13.614c0,4.506,2.188,8.584,5.557,11.063C9.732,51.109,4.303,58.355,4.303,67.708  c0,4.522,6.885,7.222,15.106,8.1C19.312,75.269,19.27,74.749,19.27,74.256z"></path></svg>
+
+				</section>
+
+				<section data-progress='6' class="align-right">
+
+					<section>
+						<h1>Track Your<br>Progress</h1>
+					</section>
+
+					<section>
+						<h2>Set a Metric</h2>
+						<h3>i.e.: 0 client found bugs</h3>
+
+					</section>
+
+					<section>
+						<h2>With Every Launch, Keep Track</h2>
+					</section>
+
+					<section data-background-image="images/crazy-dance.gif" class="has-background"><h2>Celebrate the Victories</h2></section>
+
+					<svg class="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 90 90" enable-background="new 0 0 90 90" xml:space="preserve"><g><path d="M37.082,54.632c2.856,2.855,7.484,2.855,10.337,0c2.857-2.855,10.259-20.595,10.259-20.595s-17.74,7.399-20.596,10.255   C34.226,47.147,34.226,51.776,37.082,54.632z"></path><path d="M73.562,18.902l7.199,5.57l6.52-6.778c0,0-2.723-4.138-7.016-8.266c-4.293-4.13-8.649-6.799-8.649-6.799l-6.52,6.778   l5.986,7.156l-2.647,2.754c-7.056-6.57-16.505-10.599-26.88-10.599c-21.768,0-39.481,17.71-39.481,39.481   c0,21.771,17.713,39.481,39.481,39.481c21.769,0,39.481-17.71,39.481-39.481c0-10.169-3.866-19.451-10.204-26.458L73.562,18.902z    M67.983,73.416l-3.855-3.853c-0.427-0.43-1.122-0.43-1.552,0c-0.427,0.429-0.427,1.122,0,1.552l3.848,3.845   c-6.279,5.84-14.606,9.498-23.773,9.77V77.08c0-0.605-0.491-1.096-1.096-1.096c-0.605,0-1.096,0.49-1.096,1.096v7.649   c-9.169-0.271-17.497-3.93-23.776-9.77l3.847-3.848c0.43-0.429,0.43-1.122,0-1.552c-0.429-0.427-1.123-0.427-1.549,0l-3.856,3.855   C9.166,67.174,5.393,58.839,5.033,49.635h7.885c0.608,0,1.099-0.49,1.099-1.096s-0.491-1.096-1.099-1.096h-7.9   c0.189-9.301,3.863-17.756,9.777-24.112l4.187,4.184c0.213,0.216,0.493,0.322,0.773,0.322c0.28,0,0.563-0.106,0.776-0.322   c0.43-0.427,0.43-1.123,0-1.549l-4.194-4.194c6.319-6.031,14.785-9.823,24.123-10.1v8.138c0,0.605,0.491,1.096,1.096,1.096   c0.605,0,1.096-0.49,1.096-1.096v-8.138c9.338,0.277,17.804,4.069,24.12,10.1l-4.194,4.191c-0.427,0.43-0.427,1.123,0,1.552   c0.216,0.213,0.496,0.32,0.776,0.32c0.282,0,0.563-0.107,0.775-0.32l4.184-4.187c5.914,6.357,9.591,14.814,9.78,24.115h-7.9   c-0.608,0-1.099,0.49-1.099,1.096s0.49,1.096,1.099,1.096h7.882C77.716,58.839,73.94,67.177,67.983,73.416z"></path></g></svg>
+
+				</section>
+
+				<section data-background="images/magic.gif" class='has-background'></section>
+
+				<section>
+
+					<h1>Thank You</h1>
+
+					<p>
+						<a href='https://twitter.com/Mike_Selander' target='_blank'>@Mike_Selander</a><br>
+						<a href='https://mikeselander.com' target='_blank'>MikeSelander.com</a>
+					</p>
+
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
