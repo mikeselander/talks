@@ -24,8 +24,136 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h1>Developing for Big Media</h1>
+					<h2>🚀</h2>
+				</section>
+
+				<section>
+					<section>
+						<h1>WordPress is Kind of a Big Deal Now</h1>
+					</section>
+
+					<section>
+						Big Media Companies Using WP
+
+						logo-grid, I think
+					</section>
+				</section>
+
+				<section>
+					So... What's Different?
+				</section>
+
+				<section>
+					<section>
+						Security
+						<span class="fragment">Security</span>
+						<span class="fragment">Security</span>
+						<span class="fragment">Security</span>
+					</section>
+					<section>
+						Escaping
+						Sanitizing
+						... there's more here
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>WorkFlows Are Robust</h2>
+						Downtime ha a quantifiable cost at this level
+					</section>
+
+					<section>
+						Defensive Development/Poka yokes
+
+						when you have millions of people vising a site each day,
+						and a setting needs updating but will only take 3-4 minutes,
+						thousands of people could see it, caches could end up stuck, etc.
+					</section>
+
+					<section>
+						Code Reviews
+					</section>
+
+					<section>
+						Gitflow
+						(gitflow graphic heaaar)
+					</section>
+
+					<section>
+						Local Environments
+						No cowboy coding
+					</section>
+
+					<section>
+						Staging
+					    QA
+						You don't always control deploy timings
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>Cache All the Things, All the Time</h2>
+					</section>
+
+					<section>
+						Browser/Asset Caching/concatenation
+					</section>
+
+					<section>
+						Page/Edge Caching
+					</section>
+
+					<section>
+						Object Caching
+					</section>
+
+					<section>
+						Invalidation
+
+						naming things and cache invalidation
+					</section>
+				</section>
+
+				<section>
+					<section>
+						Hosts are Your New Best Friend
+
+						You Better get to like them, because you'll be talking to them a lot.
+					</section>
+				</section>
+
+				<section>
+					<section>
+						Really weird bugs rear their heads.
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Ads are the WORST. Now go and make them work nicely, please.</h2>
+						Oh, and make the page fast while you're at it?
+					</section>
+				</section>
+
+				<section>
+					<h2>Questions?</h2>
+					<p>No, really - please</p>
+				</section>
+
+				<section>
+					<h2>Bye 👋</h2>
+					<p>
+						<a href='https://mikeselander.com'>MikeSelander.com</a><br>
+						<a href='https://twitter.com/Mike_Selander'>@Mike_Selander</a></br>
+						<a href='https://hmn.md'><img src='images/logo.svg' class='logo'></a>
+					</p>
+				</section>
+
 			</div>
 		</div>
 
@@ -40,8 +168,6 @@
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
 			});
