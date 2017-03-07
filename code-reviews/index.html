@@ -1,0 +1,286 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Peering into the Process of Code Review | Mike Selander</title>
+
+		<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/hm-red.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<!-- <link rel="stylesheet" href="lib/css/zenburn.css"> -->
+
+		<!-- Printing and PDF exports -->
+		<!-- <script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script> -->
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section>
+					<h2>Peering into the Process of Code Reviews</h2>
+					<p><a href="http://bit.ly/peering-into-cr">http://bit.ly/peering-into-cr</a></p>
+				</section>
+
+				<!-- Introduction -->
+				<section>
+					<h2>Jag heter Mike</h2>
+				</section>
+
+				<section>
+					<h3>
+						Code Reviews can be scary.
+					</h3>
+				</section>
+
+				<!-- <section>
+					<h3>
+						Why Aren't You doing Code Reviews yet?
+					</h3>
+				</section> -->
+
+				<section>
+					<section>
+						<h2>Why do Code Reviews?</h2>
+					</section>
+
+					<section>
+						<h3>It Saves Money</h3>
+						<blockquote>
+							it costs <span class='alt-color'>100 times</span> as much to fix a defect after release as during early development.
+						</blockquote>
+					</section>
+
+					<section>
+						<h3>Training & knowledge transfer</h3>
+					</section>
+
+					<section>
+						<h3>Big Clients Demand It</h3>
+						<h3 class="fragment">All Clients Appreciate It</h3>
+					</section>
+
+					<section>
+						<!-- <h3>It's Professional Table Stakes</h3> -->
+
+						<ul class="grid">
+							<li><img src="images/logos/automattic.png"></li>
+							<li><img src="images/logos/xwp.png"></li>
+							<li><img src="images/logo.svg"></li>
+							<li><img src="images/logos/delicious-brains.png"></li>
+							<!-- <li><img src="images/logos/alley.svg"></li> -->
+							<li><img src="images/logos/reaktiv.png"></li>
+							<li><img src="images/logos/webdev.png"></li>
+						</ul>
+					</section>
+
+					<section data-background-image="images/sleepy-koala.jpg">
+						<h3>Sleep Better</h3>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>What Should I Look for?</h2>
+					</section>
+
+					<section>
+						<h3>
+							Does this code work?
+							<span class="fragment"><br>How can I break this?</fragment>
+						</h3>
+					</section>
+
+					<section>
+						<h3>Is this code readable?</h3>
+					</section>
+
+					<section>
+						<h3>How could this be more performant?</h3>
+					</section>
+
+					<section>
+						<h3>How could someone exploit this code?</h3>
+					</section>
+
+					<section>
+						<h3>Has this been fixed in every place in the codebase?</h3>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>How Does this Work in Real Life?</h2>
+					</section>
+
+					<section>
+
+						<h3>Gitflow (modified)</h3>
+
+					</section>
+
+					<section data-background-image="images/gitflow1.png"></section>
+
+					<section data-background-image="images/gitflow2.png"></section>
+
+					<section data-background-image="images/gitflow3.png"></section>
+
+					<section data-background-image="images/gitflow4.png"></section>
+
+					<section data-background-image="images/gitflow5.png"></section>
+
+					<section>
+						<h3>Our Process</h3>
+					</section>
+
+					<section class="counted">
+						<div class="counter">1</div>
+						<h3>Build Feature or Bugfix in Feature Branch</h3>
+					</section>
+
+					<section class="counted">
+						<div class="counter">2</div>
+						<h3>Open Pull Request on GitHub and request a review</h3>
+						<div class="label blue-label">Review</div>
+					</section>
+
+					<section class="counted">
+						<div class="counter">3</div>
+						<h3>Developer Reviews, leaves feedback</h3>
+						<div class="label yellow-label">Needs Work</div><br>
+					</section>
+
+					<section data-background-image="images/pr-1.png"></section>
+
+					<section data-background-image="images/pr-2.png"></section>
+
+					<section class="counted">
+						<div class="counter">5</div>
+						<h3>Developer Reviews, Approves or Sends Back</h3>
+						<div class="label yellow-label">Needs Work</div><br>
+					</section>
+
+					<section class="counted">
+						<div class="counter">4</div>
+						<h3>Send back for another review</h3>
+						<div class="label blue-label">Review</div>
+					</section>
+
+					<section class="counted">
+						<div class="counter">6</div>
+						<h3>Merge away</h3>
+						<img src="images/rocket.png" style="max-width: 100px;">
+					</section>
+
+				</section>
+
+				<section>
+					<h2>Tack så mycket</h2>
+				</section>
+
+				<section>
+					<h2>Questions?</h2>
+					<p>No, really - please</p>
+				</section>
+
+				<section>
+					<h2>Hejdå</h2>
+					<p>
+						<a href='https://mikeselander.com'>MikeSelander.com</a><br>
+						<a href='https://twitter.com/Mike_Selander'>@Mike_Selander</a></br>
+						<a href='https://hmn.md'><img src='images/logo.svg' class='logo'></a>
+					</p>
+				</section>
+
+				<!-- <section>
+					<h4>References</h4>
+					<a href="http://www.ppi-int.com/systems-engineering/free%20resources/Software%20Quality%20Metrics%20Capers%20Jones%20120607.pdf">Bar Chart</a><br>
+					<a href="http://blog.smartbear.com/sqc/4-reasons-developers-resist-code-review-and-why-they-shouldnt/">Pie Chart</a><br>
+					<a href="http://blog.smartbear.com/sqc/4-reasons-developers-resist-code-review-and-why-they-shouldnt/">With/Without CR</a>
+				</section> -->
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				history: true,
+				transitionSpeed: 'slow',
+				transition: 'none' // slide
+				//slideNumber: true,
+				// chart: {
+			    //   defaults: {
+			    //       global: {
+				// 		  defaultFontColor: "rgb(244,239,230)",
+				// 		  defaultFontFamily: "Ubuntu, 'sans-serif'",
+				// 		  defaultFontSize: 20,
+				// 		  defaultFontStyle: "bold",
+			    //           title: { fontColor: "#FFF" },
+				// 		  responsive: true,
+				// 		  elements: {
+				// 			  rectangle: {
+				// 				  backgroundColor: "rgb(244,239,230)"  // Beige
+				// 			  }
+				// 		  },
+				// 		  legend: {
+				//         	labels: { fontColor: "#FFF" }
+				// 		  },
+				// 		  scales: {
+				// 			  display: false,
+				// 			  gridLines: {
+				// 				display: false
+				// 			  }
+				// 		  }
+			    //       },
+				// 	  scales: {
+				// 		  display: false,
+				// 		  gridLines: {
+				// 			display: false
+				// 		  }
+				// 	  }
+				//   },
+				//   bar: {
+				// 	  scales: {
+				// 		  display: false,
+				// 		  gridLines: {
+				// 			display: false
+				// 		  }
+				// 	  }
+				//   },
+				//   pie: {
+				// 	  backgroundColor: [
+				// 		  [
+				// 			  "rgba(244,239,230,1)",  // Beige
+				// 			  "rgba(115,115,115,1)",  // Light Grey
+				// 			  "rgba(80,76,76,1)",     // Darker Grey
+				// 			  "rgba(53,53,53,1)",     // Dark Grey
+				// 			  "rgba(79,70,65,1)"      // Brown
+				// 		  ]
+				// 	  ],
+				// 	  borderColor: [ "#D8442F" ],
+				// 	  borderWidth: 5
+				//   },
+			    // },
+				// dependencies: [
+				// 	{ src: 'plugin/markdown/marked.js' },
+				// 	{ src: 'plugin/markdown/markdown.js' },
+				// 	{ src: 'plugin/chart/Chart.min.js' },
+			    //     { src: 'plugin/chart/csv2chart.js' },
+				// ]
+			});
+		</script>
+	</body>
+</html>
