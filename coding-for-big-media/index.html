@@ -25,7 +25,7 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h1>Developing for Big Media</h1>
+					<h1>Developing for Enterprise</h1>
 					<h2>🚀</h2>
 				</section>
 
@@ -35,16 +35,16 @@
 					</section>
 
 					<section>
-						<div class="grid">
-							<img src="/images/logos/five-thirty-eight.svg" />
-							<img src="/images/logos/fortune.svg" />
-							<img src="/images/logos/new-yorker.svg" />
-							<img src="/images/logos/recode.svg" />
-							<img src="/images/logos/tc.svg" />
-							<img src="/images/logos/the-sun.svg" />
-							<img src="/images/logos/vogue.svg" />
-							<img src="/images/logos/wirecutter.svg" />
-						</div>
+						<ul class="grid">
+							<li><img src="/images/logos/five-thirty-eight.svg" /></li>
+							<li><img src="/images/logos/fortune.svg" /></li>
+							<li><img src="/images/logos/new-yorker.svg" /></li>
+							<li><img src="/images/logos/recode.svg" /></li>
+							<li><img src="/images/logos/tc.svg" /></li>
+							<li><img src="/images/logos/the-sun.svg" /></li>
+							<li><img src="/images/logos/vogue.svg" /></li>
+							<li><img src="/images/logos/wirecutter.svg" /></li>
+						</ul>
 					</section>
 				</section>
 
@@ -54,22 +54,58 @@
 
 				<section>
 					<section>
-						Security
-						<span class="fragment">Security</span>
-						<span class="fragment">Security</span>
+						Security<br>
+						<span class="fragment">Security</span><br>
+						<span class="fragment">Security</span><br>
 						<span class="fragment">Security</span>
 					</section>
+
 					<section>
-						Escaping
-						Sanitizing
-						... there's more here
+						<h3>Escaping</h3>
+						<pre><code><h3><?php esc_html( get_the_title() ); ?></h3></code></pre>
+					</section>
+
+					<section>
+						<h3>Sanitizing</h3>
+						<pre><code>sanitize_text_field( $_GET['my_field'] );</code></pre>
+					</section>
+
+					<section>
+						<h3>Verifying identity</h3>
+						<pre><code>wp_verify_nonce( $_POST['my_nonce'] )</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Cache All the Things, All the Time</h2>
+					</section>
+
+					<section>
+						<h3>Browser/Asset Caching/concatenation</h3>
+					</section>
+
+					<section>
+						<h3>Edge Caching/CDN</h3>
+					</section>
+
+					<section>
+						<h3>Object Caching</h3>
+					</section>
+
+					<section>
+						<h3>Invalidation</h3>
+
+						<blockquote>
+							The 2 hardest things in programming are naming things and...
+						</blockquote>
 					</section>
 				</section>
 
 				<section>
 					<section>
 						<h2>WorkFlows Are Robust</h2>
-						Downtime ha a quantifiable cost at this level
+						Downtime has a quantifiable cost at this level
 					</section>
 
 					<section>
@@ -86,7 +122,7 @@
 
 					<section>
 						Gitflow
-						(gitflow graphic heaaar)
+						<img src="images/gitflow.png">
 					</section>
 
 					<section>
@@ -100,30 +136,6 @@
 						You don't always control deploy timings
 					</section>
 
-				</section>
-
-				<section>
-					<section>
-						<h2>Cache All the Things, All the Time</h2>
-					</section>
-
-					<section>
-						Browser/Asset Caching/concatenation
-					</section>
-
-					<section>
-						Page/Edge Caching
-					</section>
-
-					<section>
-						Object Caching
-					</section>
-
-					<section>
-						Invalidation
-
-						naming things and cache invalidation
-					</section>
 				</section>
 
 				<section>
@@ -155,7 +167,7 @@
 				</section>
 
 				<section>
-					<h2>Bye 👋</h2>
+					<h2>Byeee 👋</h2>
 					<p>
 						<a href='https://mikeselander.com'>MikeSelander.com</a><br>
 						<a href='https://twitter.com/Mike_Selander'>@Mike_Selander</a></br>
