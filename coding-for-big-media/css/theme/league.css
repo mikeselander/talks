@@ -314,3 +314,19 @@ body {
     .reveal .grid li img {
       margin: auto;
       width: 100%; }
+
+.reveal blockquote {
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+  position: relative; }
+  .reveal blockquote:before, .reveal blockquote:after {
+    content: "\0022";
+    font-size: 7em;
+    position: absolute; }
+  .reveal blockquote:before {
+    left: -.4em;
+    top: -.3em; }
+  .reveal blockquote:after {
+    right: -.15em;
+    bottom: -.9em; }

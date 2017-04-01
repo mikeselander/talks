@@ -13,13 +13,13 @@
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
 		<!-- Printing and PDF exports -->
-		<script>
+		<!-- <script>
 			var link = document.createElement( 'link' );
 			link.rel = 'stylesheet';
 			link.type = 'text/css';
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+		</script> -->
 	</head>
 	<body>
 		<div class="reveal">
@@ -154,16 +154,29 @@
 
 				<section>
 					<section>
-						<h2>
-							Ads are the WORST. Now go and make them work nicely, please.
-							<span class="fragment">Oh, and make the page fast while you're at it?</span>
-						</h2>
+						<h2>Everything is Scratch-Built</h2>
+					</section>
+
+					<section>
+						<h3>
+							If a Plugin doesn't meet 95% of what we need,<br>
+							We custom-build
+						</h3>
 					</section>
 				</section>
 
 				<section>
-					<h2>Questions?</h2>
-					<p>Please 🙏</p>
+					<section>
+						<h3>
+							Ads are the WORST. Now go and make them work nicely, please.<br>
+							<span class="fragment alt-color">Oh, and make the page fast while you're at it?</span>
+						</h3>
+					</section>
+				</section>
+
+				<section>
+					<h2>Ask Me Anything</h2>
+					<p>🙏</p>
 				</section>
 
 				<section>
@@ -185,6 +198,8 @@
 			// More info https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				history: true,
+				transitionSpeed: 'slow',
+				transition: 'none' // slide
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [

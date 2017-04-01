@@ -54,3 +54,28 @@ $heading1TextShadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b
 		}
 	}
 }
+
+// Adjust Blockquotes
+.reveal blockquote {
+	background-color: transparent;
+	border: 0;
+	box-shadow: none;
+	position: relative;
+
+	&:before,
+	&:after {
+		content: "\0022";
+		font-size: 7em;
+		position: absolute;
+	}
+
+	&:before {
+		left: -.4em;
+		top: -.3em;
+	}
+
+	&:after {
+		right: -.15em;
+		bottom: -.9em;
+	}
+}
