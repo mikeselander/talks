@@ -7,7 +7,7 @@
 		<title>reveal.js</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/league.css">
+		<link rel="stylesheet" href="css/theme/hm-red.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -31,7 +31,7 @@
 
 				<section>
 					<section>
-						<h1>WordPress is Kind of a Big Deal Now</h1>
+						<h2>WordPress is Kind of a Big Deal Now</h2>
 					</section>
 
 					<section>
@@ -49,25 +49,25 @@
 				</section>
 
 				<section>
-					So... What's Different About The Clients?
+					<h3>So... What's different about working with these clients?</h3>
 				</section>
 
 				<section>
 					<section>
-						Security<br>
-						<span class="fragment">Security</span><br>
-						<span class="fragment">Security</span><br>
-						<span class="fragment">Security</span>
+						<h1>Security</h1>
+						<h2 class="fragment">Security</h2>
+						<h3 class="fragment">Security</h3>
+						<h4 class="fragment">Security</h4>
 					</section>
 
 					<section>
 						<h3>Escaping</h3>
-						<pre><code><h3><?php esc_html( get_the_title() ); ?></h3></code></pre>
+						<pre><code><h3>&lt;?php esc_html( get_the_title() ); ?></h3></code></pre>
 					</section>
 
 					<section>
 						<h3>Sanitizing</h3>
-						<pre><code>sanitize_text_field( $_GET['my_field'] );</code></pre>
+						<pre><code>$my_field = sanitize_text_field( $_GET['my_field'] );</code></pre>
 					</section>
 
 					<section>
@@ -82,7 +82,7 @@
 					</section>
 
 					<section>
-						<h3>Browser/Asset Caching/concatenation</h3>
+						<h3>Browser/Asset Caching</h3>
 					</section>
 
 					<section>
@@ -104,52 +104,62 @@
 
 				<section>
 					<section>
-						<h2>WorkFlows Are Robust</h2>
-						Downtime has a quantifiable cost at this level
+						<h2>WorkFlows</h2>
 					</section>
 
 					<section>
-						Defensive Development/Poka yokes
-
-						when you have millions of people vising a site each day,
-						and a setting needs updating but will only take 3-4 minutes,
-						thousands of people could see it, caches could end up stuck, etc.
+						<h3>Defensive Development & Poka yokes</h3>
 					</section>
 
 					<section>
-						Code Reviews
+						<h3>Code Reviews Are Mandatory</h3>
 					</section>
 
 					<section>
-						Gitflow
-						<img src="images/gitflow.png">
+						<h3>Gitflow!</h3>
 					</section>
 
 					<section>
-						Local Environments
-						No cowboy coding
+						<img src="images/gitflow1.png">
 					</section>
 
 					<section>
-						Staging
-					    QA
-						You don't always control deploy timings
+						<img src="images/gitflow2.png">
+					</section>
+
+					<section>
+						<img src="images/gitflow3.png">
+					</section>
+
+					<section>
+						<img src="images/gitflow4.png">
+					</section>
+
+					<section>
+						<img src="images/gitflow5.png">
+					</section>
+
+					<section>
+						<h2>Testing in Multiple Environments</h2>
+
+						<div class="steps">
+							<div class="step">Local</div>
+							<div class="step fragment">Dev</div>
+							<div class="step fragment">SI</div>
+							<div class="step fragment">Staging</div>
+							<div class="step fragment">Live</div>
+						</div>
 					</section>
 
 				</section>
 
 				<section>
-					<section>
-						Hosts are Your New Best Friend
-
-						You Better get to like them, because you'll be talking to them a lot.
-					</section>
+					<h2>Your Host</h2>
+					<h3>aka: Your new best friend</h3>
 				</section>
 
 				<section>
-					<section>
-						Really weird bugs rear their heads.
-					</section>
+					<h2>Scale Brings Out Interesting Bugs</h2>
 				</section>
 
 				<section>
@@ -159,24 +169,18 @@
 
 					<section>
 						<h3>
-							If a Plugin doesn't meet 95% of what we need,<br>
-							We custom-build
+							If a Plugin doesn't meet <span class="alt-color">95%</span> of what we need, <u>we custom-build</u>
 						</h3>
 					</section>
 				</section>
 
 				<section>
-					<section>
-						<h3>
-							Ads are the WORST. Now go and make them work nicely, please.<br>
-							<span class="fragment alt-color">Oh, and make the page fast while you're at it?</span>
-						</h3>
-					</section>
+					<h2>🎉 But, it's a load of fun 🎉</h2>
 				</section>
 
 				<section>
 					<h2>Ask Me Anything</h2>
-					<p>🙏</p>
+					<h2>🙏</h2>
 				</section>
 
 				<section>
@@ -199,7 +203,7 @@
 			Reveal.initialize({
 				history: true,
 				transitionSpeed: 'slow',
-				transition: 'none' // slide
+				transition: 'none', // slide
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
