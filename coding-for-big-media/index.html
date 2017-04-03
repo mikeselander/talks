@@ -4,7 +4,9 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Developing for Enterprise</title>
+
+		<link rel="icon" href="favicon.png">
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/hm-red.css">
@@ -87,10 +89,25 @@
 
 					<section>
 						<h3>Edge Caching/CDN</h3>
+						<img src="images/edge-servers.png"><br>
+						<cite>https://cloudfront.com</cite>
 					</section>
 
 					<section>
 						<h3>Object Caching</h3>
+						<img src="images/object-caching.jpg"><br>
+						<cite>https://i-msdn.sec.s-msft.com/dynimg/IC239280.jpg</cite>
+					</section>
+
+					<section>
+						<h3>Object Caching</h3>
+						<pre><code>$cache = wp_cache_get( 'my_key' );
+if ( ! $cache ){
+	$cache = my_expensive_query();
+	wp_cache_set( 'my_key', $cache );
+}
+
+return $cache;</code></pre>
 					</section>
 
 					<section>
@@ -159,10 +176,6 @@
 				</section>
 
 				<section>
-					<h2>Scale Brings Out Interesting Bugs</h2>
-				</section>
-
-				<section>
 					<section>
 						<h2>Everything is Scratch-Built</h2>
 					</section>
@@ -175,7 +188,12 @@
 				</section>
 
 				<section>
-					<h2>🎉 But, it's a load of fun 🎉</h2>
+					<h2>Scale Brings Out Interesting Bugs</h2>
+					<h3 class="fragment">#becauseWordPress</h3>
+				</section>
+
+				<section>
+					<h2>🎉 It's loads of fun 🎉</h2>
 				</section>
 
 				<section>

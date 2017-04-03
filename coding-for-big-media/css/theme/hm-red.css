@@ -444,3 +444,10 @@ ul.grid {
 @media screen and (min-width: 600px) {
   ul.grid li {
     flex: 0 1 33%; } }
+
+.reveal pre code {
+  padding: 20px; }
+
+.reveal cite {
+  font-size: .5em;
+  display: block; }
