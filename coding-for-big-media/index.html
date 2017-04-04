@@ -34,6 +34,10 @@
 				</section>
 
 				<section>
+					<img src="images/logo.svg">
+				</section>
+
+				<section>
 					<section>
 						<h2>WordPress is Kind of a Big Deal Now</h2>
 					</section>
@@ -94,7 +98,7 @@
 					<section>
 						<h3>Tricks to speed Up Queries</h3>
 						<pre><code>$query = new WP_Query( [
-	'posts_per_page'         => true,
+	'posts_per_page'         => 50,
 	'no_found_rows'          => true,
 	'update_post_term_cache' => true,
 	'update_post_meta_cache' => true,
@@ -135,7 +139,16 @@ return $cache;</code></pre>
 					</section>
 
 					<section>
+						<h3>Client generally sets workflows, not you</h3>
+					</section>
+
+					<section>
 						<h3>Code Reviews Are Mandatory</h3>
+						<ol>
+							<li class="fragment">We internally review</li>
+							<li class="fragment">Client/QA team reviews functionality</li>
+							<li class="fragment">Host reviews before deployment</li>
+						</ol>
 					</section>
 
 					<section>
@@ -163,7 +176,7 @@ return $cache;</code></pre>
 					</section>
 
 					<section>
-						<h2>Testing in Multiple Environments</h2>
+						<h2>Working in Multiple Environments</h2>
 
 						<div class="steps">
 							<div class="step">Local</div>
@@ -176,7 +189,7 @@ return $cache;</code></pre>
 
 				</section>
 
-				<section>
+				<!-- <section>
 					<section>
 						<h2>Defensive Development</h2>
 					</section>
@@ -191,7 +204,7 @@ return $cache;</code></pre>
 	// Do something
 }</code></pre>
 					</section>
-				</section>
+				</section> -->
 
 				<section>
 					<h2>Your Host</h2>
@@ -211,8 +224,8 @@ return $cache;</code></pre>
 				</section>
 
 				<section>
-					<h2>Scale Brings Out Interesting Bugs</h2>
-					<h3 class="fragment">#becauseWordPress</h3>
+					<h2>Scale Brings Out... Interesting Bugs</h2>
+					<h3 class="fragment"><span class="alt-color">#becauseWordPress 🔥</span></h3>
 				</section>
 
 				<section>
