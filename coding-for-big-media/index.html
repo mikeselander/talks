@@ -63,13 +63,18 @@
 					</section>
 
 					<section>
-						<h3>Escaping</h3>
-						<pre><code><h3>&lt;?php esc_html( get_the_title() ); ?></h3></code></pre>
+						<h3>Never Trust Any Data</h3>
 					</section>
 
 					<section>
 						<h3>Sanitizing</h3>
 						<pre><code>$my_field = sanitize_text_field( $_GET['my_field'] );</code></pre>
+					</section>
+
+					<section>
+						<h3>Late Escaping</h3>
+						<pre><code><h3>&lt;?php echo get_the_title(); ?></h3></code></pre>
+						<pre class="fragment"><code><h3>&lt;?php echo esc_html( get_the_title() ); ?></h3></code></pre>
 					</section>
 
 					<section>
@@ -80,52 +85,50 @@
 
 				<section>
 					<section>
-						<h2>Cache All the Things, All the Time</h2>
+						<h2>Performance</h2>
 					</section>
 
 					<section>
-						<h3>Browser/Asset Caching</h3>
+						<h3>Tricks to speed Up Queries</h3>
+						<pre><code>$query = new WP_Query( [
+	'posts_per_page'         => true,
+	'no_found_rows'          => true,
+	'update_post_term_cache' => true,
+	'update_post_meta_cache' => true,
+] );</code></pre>
+					</section>
+
+					<section>
+						<h3>Cache All the Things, All the Time</h3>
 					</section>
 
 					<section>
 						<h3>Edge Caching/CDN</h3>
-						<img src="images/edge-servers.png"><br>
+                        <img src="images/edge-servers.png"><br>
 						<cite>https://cloudfront.com</cite>
 					</section>
 
 					<section>
 						<h3>Object Caching</h3>
-						<img src="images/object-caching.jpg"><br>
-						<cite>https://i-msdn.sec.s-msft.com/dynimg/IC239280.jpg</cite>
+                       <img src="images/object-caching.jpg"><br>
+                       <cite>https://i-msdn.sec.s-msft.com/dynimg/IC239280.jpg</cite>
 					</section>
 
 					<section>
 						<h3>Object Caching</h3>
 						<pre><code>$cache = wp_cache_get( 'my_key' );
 if ( ! $cache ){
-	$cache = my_expensive_query();
-	wp_cache_set( 'my_key', $cache );
+       $cache = my_expensive_query();
+       wp_cache_set( 'my_key', $cache );
 }
 
 return $cache;</code></pre>
-					</section>
-
-					<section>
-						<h3>Invalidation</h3>
-
-						<blockquote>
-							The 2 hardest things in programming are naming things and...
-						</blockquote>
 					</section>
 				</section>
 
 				<section>
 					<section>
 						<h2>WorkFlows</h2>
-					</section>
-
-					<section>
-						<h3>Defensive Development & Poka yokes</h3>
 					</section>
 
 					<section>
@@ -168,6 +171,23 @@ return $cache;</code></pre>
 						</div>
 					</section>
 
+				</section>
+
+				<section>
+					<section>
+						<h2>Defensive Development</h2>
+					</section>
+
+					<section>
+						<h3>Poka yokes</h3>
+						<pre><code>function( $info ) {
+	if ( ! $info ) {
+		return false;
+	}
+
+	// Do something
+}</code></pre>
+					</section>
 				</section>
 
 				<section>
