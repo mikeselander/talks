@@ -1,0 +1,118 @@
+/**
+ * Black theme for reveal.js. This is the opposite of the 'white' theme.
+ *
+ * Copyright (C) 2015 Hakim El Hattab, http://hakim.se
+ */
+
+$dot-color: rgba( 255, 255, 255, .7 );
+
+.avatar{
+	border-radius: 50%;
+	margin: auto;
+	max-width: 250px;
+	max-height: 250px;
+	clear: both;
+}
+
+.progress{
+	position: fixed;
+	z-index: 500;
+	bottom: 30px;
+	left: 30px;
+
+	.circle{
+		border: 2px solid $dot-color;
+		background-color: transparent;
+		border-radius: 50%;
+		margin-right: 3px;
+		box-sizing: border-box;
+		display: inline-block;
+		width: 15px;
+		height: 15px;
+
+		&.active{
+			background-color: $dot-color;
+		}
+	}
+}
+
+.reveal blockquote{
+	font-size: 1.4em;
+	border: 0;
+	background: transparent;
+	box-shadow: none;
+	position: relative;
+}
+
+.workflow{
+	margin: 10px 0;
+
+	span{
+		border: 2px solid #fff;
+		padding: 5px 15px;
+	}
+}
+
+.reveal section img{
+	border: 0;
+	background-color: transparent;
+}
+
+.reveal{
+	h1,
+	h2,
+	h3,
+	h4{
+		img{
+			height: 1em;
+			width: 1em;
+			margin-right: 10px;
+			margin-bottom: -5px;
+		}
+	}
+}
+
+
+section.present.has-background ~ svg{
+	display: none;
+}
+
+
+// SVG Info
+.svg{
+	path,
+	text,
+	g{
+		fill: rgba( 255, 255, 255, .03 );
+	}
+
+	position: absolute;
+	left: -60%;
+	bottom: -50%;
+	width: 140%;
+	height: 140%;
+}
+
+.align-left{
+	text-align: left;
+
+	.svg{
+		position: absolute;
+		right: -50%;
+		top: -50%;
+	}
+}
+
+.align-right{
+	text-align: right;
+
+	.svg{
+		position: absolute;
+		left: -50%;
+		top: -50%;
+	}
+}
+
+.reveal .centered{
+	text-align: center;
+}
