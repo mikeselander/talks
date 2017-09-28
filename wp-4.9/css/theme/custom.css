@@ -53,6 +53,9 @@
   margin-right: 10px;
   margin-bottom: -5px; }
 
+.reveal img {
+  max-height: 90vh; }
+
 section.present.has-background ~ svg {
   display: none; }
 
@@ -83,3 +86,8 @@ section.present.has-background ~ svg {
 
 .reveal .centered {
   text-align: center; }
+
+.side-by-side {
+  display: flex !important; }
+  .side-by-side > img {
+    flex-basis: 50%; }
