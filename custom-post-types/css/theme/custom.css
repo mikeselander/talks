@@ -68,7 +68,7 @@ section.present.has-background ~ svg {
   .svg path,
   .svg text,
   .svg g {
-    fill: rgba(255, 255, 255, 0.03); }
+    fill: rgba(0, 0, 0, 0.05); }
 
 .align-left {
   text-align: left; }
@@ -91,3 +91,23 @@ section.present.has-background ~ svg {
   display: flex !important; }
   .side-by-side > img {
     flex-basis: 50%; }
+
+.intro-slide {
+  position: relative; }
+  .intro-slide:before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: -100%;
+    right: -100%;
+    bottom: -100%;
+    left: -100%;
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
+  .intro-slide h1 {
+    font-size: 3.5em;
+    line-height: 1;
+    font-family: "Permanent Marker", cursive;
+    color: #ed1c40; }

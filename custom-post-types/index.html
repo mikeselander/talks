@@ -20,6 +20,9 @@
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
+		<!-- Font includes -->
+		<link href="https://fonts.googleapis.com/css?family=Chivo:900|Permanent+Marker|Teko:700" rel="stylesheet">
+
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -36,8 +39,9 @@
 					</g>
 				</svg>
 
-				<section>
-					<h1>WordPress CDA</h1>
+				<section class="intro-slide" data-background-image="images/cda2.jpg">
+					<h2>Welcome to the</h2>
+					<h1>WP CDA Meetup</h1>
 				</section>
 
 				<section>
@@ -48,23 +52,151 @@
 				</section>
 
 				<section>
-					<h1>What Is a Post Type?</h1>
+					<section>
+						<h1>What Is a Post Type?</h1>
+					</section>
+
+					<section>
+						<h2>A Custom Post Type <em>(CPT)</em> is a Bucket for Content</h2>
+					</section>
+
+					<section>
+							<ul>
+								<li>Post</li>
+								<li>Page</li>
+								<li>Attachment</li>
+							</ul>
+					</section>
+
+					<section>
+						{{ Screenshot of post types}}
+					</section>
+
+					<section>
+						{{ WooCommerce }}
+					</section>
+
+					<section>
+						{{ NextGen }}
+					</section>
+
+					<section>
+						{{ JetPack }}
+					</section>
 				</section>
 
 				<section>
-					<h1>Why Use a CPT?</h1>
+					<section>
+						<h1>Why Use a CPT?</h1>
+					</section>
+
+					<section>
+						<h2>Organization</h2>
+					</section>
+
+					<section>
+						<h2>Fetching</h2>
+					</section>
+
+					<section>
+						<h2>Custom Display</h2>
+					</section>
 				</section>
 
 				<section>
-					<h1>When Should I Use Them?</h1>
+					<section>
+						<h1>When Should I Use Them?</h1>
+					</section>
 				</section>
 
 				<section>
-					<h1>How Do I Make a CPT?</h1>
+					<section>
+						<h1>How Do I Make a CPT?</h1>
+					</section>
+
+					<section>
+						<pre><code>register_post_type( $slug, $arguments )</code></pre>
+					</section>
+
+					<section>
+						<pre><code>add_action( 'init', function() {
+	register_post_type( $slug, $arguments );
+} )</code></pre>
+					</section>
+
+					<section>
+						<pre><code>add_action( 'init', function() {
+	register_post_type( 'book', $arguments );
+} )</code></pre>
+					</section>
+
+					<section>
+						<pre><code>$arguments = [
+	'labels' => [],
+];
+register_post_type( 'book', $arguments );</code></pre>
+					</section>
+
+					<section>
+						<pre><code>$arguments = [
+	'archive' => [ 'slug' =>  ],
+];
+register_post_type( 'book', $arguments );</code></pre>
+					</section>
+
+					<section>
+						<pre><code>$arguments = [
+	'menu_icon' => '',
+];
+register_post_type( 'book', $arguments );</code></pre>
+					</section>
+
+					<section>
+						<pre><code>$arguments = [
+	'hierarchical' => true,
+];
+register_post_type( 'book', $arguments );</code></pre>
+					</section>
+
+					<section>
+						<pre><code>$arguments = [
+	'show_in_rest' => true,
+	'rest_base'    => '',
+];
+register_post_type( 'book', $arguments );</code></pre>
+					</section>
+
+					<section>
+						<pre><code>add_action( 'init', function() {
+	$arguments = [
+		'show_in_rest' => true,
+		'rest_base'    => '',
+	];
+	register_post_type( 'book', $arguments );
+} );</code></pre>
+					</section>
 				</section>
 
 				<section>
-					<h1>How Do I Fetch a CPT?</h1>
+					<section>
+						<h1>What Can I Do with a CPT?</h1>
+					</section>
+
+					<section>
+						<h2>Display a Custom Template</h2>
+					</section>
+
+					<section>
+						<h2>Fetch them with the REST API</h2>
+
+						<pre><code></code></pre>
+					</section>
+
+					<section>
+						<h2>Query Just for Your Post Type</h2>
+
+						<pre><code></code></pre>
+					</section>
 				</section>
 
 				<section>
@@ -74,9 +206,7 @@
 				<section>
 					<h1>Open Discussion Time</h1>
 				</section>
-
 			</div>
-
 		</div>
 
 		<script src="lib/js/head.min.js"></script>

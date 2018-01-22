@@ -12,18 +12,19 @@
 
 
 // Include theme-specific fonts
-@import url(../../lib/font/source-sans-pro/source-sans-pro.css);
+//@import url(../../lib/font/source-sans-pro/source-sans-pro.css);
 
+$font-bold: 'Chivo', sans-serif;
 
 // Override theme settings (see ../template/settings.scss)
-$backgroundColor: #222;
+$backgroundColor: #fff;
 
-$mainColor: #fff;
-$headingColor: #fff;
+$mainColor: #222;
+$headingColor: #222;
 
 $mainFontSize: 38px;
-$mainFont: 'Montserrat', Helvetica, sans-serif;
-$headingFont: 'Montserrat', Helvetica, sans-serif;
+$mainFont: $font-bold;
+$headingFont: $font-bold;
 $headingTextShadow: none;
 $headingLetterSpacing: normal;
 $headingTextTransform: uppercase;

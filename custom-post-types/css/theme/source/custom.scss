@@ -6,6 +6,10 @@
 
 $dot-color: rgba( 255, 255, 255, .7 );
 
+$font-script: 'Permanent Marker', cursive;
+//font-family: 'Teko', sans-serif;
+$font-bold: 'Chivo', sans-serif;
+
 .avatar{
 	border-radius: 50%;
 	margin: auto;
@@ -87,7 +91,7 @@ section.present.has-background ~ svg{
 	path,
 	text,
 	g{
-		fill: rgba( 255, 255, 255, .03 );
+		fill: rgba( 0, 0, 0, .05 );
 	}
 
 	position: absolute;
@@ -126,5 +130,28 @@ section.present.has-background ~ svg{
 
 	& > img {
 		flex-basis: 50%;
+	}
+}
+
+.intro-slide {
+	position: relative;
+
+	&:before {
+		content: "";
+		z-index: -1;
+		position: absolute;
+		top: -100%;
+		right: -100%;
+		bottom: -100%;
+		left: -100%;
+		background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,.5) 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+		background: radial-gradient(ellipse at center, rgba(255,255,255,.5) 0%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	}
+
+	h1 {
+		font-size: 3.5em;
+		line-height: 1;
+		font-family: $font-script;
+		color: #ed1c40;
 	}
 }
