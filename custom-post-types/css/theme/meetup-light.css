@@ -44,7 +44,7 @@ body {
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: normal;
-  text-transform: uppercase;
+  text-transform: none;
   text-shadow: none;
   word-wrap: break-word; }
 
@@ -296,23 +296,6 @@ body {
   max-height: 250px;
   clear: both; }
 
-.progress {
-  position: fixed;
-  z-index: 500;
-  bottom: 30px;
-  left: 30px; }
-  .progress .circle {
-    border: 2px solid rgba(255, 255, 255, 0.7);
-    background-color: transparent;
-    border-radius: 50%;
-    margin-right: 3px;
-    box-sizing: border-box;
-    display: inline-block;
-    width: 15px;
-    height: 15px; }
-    .progress .circle.active {
-      background-color: rgba(255, 255, 255, 0.7); }
-
 .reveal blockquote {
   font-size: 1.4em;
   border: 0;
@@ -320,15 +303,16 @@ body {
   box-shadow: none;
   position: relative; }
 
-.workflow {
-  margin: 10px 0; }
-  .workflow span {
-    border: 2px solid #fff;
-    padding: 5px 15px; }
-
 .reveal section img {
   border: 0;
   background-color: transparent; }
+
+.reveal ul {
+  text-align: left;
+  font-size: 1.2em; }
+
+.reveal section > ul {
+  min-width: 70vw; }
 
 .reveal h1 img,
 .reveal h2 img,
@@ -370,13 +354,13 @@ section.present.has-background ~ svg {
     left: -50%;
     top: -50%; }
 
-.reveal .centered {
-  text-align: center; }
-
 .side-by-side {
-  display: flex !important; }
-  .side-by-side > img {
-    flex-basis: 50%; }
+  display: flex !important;
+  justify-content: space-around; }
+  .side-by-side > * {
+    flex-basis: 50%;
+    max-width: 50%;
+    min-width: auto; }
 
 .intro-slide {
   position: relative; }

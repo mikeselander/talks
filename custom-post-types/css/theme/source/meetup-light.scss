@@ -27,7 +27,7 @@ $mainFont: $font-bold;
 $headingFont: $font-bold;
 $headingTextShadow: none;
 $headingLetterSpacing: normal;
-$headingTextTransform: uppercase;
+$headingTextTransform: none;
 $headingFontWeight: 600;
 $linkColor: #42affa;
 $linkColorHover: lighten( $linkColor, 15% );
@@ -69,28 +69,6 @@ $font-bold: 'Chivo', sans-serif;
 	clear: both;
 }
 
-.progress{
-	position: fixed;
-	z-index: 500;
-	bottom: 30px;
-	left: 30px;
-
-	.circle{
-		border: 2px solid $dot-color;
-		background-color: transparent;
-		border-radius: 50%;
-		margin-right: 3px;
-		box-sizing: border-box;
-		display: inline-block;
-		width: 15px;
-		height: 15px;
-
-		&.active{
-			background-color: $dot-color;
-		}
-	}
-}
-
 .reveal blockquote{
 	font-size: 1.4em;
 	border: 0;
@@ -99,18 +77,18 @@ $font-bold: 'Chivo', sans-serif;
 	position: relative;
 }
 
-.workflow{
-	margin: 10px 0;
-
-	span{
-		border: 2px solid #fff;
-		padding: 5px 15px;
-	}
-}
-
 .reveal section img{
 	border: 0;
 	background-color: transparent;
+}
+
+.reveal ul {
+	text-align: left;
+	font-size: 1.2em;
+}
+
+.reveal section > ul {
+	min-width: 70vw;
 }
 
 .reveal{
@@ -135,7 +113,6 @@ $font-bold: 'Chivo', sans-serif;
 section.present.has-background ~ svg {
 	display: none;
 }
-
 
 // SVG Info
 .svg{
@@ -172,15 +149,14 @@ section.present.has-background ~ svg {
 	}
 }
 
-.reveal .centered{
-	text-align: center;
-}
-
 .side-by-side {
 	display: flex !important;
+	justify-content: space-around;
 
-	& > img {
+	& > * {
 		flex-basis: 50%;
+		max-width: 50%;
+		min-width: auto;
 	}
 }
 
