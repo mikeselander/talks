@@ -4,6 +4,57 @@
  * Copyright (C) 2015 Hakim El Hattab, http://hakim.se
  */
 
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+//@import url(../../lib/font/source-sans-pro/source-sans-pro.css);
+
+$font-bold: 'Chivo', sans-serif;
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #fff;
+
+$mainColor: #222;
+$headingColor: #222;
+
+$mainFontSize: 38px;
+$mainFont: $font-bold;
+$headingFont: $font-bold;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: uppercase;
+$headingFontWeight: 600;
+$linkColor: #42affa;
+$linkColorHover: lighten( $linkColor, 15% );
+$selectionBackgroundColor: lighten( $linkColor, 25% );
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+section.has-light-background {
+	&, h1, h2, h3, h4, h5, h6 {
+		color: #222;
+	}
+}
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+// Theme template ------------------------------
+/**
+ * Black theme for reveal.js. This is the opposite of the 'white' theme.
+ *
+ * Copyright (C) 2015 Hakim El Hattab, http://hakim.se
+ */
+
 $dot-color: rgba( 255, 255, 255, .7 );
 
 $font-script: 'Permanent Marker', cursive;
@@ -81,7 +132,7 @@ $font-bold: 'Chivo', sans-serif;
 }
 
 
-section.present.has-background ~ svg{
+section.present.has-background ~ svg {
 	display: none;
 }
 
