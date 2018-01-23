@@ -58,7 +58,6 @@ section.has-light-background {
 $dot-color: rgba( 255, 255, 255, .7 );
 
 $font-script: 'Permanent Marker', cursive;
-//font-family: 'Teko', sans-serif;
 $font-bold: 'Chivo', sans-serif;
 
 .avatar{
@@ -181,4 +180,12 @@ section.present.has-background ~ svg {
 		font-family: $font-script;
 		color: #ed1c40;
 	}
+}
+
+.reveal .photo-cite {
+	font-size: .9rem;
+}
+
+.reveal pre code {
+	padding: 30px;
 }

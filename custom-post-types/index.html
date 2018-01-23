@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>WordPress 4.9 Show & Tell</title>
+		<title>Custom Post Types</title>
 
 		<meta name="description" content="A World Without Bugs - a talk about testing, QA, and sleeping at night.">
 		<meta name="author" content="Mike Selander">
@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="css/theme/meetup-light.css" id="theme">
 
 		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="lib/css/atom-one-light.css">
 
 		<!-- Font includes -->
 		<link href="https://fonts.googleapis.com/css?family=Chivo:900|Permanent+Marker|Teko:700" rel="stylesheet">
@@ -36,6 +36,7 @@
 				<section class="intro-slide has-background" data-background-image="images/cda2.jpg">
 					<h2>Welcome to the</h2>
 					<h1>WP CDA Meetup</h1>
+					<a class="photo-cite">https://www.flickr.com/photos/fabianosouza/5328797863/in/photostream/</small>
 				</section>
 
 				<section>
@@ -77,7 +78,7 @@
 					</section>
 
 					<section>
-						{{ JetPack }}
+						<img src="images/jetpack.png" />
 					</section>
 				</section>
 
@@ -102,6 +103,10 @@
 				<section>
 					<section>
 						<h1>When Should I Use CPTs?</h1>
+					</section>
+
+					<section>
+						<h2></h2>
 					</section>
 				</section>
 
@@ -229,11 +234,8 @@ register_post_type( 'book', $arguments );</code></pre>
 				// Optional reveal.js plugins
 				dependencies: [
 					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
 				]
 			});
 
