@@ -186,6 +186,12 @@ section.present.has-background ~ svg {
 	font-size: .9rem;
 }
 
-.reveal pre code {
-	padding: 30px;
+.reveal pre {
+	width: 100%;
+
+	code {
+		padding: 30px;
+		font-size: 1.2em;
+		line-height: 1.4;
+	}
 }

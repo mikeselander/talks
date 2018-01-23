@@ -127,7 +127,7 @@
 
 					<section>
 						<pre><code>add_action( 'init', function() {
-	register_post_type( 'book', $arguments );
+	register_post_type( 'testimonial', $arguments );
 } )</code></pre>
 					</section>
 
@@ -135,28 +135,28 @@
 						<pre><code>$arguments = [
 	'labels' => [],
 ];
-register_post_type( 'book', $arguments );</code></pre>
+register_post_type( 'testimonial', $arguments );</code></pre>
 					</section>
 
 					<section>
 						<pre><code>$arguments = [
 	'archive' => [ 'slug' =>  ],
 ];
-register_post_type( 'book', $arguments );</code></pre>
+register_post_type( 'testimonial', $arguments );</code></pre>
 					</section>
 
 					<section>
 						<pre><code>$arguments = [
 	'menu_icon' => '',
 ];
-register_post_type( 'book', $arguments );</code></pre>
+register_post_type( 'testimonial', $arguments );</code></pre>
 					</section>
 
 					<section>
 						<pre><code>$arguments = [
 	'hierarchical' => true,
 ];
-register_post_type( 'book', $arguments );</code></pre>
+register_post_type( 'testimonial', $arguments );</code></pre>
 					</section>
 
 					<section>
@@ -164,16 +164,16 @@ register_post_type( 'book', $arguments );</code></pre>
 	'show_in_rest' => true,
 	'rest_base'    => '',
 ];
-register_post_type( 'book', $arguments );</code></pre>
+register_post_type( 'testimonial', $arguments );</code></pre>
 					</section>
 
 					<section>
 						<pre><code>add_action( 'init', function() {
 	$arguments = [
 		'show_in_rest' => true,
-		'rest_base'    => '',
+		'rest_base'    => 'testimonials',
 	];
-	register_post_type( 'book', $arguments );
+	register_post_type( 'testimonial', $arguments );
 } );</code></pre>
 					</section>
 				</section>
@@ -185,18 +185,23 @@ register_post_type( 'book', $arguments );</code></pre>
 
 					<section>
 						<h2>Display a Custom Template</h2>
+
+						<pre><code class="markdown">single-testimonial.php
+archive-testimonial.php</code></pre>
 					</section>
 
 					<section>
 						<h2>Fetch them with the REST API</h2>
 
-						<pre><code></code></pre>
+						<pre><code class="markdown">https://my-site.com/wp-json/wp/v2/testimonials</code></pre>
 					</section>
 
 					<section>
 						<h2>Query Just for Your Post Type</h2>
 
-						<pre><code></code></pre>
+						<pre><code>$posts = new WP_Query( [
+	'post_type' => 'testimonial',
+] );</code></pre>
 					</section>
 				</section>
 
