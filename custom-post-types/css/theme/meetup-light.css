@@ -391,3 +391,6 @@ section.present.has-background ~ svg {
     padding: 30px;
     font-size: 1.2em;
     line-height: 1.4; }
+
+.main-title {
+  font-size: 6em; }
