@@ -47,6 +47,15 @@
 				</section>
 
 				<section>
+					<ol>
+						<li>What Is a Post Type?</li>
+						<li>When Should I Use CPTs?</li>
+						<li>How Do I Make a CPT?</li>
+						<li>What Can I Do with a CPT?</li>
+					</ol>
+				</section>
+
+				<section>
 					<section>
 						<h1>What Is a Post Type?</h1>
 					</section>
@@ -57,62 +66,53 @@
 
 					<section>
 						<h2>WordPress Comes with CPTs</h2>
-						<div class="side-by-side">
-							<div>
-								<img src="images/default-cpts.png" />
-							</div>
-							<ul>
-								<li>Post</li>
-								<li>Page</li>
-								<li>Attachment</li>
-							</ul>
-						</div>
+						<ul>
+							<li>Post</li>
+							<h3>Pages</h3>
+						</ul>
 					</section>
 
 					<section>
+						<h2>CPTs are what make take WordPress from a blogging platform to a Content Management System</h2>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>When Should I Use a CPT?</h1>
+					</section>
+
+					<section>
+						<ul>
+							<li>Content doesn't fit into Blog or Page paradigms</li>
+							<li>The content needs a custom display</li>
+							<li>The content needs a custom URL structure</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Examples</h2>
 						{{ WooCommerce }}
 					</section>
 
 					<section>
+						<h2>Examples</h2>
 						<img src="images/Galleries.png" />
 					</section>
 
 					<section>
+						<h2>Examples</h2>
 						<img src="images/jetpack.png" />
 					</section>
 				</section>
 
 				<section>
 					<section>
-						<h1>Why Use a CPT?</h1>
-					</section>
-
-					<section>
-						<h2>Organization</h2>
-					</section>
-
-					<section>
-						<h2>Fetching</h2>
-					</section>
-
-					<section>
-						<h2>Custom Display</h2>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h1>When Should I Use CPTs?</h1>
-					</section>
-
-					<section>
-						<h2></h2>
-					</section>
-				</section>
-
-				<section>
-					<section>
 						<h1>How Do I Make a CPT?</h1>
+					</section>
+
+					<section>
+						<h2>Let's Make some Testimonials</h2>
 					</section>
 
 					<section>
@@ -133,21 +133,40 @@
 
 					<section>
 						<pre><code>$arguments = [
-	'labels' => [],
+	'labels' => [
+		'name'          => 'Testimonials',
+		'singular_name' => 'Testimonial'
+		...
+	],
 ];
 register_post_type( 'testimonial', $arguments );</code></pre>
 					</section>
 
 					<section>
 						<pre><code>$arguments = [
-	'archive' => [ 'slug' =>  ],
+	'supports' => [
+	'title',
+	'editor',
+	'author',
+	'thumbnail',
+	'excerpt',
+	'comments',
+	'revisions',
+	],
 ];
 register_post_type( 'testimonial', $arguments );</code></pre>
 					</section>
 
 					<section>
 						<pre><code>$arguments = [
-	'menu_icon' => '',
+	'archive' => [ 'slug' => 'testimonials' ],
+];
+register_post_type( 'testimonial', $arguments );</code></pre>
+					</section>
+
+					<section>
+						<pre><code>$arguments = [
+	'menu_icon' => 'dashicons-testimonial',
 ];
 register_post_type( 'testimonial', $arguments );</code></pre>
 					</section>
@@ -170,6 +189,11 @@ register_post_type( 'testimonial', $arguments );</code></pre>
 					<section>
 						<pre><code>add_action( 'init', function() {
 	$arguments = [
+		'labels'       => [ 'name' => 'Testimonials' ... ],
+		'archive'      => [ 'slug' => 'testimonials' ],
+		'menu_icon'    => 'dashicons-testimonial',
+		'supports'     => [ 'title', 'editor', 'author', 'thumbnail' ],
+		'hierarchical' => true,
 		'show_in_rest' => true,
 		'rest_base'    => 'testimonials',
 	];
@@ -202,6 +226,15 @@ archive-testimonial.php</code></pre>
 						<pre><code>$posts = new WP_Query( [
 	'post_type' => 'testimonial',
 ] );</code></pre>
+					</section>
+
+					<section>
+						<h2>Add Meta Boxes to Just one Edit Screen</h2>
+					</section>
+
+					<section>
+						<h2>Check that you're Dealing with the Right Post Type</h2>
+						<pre><code>if ( get_post_type( $post_id ) === 'testimonials' ) {}</code></pre>
 					</section>
 				</section>
 
