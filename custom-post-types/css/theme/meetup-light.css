@@ -338,7 +338,7 @@ section.present.has-background ~ svg {
   .svg path,
   .svg text,
   .svg g {
-    fill: rgba(0, 0, 0, 0.05); }
+    fill: rgba(0, 0, 0, 0.03); }
 
 .align-left {
   text-align: left; }
@@ -392,5 +392,15 @@ section.present.has-background ~ svg {
     font-size: 1.2em;
     line-height: 1.4; }
 
+.reveal li {
+  margin: .5em; }
+
 .main-title {
   font-size: 6em; }
+
+.pullout-text,
+.reveal .red-text {
+  color: #ed1c40; }
+
+.reveal .green-text {
+  color: green; }

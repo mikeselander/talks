@@ -118,7 +118,7 @@ section.present.has-background ~ svg {
 	path,
 	text,
 	g{
-		fill: rgba( 0, 0, 0, .05 );
+		fill: rgba( 0, 0, 0, .03 );
 	}
 
 	position: absolute;
@@ -196,6 +196,19 @@ section.present.has-background ~ svg {
 	}
 }
 
+.reveal li {
+	margin: .5em;
+}
+
 .main-title {
 	font-size: 6em;
+}
+
+.pullout-text,
+.reveal .red-text {
+	color: #ed1c40;
+}
+
+.reveal .green-text {
+	color: green;
 }

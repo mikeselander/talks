@@ -23,6 +23,8 @@
 		<!-- Font includes -->
 		<link href="https://fonts.googleapis.com/css?family=Chivo:900|Permanent+Marker|Teko:700" rel="stylesheet">
 
+		<script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
+
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -36,7 +38,7 @@
 				<section class="intro-slide has-background" data-background-image="images/cda2.jpg">
 					<h2>Welcome to the</h2>
 					<h1>WP CDA Meetup</h1>
-					<a class="photo-cite">https://www.flickr.com/photos/fabianosouza/5328797863/in/photostream/</small>
+					<small class="photo-cite">https://www.flickr.com/photos/fabianosouza/5328797863/in/photostream/</small>
 				</section>
 
 				<section>
@@ -66,14 +68,16 @@
 
 					<section>
 						<h2>WordPress Comes with CPTs</h2>
-						<ul>
-							<li>Post</li>
-							<h3>Pages</h3>
-						</ul>
+
+						<h3>Post</h3>
+						<h3>Pages</h3>
+
 					</section>
 
 					<section>
-						<h2>CPTs are what make take WordPress from a blogging platform to a Content Management System</h2>
+						<h2>
+							CPTs are what take WordPress from a <span class="pullout-text">blogging platform</span> to a <span class="pullout-text">Content Management System</span>
+						</h2>
 					</section>
 				</section>
 
@@ -92,17 +96,43 @@
 
 					<section>
 						<h2>Examples</h2>
-						{{ WooCommerce }}
 					</section>
 
 					<section>
-						<h2>Examples</h2>
-						<img src="images/Galleries.png" />
+						<h2>Products</h2>
+						<h3 class="green-text"><i class="far fa-check-square"></i> Doesn't fit Blog or Page</h3>
+						<img src="images/product3.png" />
 					</section>
 
 					<section>
-						<h2>Examples</h2>
-						<img src="images/jetpack.png" />
+						<h2>Products</h2>
+						<h3 class="green-text"><i class="far fa-check-square"></i> Needs Custom display</h3>
+						<img src="images/product2.png" />
+					</section>
+
+					<section>
+						<h2>Products</h2>
+						<h3 class="green-text"><i class="far fa-check-square"></i> Custom URL Structure</h3>
+						<pre><code class="markdown">https://my-site.com/shop/</code></pre>
+						<pre><code class="markdown">https:/my-site.com/product/blue-c-extra-long-title-shirt/</code></pre>
+					</section>
+
+					<section>
+						<h2>Galleries</h2>
+						<h3 class="green-text"><i class="far fa-check-square"></i> Doesn't fit Blog or Page</h3>
+						<img src="images/gallery2.png" />
+					</section>
+
+					<section>
+						<h2>Galleries</h2>
+						<h3 class="green-text"><i class="far fa-check-square"></i> Needs Custom display</h3>
+						<img src="images/gallery3.png" />
+					</section>
+
+					<section>
+						<h2>Galleries</h2>
+						<h3 class="red-text"><i class="far fa-square"></i> Custom URL Structure</h3>
+						<pre><code class="markdown">[envira-gallery id="2399"]</code></pre>
 					</section>
 				</section>
 
@@ -116,89 +146,102 @@
 					</section>
 
 					<section>
+						<h3>One common function</h3>
 						<pre><code>register_post_type( $slug, $arguments )</code></pre>
 					</section>
 
 					<section>
+						<h3>Hook into init</h3>
 						<pre><code>add_action( 'init', function() {
 	register_post_type( $slug, $arguments );
 } )</code></pre>
 					</section>
 
 					<section>
+						<h3>Name our CPT</h3>
 						<pre><code>add_action( 'init', function() {
-	register_post_type( 'testimonial', $arguments );
+	register_post_type( 'testimonial', [] );
 } )</code></pre>
 					</section>
 
 					<section>
+						<h3>Add some options</h3>
+						<pre><code>add_action( 'init', function() {
+	$arguments = [
+		'public'       => true,
+		'labels'       => [ 'name' => 'Testimonials' ... ],
+		'archive'      => [ 'slug' => 'testimonials' ],
+		'menu_icon'    => 'dashicons-testimonial',
+		'supports'     => [ 'title', 'editor', 'author', 'thumbnail' ],
+		'show_in_rest' => true,
+		'rest_base'    => 'testimonials',
+	];
+	register_post_type( 'testimonial', $arguments );
+} );</code></pre>
+					</section>
+
+					<section>
+						<h3>Public Support</h3>
+						<pre><code>$arguments = [
+	'public' => false, // Not queryable, no templates
+	'public' => true, // Available everywhere
+];</code></pre>
+					</section>
+
+					<section>
+						<h3>Custom Admin Labels</h3>
 						<pre><code>$arguments = [
 	'labels' => [
 		'name'          => 'Testimonials',
 		'singular_name' => 'Testimonial'
 		...
 	],
-];
-register_post_type( 'testimonial', $arguments );</code></pre>
+];</code></pre>
 					</section>
 
 					<section>
+						<h3>Admin Field Support</h3>
 						<pre><code>$arguments = [
 	'supports' => [
-	'title',
-	'editor',
-	'author',
-	'thumbnail',
-	'excerpt',
-	'comments',
-	'revisions',
+			'title',
+			'editor',
+			'author',
+			'thumbnail',
+			'excerpt',
+			'comments',
+			'revisions',
 	],
-];
-register_post_type( 'testimonial', $arguments );</code></pre>
+];</code></pre>
 					</section>
 
 					<section>
+						<img src="images/supports.png" />
+					</section>
+
+					<section>
+						<h3>Archive URLs</h3>
+						<pre><code>$arguments = [
+	'archive' => false,
+];</code></pre>
 						<pre><code>$arguments = [
 	'archive' => [ 'slug' => 'testimonials' ],
-];
-register_post_type( 'testimonial', $arguments );</code></pre>
+];</code></pre>
 					</section>
 
 					<section>
+						<h3>Custom Icon</h3>
 						<pre><code>$arguments = [
 	'menu_icon' => 'dashicons-testimonial',
-];
-register_post_type( 'testimonial', $arguments );</code></pre>
+];</code></pre>
+						<img src="images/dashicons.png" />
 					</section>
 
 					<section>
-						<pre><code>$arguments = [
-	'hierarchical' => true,
-];
-register_post_type( 'testimonial', $arguments );</code></pre>
-					</section>
-
-					<section>
+						<h3>Enable REST Support</h3>
 						<pre><code>$arguments = [
 	'show_in_rest' => true,
 	'rest_base'    => '',
-];
-register_post_type( 'testimonial', $arguments );</code></pre>
-					</section>
-
-					<section>
-						<pre><code>add_action( 'init', function() {
-	$arguments = [
-		'labels'       => [ 'name' => 'Testimonials' ... ],
-		'archive'      => [ 'slug' => 'testimonials' ],
-		'menu_icon'    => 'dashicons-testimonial',
-		'supports'     => [ 'title', 'editor', 'author', 'thumbnail' ],
-		'hierarchical' => true,
-		'show_in_rest' => true,
-		'rest_base'    => 'testimonials',
-	];
-	register_post_type( 'testimonial', $arguments );
-} );</code></pre>
+];</code></pre>
 					</section>
 				</section>
 
@@ -217,7 +260,7 @@ archive-testimonial.php</code></pre>
 					<section>
 						<h2>Fetch them with the REST API</h2>
 
-						<pre><code class="markdown">https://my-site.com/wp-json/wp/v2/testimonials</code></pre>
+						<pre><code class="markdown">curl -X OPTIONS -i https://my-site.com/wp-json/wp/v2/testimonials</code></pre>
 					</section>
 
 					<section>
@@ -229,7 +272,14 @@ archive-testimonial.php</code></pre>
 					</section>
 
 					<section>
-						<h2>Add Meta Boxes to Just one Edit Screen</h2>
+						<h2>Add Meta Boxes</h2>
+						<pre><code class="php">add_meta_box(
+	'meta-box-id',
+	'My Meta Box',
+	'my_display_function',
+	'testimonials'
+);
+</code></pre>
 					</section>
 
 					<section>
@@ -242,8 +292,10 @@ archive-testimonial.php</code></pre>
 					<h1>Questions?</h1>
 				</section>
 
-				<section>
-					<h1>Open Discussion Time</h1>
+				<section class="intro-slide has-background" data-background-image="images/cda2.jpg">
+					<h2>Thanks for coming!</h2>
+					<h1>WP CDA Meetup</h1>
+					<small class="photo-cite">https://www.flickr.com/photos/fabianosouza/5328797863/in/photostream/</small>
 				</section>
 
 				<svg xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" xml:space="preserve" height="500" width="500" version="1.0" viewBox="0 0 5.5555557 5.5555555" class="svg">
