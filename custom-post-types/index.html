@@ -116,9 +116,9 @@
 
 					<section>
 						<ul>
-							<li>Content doesn't fit into Blog or Page paradigms</li>
+							<li>Content doesn't fit into Post or Page paradigms</li>
 							<li>The content needs a custom display</li>
-							<li>The content needs a custom URL structure</li>
+							<li>Needs a unique set of data</li>
 						</ul>
 					</section>
 
@@ -128,7 +128,7 @@
 
 					<section>
 						<h2>Products</h2>
-						<h3 class="green-text"><i class="far fa-check-square"></i> Doesn't fit Blog or Page</h3>
+						<h3 class="green-text"><i class="far fa-check-square"></i> Doesn't fit Post or Page</h3>
 						<img src="images/product3.png" />
 					</section>
 
@@ -140,14 +140,13 @@
 
 					<section>
 						<h2>Products</h2>
-						<h3 class="green-text"><i class="far fa-check-square"></i> Custom URL Structure</h3>
-						<pre><code class="markdown">https://my-site.com/shop/</code></pre>
-						<pre><code class="markdown">https:/my-site.com/product/blue-c-extra-long-title-shirt/</code></pre>
+						<h3 class="green-text"><i class="far fa-check-square"></i> Needs Unique Data</h3>
+						<img src="images/product3.png" />
 					</section>
 
 					<section>
 						<h2>Galleries</h2>
-						<h3 class="green-text"><i class="far fa-check-square"></i> Doesn't fit Blog or Page</h3>
+						<h3 class="green-text"><i class="far fa-check-square"></i> Doesn't fit Post or Page</h3>
 						<img src="images/gallery2.png" />
 					</section>
 
@@ -159,8 +158,9 @@
 
 					<section>
 						<h2>Galleries</h2>
-						<h3 class="red-text"><i class="far fa-minus-square"></i> Custom URL Structure</h3>
-						<pre><code class="markdown">[envira-gallery id="2399"]</code></pre>
+						<h3 class="green-text"><i class="far fa-check-square"></i> Needs Unique Data</h3>
+						<img src="images/gallery2.png" />
+
 					</section>
 				</section>
 
@@ -200,7 +200,7 @@
 		'labels'       => [ 'name' => 'Testimonials' ... ],
 		'archive'      => [ 'slug' => 'testimonials' ],
 		'menu_icon'    => 'dashicons-testimonial',
-		'supports'     => [ 'title', 'editor', 'author', 'thumbnail' ],
+		'supports'     => [ 'title', 'editor', 'thumbnail' ],
 		'show_in_rest' => true,
 		'rest_base'    => 'testimonials',
 	];
@@ -228,6 +228,18 @@
 					</section>
 
 					<section>
+						<h3>Custom Icon</h3>
+						<pre><code>$arguments = [
+	'menu_icon' => 'dashicons-testimonial',
+];</code></pre>
+						<img src="images/dashicons.png" />
+					</section>
+
+					<section>
+						<img src="images/menu-item.png" />
+					</section>
+
+					<section>
 						<h3>Admin Field Support</h3>
 						<pre><code>$arguments = [
 	'supports' => [
@@ -247,6 +259,17 @@
 					</section>
 
 					<section>
+						<h3>Admin Field Support</h3>
+						<pre><code>$arguments = [
+	'supports' => [
+			'title',
+			'editor',
+			'revisions',
+	],
+];</code></pre>
+					</section>
+
+					<section>
 						<h3>Archive URLs</h3>
 						<pre><code>$arguments = [
 	'archive' => false,
@@ -254,18 +277,6 @@
 						<pre><code>$arguments = [
 	'archive' => [ 'slug' => 'testimonials' ],
 ];</code></pre>
-					</section>
-
-					<section>
-						<h3>Custom Icon</h3>
-						<pre><code>$arguments = [
-	'menu_icon' => 'dashicons-testimonial',
-];</code></pre>
-						<img src="images/dashicons.png" />
-					</section>
-
-					<section>
-						<img src="images/menu-item.png" />
 					</section>
 
 					<section>
@@ -290,12 +301,6 @@ archive-testimonial.php</code></pre>
 					</section>
 
 					<section>
-						<h2>Fetch Posts with the REST API</h2>
-
-						<pre><code class="markdown">curl -X {args} https://my-site.com/wp-json/wp/v2/testimonials</code></pre>
-					</section>
-
-					<section>
 						<h2>Query Just for Your Post Type</h2>
 
 						<pre><code>$posts = new WP_Query( [
@@ -304,19 +309,20 @@ archive-testimonial.php</code></pre>
 					</section>
 
 					<section>
+						<h2>Fetch Posts with the REST API</h2>
+
+						<pre><code class="markdown">curl -X {args} https://my-site.com/wp-json/wp/v2/testimonials</code></pre>
+					</section>
+
+					<section>
 						<h2>Add Meta Boxes</h2>
 						<pre><code class="php">add_meta_box(
 	'meta-box-id',
 	'My Meta Box',
 	'my_display_function',
-	'testimonials' // <-- display on testimonials
+	'testimonial' // <-- display on testimonials
 );
 </code></pre>
-					</section>
-
-					<section>
-						<h2>Check that you're Dealing with the Right Post Type</h2>
-						<pre><code>if ( get_post_type( $post_id ) === 'testimonials' ) {}</code></pre>
 					</section>
 				</section>
 
