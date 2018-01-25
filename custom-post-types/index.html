@@ -55,7 +55,7 @@
 					<h1>In the News</h1>
 					<h2 class="red-text">Plugins</h2>
 					<ul>
-						<li class="fragment"><a href="https://wordpress.org/plugins/gutenberg/">Gutenberg 2.0</a></li>
+						<li class="fragment"><a href="https://wordpress.org/plugins/gutenberg/">Gutenberg 2.1</a></li>
 						<li class="fragment"><a href="https://wordpress.org/plugins/amp/">AMP for WordPress 0.6</a></li>
 					</ul>
 				</section>
@@ -116,9 +116,9 @@
 
 					<section>
 						<ul>
-							<li>Content doesn't fit into Post or Page paradigms</li>
-							<li>The content needs a custom display</li>
-							<li>Needs a unique set of data</li>
+							<li>Does the content fit into Post or Page paradigms?</li>
+							<li>Does The content need a custom display?</li>
+							<li>Does the content need unique data?</li>
 						</ul>
 					</section>
 
@@ -129,7 +129,7 @@
 					<section>
 						<h2>Products</h2>
 						<h3 class="green-text"><i class="far fa-check-square"></i> Doesn't fit Post or Page</h3>
-						<img src="images/product3.png" />
+						<img src="images/product1.png" />
 					</section>
 
 					<section>
@@ -147,7 +147,6 @@
 					<section>
 						<h2>Galleries</h2>
 						<h3 class="green-text"><i class="far fa-check-square"></i> Doesn't fit Post or Page</h3>
-						<img src="images/gallery2.png" />
 					</section>
 
 					<section>
@@ -188,7 +187,7 @@
 					<section>
 						<h3>Name our CPT</h3>
 						<pre><code>add_action( 'init', function() {
-	register_post_type( 'testimonial', [] );
+	register_post_type( 'testimonial', [ 'public' => true ] );
 } )</code></pre>
 					</section>
 
@@ -209,11 +208,7 @@
 					</section>
 
 					<section>
-						<h3>Public Support</h3>
-						<pre><code>$arguments = [
-	'public' => false, // Not queryable, no templates
-	'public' => true, // Available everywhere
-];</code></pre>
+						<img src="images/cpt-previous.png" />
 					</section>
 
 					<section>
@@ -270,6 +265,13 @@
 					</section>
 
 					<section>
+						<h3>Public Support</h3>
+						<pre><code>$arguments = [
+	'public' => true, // Available everywhere
+];</code></pre>
+					</section>
+
+					<section>
 						<h3>Archive URLs</h3>
 						<pre><code>$arguments = [
 	'archive' => false,
@@ -283,7 +285,6 @@
 						<h3>Enable REST Support</h3>
 						<pre><code>$arguments = [
 	'show_in_rest' => true,
-	'rest_base'    => 'testimonials', // Optional.
 ];</code></pre>
 					</section>
 				</section>
@@ -327,7 +328,8 @@ archive-testimonial.php</code></pre>
 				</section>
 
 				<section>
-					<h1>Questions?</h1>
+					<h1 class="red-text">Thank you!</h1>
+					<h2>Have any questions?</h2>
 				</section>
 
 				<section class="intro-slide has-background" data-background-image="images/cda2.jpg">

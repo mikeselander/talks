@@ -21,6 +21,7 @@ $backgroundColor: #fff;
 
 $mainColor: #222;
 $headingColor: #222;
+$red: #ed1c40;
 
 $mainFontSize: 38px;
 $mainFont: $font-bold;
@@ -29,7 +30,7 @@ $headingTextShadow: none;
 $headingLetterSpacing: normal;
 $headingTextTransform: none;
 $headingFontWeight: 600;
-$linkColor: #42affa;
+$linkColor: $red;
 $linkColorHover: lighten( $linkColor, 15% );
 $selectionBackgroundColor: lighten( $linkColor, 25% );
 
@@ -58,7 +59,6 @@ section.has-light-background {
 $dot-color: rgba( 255, 255, 255, .7 );
 
 $font-script: 'Permanent Marker', cursive;
-$font-bold: 'Chivo', sans-serif;
 
 .avatar{
 	border-radius: 50%;
@@ -178,7 +178,7 @@ section.present.has-background ~ svg {
 		font-size: 3.5em;
 		line-height: 1;
 		font-family: $font-script;
-		color: #ed1c40;
+		color: $red;
 	}
 }
 
@@ -206,7 +206,7 @@ section.present.has-background ~ svg {
 
 .pullout-text,
 .reveal .red-text {
-	color: #ed1c40;
+	color: $red;
 }
 
 .reveal .green-text {
