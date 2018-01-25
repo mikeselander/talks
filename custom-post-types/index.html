@@ -36,9 +36,37 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section class="intro-slide has-background" data-background-image="images/cda2.jpg">
-					<h2>Welcome to the</h2>
+					<h2 class="red-text">Welcome to the</h2>
 					<h1>WP CDA Meetup</h1>
 					<small class="photo-cite">https://www.flickr.com/photos/fabianosouza/5328797863/in/photostream/</small>
+				</section>
+
+				<section>
+					<h1>In the News</h1>
+					<h2 class="red-text">Industry</h2>
+					<ul>
+						<li class="fragment">Pantheon now runs on Google Cloud</li>
+						<li class="fragment">Service workers in Safari</li>
+						<li class="fragment">WP Engine Investment - $250M</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>In the News</h1>
+					<h2 class="red-text">Plugins</h2>
+					<ul>
+						<li class="fragment"><a href="https://wordpress.org/plugins/gutenberg/">Gutenberg 2.0</a></li>
+						<li class="fragment"><a href="https://wordpress.org/plugins/amp/">AMP for WordPress 0.6</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>In the News</h1>
+					<h2>Core</h2>
+					<ul>
+						<li class="fragment">WordPress 4.9.2</li>
+						<li class="fragment"><a href="https://make.wordpress.org/tide/">Tide Roadmap</a></li>
+					</ul>
 				</section>
 
 				<section>
@@ -69,7 +97,7 @@
 					<section>
 						<h2>WordPress Comes with CPTs</h2>
 
-						<h3>Post</h3>
+						<h3>Posts</h3>
 						<h3>Pages</h3>
 
 					</section>
@@ -131,7 +159,7 @@
 
 					<section>
 						<h2>Galleries</h2>
-						<h3 class="red-text"><i class="far fa-square"></i> Custom URL Structure</h3>
+						<h3 class="red-text"><i class="far fa-minus-square"></i> Custom URL Structure</h3>
 						<pre><code class="markdown">[envira-gallery id="2399"]</code></pre>
 					</section>
 				</section>
@@ -237,10 +265,14 @@
 					</section>
 
 					<section>
+						<img src="images/menu-item.png" />
+					</section>
+
+					<section>
 						<h3>Enable REST Support</h3>
 						<pre><code>$arguments = [
 	'show_in_rest' => true,
-	'rest_base'    => '',
+	'rest_base'    => 'testimonials', // Optional.
 ];</code></pre>
 					</section>
 				</section>
@@ -258,7 +290,7 @@ archive-testimonial.php</code></pre>
 					</section>
 
 					<section>
-						<h2>Fetch them with the REST API</h2>
+						<h2>Fetch Posts with the REST API</h2>
 
 						<pre><code class="markdown">curl -X OPTIONS -i https://my-site.com/wp-json/wp/v2/testimonials</code></pre>
 					</section>
@@ -293,9 +325,7 @@ archive-testimonial.php</code></pre>
 				</section>
 
 				<section class="intro-slide has-background" data-background-image="images/cda2.jpg">
-					<h2>Thanks for coming!</h2>
-					<h1>WP CDA Meetup</h1>
-					<small class="photo-cite">https://www.flickr.com/photos/fabianosouza/5328797863/in/photostream/</small>
+					<h1>Thanks for coming!</h1>
 				</section>
 
 				<svg xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" xml:space="preserve" height="500" width="500" version="1.0" viewBox="0 0 5.5555557 5.5555555" class="svg">
