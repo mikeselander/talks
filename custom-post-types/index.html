@@ -292,7 +292,7 @@ archive-testimonial.php</code></pre>
 					<section>
 						<h2>Fetch Posts with the REST API</h2>
 
-						<pre><code class="markdown">curl -X OPTIONS -i https://my-site.com/wp-json/wp/v2/testimonials</code></pre>
+						<pre><code class="markdown">curl -X {args} https://my-site.com/wp-json/wp/v2/testimonials</code></pre>
 					</section>
 
 					<section>
@@ -309,7 +309,7 @@ archive-testimonial.php</code></pre>
 	'meta-box-id',
 	'My Meta Box',
 	'my_display_function',
-	'testimonials'
+	'testimonials' // <-- display on testimonials
 );
 </code></pre>
 					</section>
