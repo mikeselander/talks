@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/night.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<!--<script>-->
+			<!--var link = document.createElement( 'link' );-->
+			<!--link.rel = 'stylesheet';-->
+			<!--link.type = 'text/css';-->
+			<!--link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';-->
+			<!--document.getElementsByTagName( 'head' )[0].appendChild( link );-->
+		<!--</script>-->
+
+		<!--You've already followed all of the prevailing normal security advice - -->
+		<!--added HTTPS to your site, validated data in and out, and kept your stack -->
+		<!--up to date. However, attacks and hackers are getting more advanced by -->
+		<!--the day, making most of these methods less effective. We need lasting -->
+		<!--tools that go beyond the basics and work directly with browsers to -->
+		<!--actively block vulnerabilities such as XSS and MITM.-->
+
+		<!--We'll go beyond the default advice and talk about the latest security -->
+		<!--tools that can help your site maintain integrity and trust with users, -->
+		<!--even as hacks and attackers get more intricate.-->
+
+		<!--If you’re a developer who wants to learn about next-generation security, -->
+		<!--this talk is for you.-->
+
+		<!--Friday, Jun 8th, 03:00pm-03:50pm-->
+		<!--Room 300C-->
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>HTTPS Isn’t Enough</h1>
+					<small>By: Mike Selander</small>
+				</section>
+
+				<section>Security that is more active</section>
+
+				<section>Stats about attacks</section>
+
+				<section>OWASP Top 10</section>
+
+				<section>Maybe a story about attacks?</section>
+
+				<section>
+					<h2>Browser Headers</h2>
+				</section>
+
+				<section>
+					<section>
+						<h2>Content Security Policies</h2>
+					</section>
+
+					<section>
+						- Browser support
+						- Report only
+						- Header vs meta tag
+						- Each aspect
+					</section>
+				</section>
+
+				<section>
+					<h2>X-XSS</h2>
+				</section>
+
+				<section>
+					<h2>HSTS</h2>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
