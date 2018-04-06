@@ -46,37 +46,139 @@
 					<small>By: Mike Selander</small>
 				</section>
 
-				<section>Security that is more active</section>
+				<section>Maybe a story about attacks?</section>
 
 				<section>Stats about attacks</section>
 
-				<section>OWASP Top 10</section>
-
-				<section>Maybe a story about attacks?</section>
-
-				<section>
-					<h2>Browser Headers</h2>
-				</section>
+				<section>Security that is more active</section>
 
 				<section>
 					<section>
-						<h2>Content Security Policies</h2>
+						<h2>Browser Headers</h2>
 					</section>
 
 					<section>
-						- Browser support
-						- Report only
-						- Header vs meta tag
-						- Each aspect
+						<ul class="side-by-side">
+							<li>CSPs</li>
+							<li>HSTS</li>
+							<li>X-XSS</li>
+						</ul>
 					</section>
 				</section>
 
 				<section>
-					<h2>X-XSS</h2>
+					<section>
+						<h2>CSP</h2>
+						<h3>Content Security Policies</h3>
+					</section>
+
+					<section>
+						<code><pre>
+							...
+							...
+							...
+							Content-Security-Policy: ...
+							...
+						</pre></code>
+					</section>
+
+					<section>
+						<h2>Browser Support</h2>
+						{list browsers}
+					</section>
+
+					<section>
+						<h3>Directives</h3>
+
+						<ul class="side-by-side">
+							<li><code>upgrade-insecure-requests</code></li>
+							<li><code>default-src</code></li>
+							<li><code>script-src</code></li>
+							<li><code>style-src</code></li>
+						</ul>
+					</section>
+
+					<section>
+						<code><pre>Content-Security-Policy: ...really thought out CSP...</pre></code>
+					</section>
+
+					<section>
+						<h3>Basic Request</h3>
+						<code><pre>Content-Security-Policy: default-src 'self'</pre></code>
+					</section>
+
+					<section>
+						<h3>Some bad code</h3>
+					</section>
+
+					<section>
+						<code><pre>Content-Security-Policy: default-src 'self'</pre></code>
+					</section>
+
+					<section>
+						<h3>Bad code Fixed</h3>
+					</section>
+
+					<section>
+						You can break your site easily
+					</section>
+
+					<section>
+						<code><pre>
+							<script>{...Google Analytics...}</script>
+						</pre></code>
+					</section>
+
+					<section>
+						<code><pre>Content-Security-Policy: default-src 'self'; script-src 'self' ajax.googleapis.com</pre></code>
+					</section>
+
+					<section>
+						<h3>Report Only Header</h3>
+						<code><pre>Content-Security-Policy-Report-Only: ...</pre></code>
+					</section>
+
+					<section>
+						<code><pre>
+							Content-Security-Policy: ...
+							Content-Security-Policy-Report-Only: ...
+						</pre></code>
+					</section>
+
+					<section>
+						Header vs meta tag
+					</section>
 				</section>
 
 				<section>
-					<h2>HSTS</h2>
+					<section>
+						<h2>X-XSS</h2>
+					</section>
+
+					<section>
+						<code><pre>X-XSS:</pre></code>
+					</section>
+
+					<section>
+						Options:
+						<code><pre></pre></code>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>HSTS</h2>
+						<h3>HTTP Strict Transport Protocol</h3>
+					</section>
+
+					<section>
+						<code><pre>HSTS: {expiry time in seconds}</pre></code>
+					</section>
+
+					<section>
+						Options:
+						<code><pre></pre></code>
+					</section>
 				</section>
 			</div>
 		</div>
