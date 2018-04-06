@@ -1,0 +1,214 @@
+/**
+ * Black theme for reveal.js. This is the opposite of the 'white' theme.
+ *
+ * Copyright (C) 2015 Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+//@import url(../../lib/font/source-sans-pro/source-sans-pro.css);
+
+$font-bold: 'Chivo', sans-serif;
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #fff;
+
+$mainColor: #222;
+$headingColor: #222;
+$red: #ed1c40;
+
+$mainFontSize: 38px;
+$mainFont: $font-bold;
+$headingFont: $font-bold;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: none;
+$headingFontWeight: 600;
+$linkColor: $red;
+$linkColorHover: lighten( $linkColor, 15% );
+$selectionBackgroundColor: lighten( $linkColor, 25% );
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+section.has-light-background {
+	&, h1, h2, h3, h4, h5, h6 {
+		color: #222;
+	}
+}
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+// Theme template ------------------------------
+/**
+ * Black theme for reveal.js. This is the opposite of the 'white' theme.
+ *
+ * Copyright (C) 2015 Hakim El Hattab, http://hakim.se
+ */
+
+$dot-color: rgba( 255, 255, 255, .7 );
+
+$font-script: 'Permanent Marker', cursive;
+
+.avatar{
+	border-radius: 50%;
+	margin: auto;
+	max-width: 250px;
+	max-height: 250px;
+	clear: both;
+}
+
+.reveal blockquote{
+	font-size: 1.4em;
+	border: 0;
+	background: transparent;
+	box-shadow: none;
+	position: relative;
+}
+
+.reveal section img{
+	border: 0;
+	background-color: transparent;
+}
+
+.reveal ul {
+	text-align: left;
+	font-size: 1.2em;
+}
+
+.reveal section > ul {
+	min-width: 70vw;
+}
+
+.reveal{
+	h1,
+	h2,
+	h3,
+	h4{
+		img{
+			height: 1em;
+			width: 1em;
+			margin-right: 10px;
+			margin-bottom: -5px;
+		}
+	}
+
+	img {
+		max-height: 90vh;
+	}
+}
+
+
+section.present.has-background ~ svg {
+	display: none;
+}
+
+// SVG Info
+.svg{
+	path,
+	text,
+	g{
+		fill: rgba( 0, 0, 0, .03 );
+	}
+
+	position: absolute;
+	left: -60%;
+	bottom: -50%;
+	width: 140%;
+	height: 140%;
+}
+
+.align-left{
+	text-align: left;
+
+	.svg{
+		position: absolute;
+		right: -50%;
+		top: -50%;
+	}
+}
+
+.align-right{
+	text-align: right;
+
+	.svg{
+		position: absolute;
+		left: -50%;
+		top: -50%;
+	}
+}
+
+.side-by-side {
+	display: flex !important;
+	justify-content: space-around;
+
+	& > * {
+		flex-basis: 50%;
+		max-width: 50%;
+		min-width: auto;
+	}
+}
+
+.intro-slide {
+	position: relative;
+
+	&:before {
+		content: "";
+		z-index: -1;
+		position: absolute;
+		top: -100%;
+		right: -100%;
+		bottom: -100%;
+		left: -100%;
+		background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,.5) 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+		background: radial-gradient(ellipse at center, rgba(255,255,255,.5) 0%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	}
+
+	h1 {
+		font-size: 3.5em;
+		line-height: 1;
+		font-family: $font-script;
+		color: $red;
+	}
+}
+
+.reveal .photo-cite {
+	font-size: .9rem;
+}
+
+.reveal pre {
+	width: 100%;
+
+	code {
+		padding: 30px;
+		font-size: 1.2em;
+		line-height: 1.4;
+	}
+}
+
+.reveal li {
+	margin: .5em;
+}
+
+.main-title {
+	font-size: 6em;
+}
+
+.pullout-text,
+.reveal .red-text {
+	color: $red;
+}
+
+.reveal .green-text {
+	color: green;
+}
