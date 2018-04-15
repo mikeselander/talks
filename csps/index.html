@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>HTTPS Isn't Enough | Talk</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/night.css">
@@ -50,6 +50,15 @@
 
 				<section>Stats about attacks</section>
 
+				<section>
+					<h2>XSS is still a real thing</h2>
+					http://benv.ca/csp-talk-2013/#12
+				</section>
+
+				<section>
+					XSS examples
+				</section>
+
 				<section>Security that is more active</section>
 
 				<section>
@@ -74,17 +83,22 @@
 
 					<section>
 						<code><pre>
-							...
-							...
-							...
-							Content-Security-Policy: ...
-							...
+...
+...
+...
+Content-Security-Policy: ...
+...
 						</pre></code>
 					</section>
 
 					<section>
 						<h2>Browser Support</h2>
-						{list browsers}
+
+						Chrome - full
+						Firefox - full
+						Safari - full
+						Edge - 15+, full
+						IE - 10+, prefixed, partial
 					</section>
 
 					<section>
@@ -95,16 +109,28 @@
 							<li><code>default-src</code></li>
 							<li><code>script-src</code></li>
 							<li><code>style-src</code></li>
+							<li><code>frame-src</code></li>
+							<li><code>form-action</code></li>
+							<li><code>report-only</code></li>
 						</ul>
 					</section>
 
 					<section>
-						<code><pre>Content-Security-Policy: ...really thought out CSP...</pre></code>
+						<h3>Sources</h3>
+						`none` blocks the use of this type of resource.
+						`self` matches the current origin (but not subdomains).
+						`unsafe-inline` allows the use of inline JS and CSS.
+						`unsafe-eval` allows the use of mechanisms like eval().
+						`*://*.scotthelme.co.uk:*`
 					</section>
 
 					<section>
 						<h3>Basic Request</h3>
 						<code><pre>Content-Security-Policy: default-src 'self'</pre></code>
+					</section>
+
+					<section>
+						<code><pre>Content-Security-Policy: ...really thought out CSP...</pre></code>
 					</section>
 
 					<section>
@@ -117,6 +143,8 @@
 
 					<section>
 						<h3>Bad code Fixed</h3>
+
+						...error
 					</section>
 
 					<section>
@@ -127,10 +155,42 @@
 						<code><pre>
 							<script>{...Google Analytics...}</script>
 						</pre></code>
+
+						...error
+					</section>
+
+					<section>
+						<h3>Nonces and Hashes</h3>
 					</section>
 
 					<section>
 						<code><pre>Content-Security-Policy: default-src 'self'; script-src 'self' ajax.googleapis.com</pre></code>
+					</section>
+
+					<section>
+						<h3>Report Violations</h3>
+						doesn't scale...
+						`report-uri`
+					</section>
+
+					<section>
+						<h3>Looks like this...</h3>
+
+						<code><pre>
+{
+  "csp-report": {
+    "document-uri": "http://example.org/page.html",
+    "referrer": "http://evil.example.com/",
+    "blocked-uri": "http://evil.example.com/evil.js",
+    "violated-directive": "default-src 'self'",
+    "original-policy": "default 'self'; report-uri http://mysite.com/report.php"
+  }
+}
+						</pre></code>
+					</section>
+
+					<section>
+						https://report-uri.com
 					</section>
 
 					<section>
@@ -140,13 +200,9 @@
 
 					<section>
 						<code><pre>
-							Content-Security-Policy: ...
-							Content-Security-Policy-Report-Only: ...
+Content-Security-Policy: ...
+Content-Security-Policy-Report-Only: ...
 						</pre></code>
-					</section>
-
-					<section>
-						Header vs meta tag
 					</section>
 				</section>
 
@@ -156,12 +212,15 @@
 					</section>
 
 					<section>
-						<code><pre>X-XSS:</pre></code>
+						<code><pre>X-XSS: 1; mode=block</pre></code>
 					</section>
 
 					<section>
 						Options:
-						<code><pre></pre></code>
+						<code><pre>
+0; <-- Bad
+1; <-- OK
+1; mode=block <-- Best</pre></code>
 					</section>
 				</section>
 
@@ -172,13 +231,25 @@
 					</section>
 
 					<section>
-						<code><pre>HSTS: {expiry time in seconds}</pre></code>
+						<code><pre>strct-transport-security: max-age=31536000; includeSubdomains</pre></code>
 					</section>
 
 					<section>
 						Options:
-						<code><pre></pre></code>
+						<code><pre>
+max-age=315165171
+includeSubdomains </pre></code>
 					</section>
+				</section>
+
+				<section>
+					<h1>Questions?</h1>
+				</section>
+
+				<section>
+					<h1>Thank You!</h1>
+
+					<h4>@Mike_Selander</h4>
 				</section>
 			</div>
 		</div>
