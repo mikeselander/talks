@@ -218,9 +218,9 @@ Content-Security-Policy-Report-Only: ...
 					<section>
 						Options:
 						<code><pre>
-0; <-- Bad
-1; <-- OK
-1; mode=block <-- Best</pre></code>
+0; <-- Probably Best
+1; <-- Bad
+1; mode=block <-- OK</pre></code>
 					</section>
 				</section>
 
@@ -239,6 +239,56 @@ Content-Security-Policy-Report-Only: ...
 						<code><pre>
 max-age=315165171
 includeSubdomains </pre></code>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>X-Content-Type-Options</h2>
+					</section>
+
+					<section>
+						<code><pre>X-Content-Type-Options: nosniff</pre></code>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Referrer Policy</h2>
+					</section>
+
+					<section>
+						<code><pre>X-Content-Type-Options: no-referrer</pre></code>
+					</section>
+
+					<section>
+						Options:
+						<code><pre>
+no-referrer`-when-downgrade`
+same-origin
+`strict-`origin
+`strict-`origin-when-cross-origin
+unsafe-url
+						</pre></code>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>X-Frame-Options</h2>
+					</section>
+
+					<section>
+						<code><pre>X-Frame-Options: SAMEORIGIN</pre></code>
+					</section>
+
+					<section>
+						Options:
+						<code><pre>
+SAMEORIGIN
+DENY
+ALLOW-FROM https://example.com/
+						</pre></code>
 					</section>
 				</section>
 
