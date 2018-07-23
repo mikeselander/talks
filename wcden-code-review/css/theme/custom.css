@@ -1,0 +1,52 @@
+/**
+ *  General
+ */
+img {
+  max-width: 100%;
+  display: block; }
+
+/**
+ * All-around background.
+ */
+.background {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  z-index: 10;
+  pointer-events: none; }
+
+.background-logo {
+  position: absolute;
+  bottom: 4%;
+  left: 4%;
+  width: 18vw; }
+
+/**
+ * Bios.
+ */
+.bios {
+  display: flex;
+  justify-content: space-between; }
+
+.bios__person {
+  flex: 0 1 30%; }
+
+.bios__person__image {
+  border-radius: 50%;
+  width: 80%;
+  margin: auto; }
+
+.bios__person__title {
+  font-size: 1em; }
+
+/**
+ * Code Styles.
+ */
+.reveal pre {
+  width: 100%;
+  box-shadow: none;
+  z-index: 11; }
+  .reveal pre code {
+    max-height: 90vh;
+    max-width: 110%; }
