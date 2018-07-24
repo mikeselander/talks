@@ -39,22 +39,22 @@
 					<div class="bios">
 						<div class="bios__person">
 							<img src="images/mike.jpg" class="bios__person__image">
-							<h3 class="bios__person__title">Mike Selander</h3>
+							<h3 class="bios__person__title">Mike</h3>
 						</div>
 
 						<div class="bios__person">
 							<img src="images/robert.jpg" class="bios__person__image">
-							<h3 class="bios__person__title">Robert Rowley</h3>
+							<h3 class="bios__person__title">Robert</h3>
 						</div>
 
 						<div class="bios__person">
 							<img src="images/zack.jpg" class="bios__person__image">
-							<h3 class="bios__person__title">Zack kazt</h3>
+							<h3 class="bios__person__title">Zack</h3>
 						</div>
 					</div>
 				</section>
 
-				<section>
+				<section class="full-screen-slide">
 					<pre><code class="php">function save_options() {
   global $themename, $shortname, $options;
   if ( $_GET['page'] == basename(__FILE__) ) {
@@ -75,11 +75,102 @@
     }
   }
 }
-
 					</code></pre>
 				</section>
 
-				<section></section>
+				<section class="full-screen-slide">
+					<pre><code class="php">function find_partners( $partners ) {
+  $links = array();
+  if ( isset( $partners ) ) {
+    foreach( $partners as $partner ) {
+      if( $partner['partner_name'] == 'AngelList' ) {
+        for( $i = 1; $i <= 3; $i++ ) {
+          if( isset( $partner['link_' . $i . '_url' ] ) && !empty( $partner['link_' . $i . '_url' ] ) && isset( $partner['link_' . $i . '_name' ] ) && ! empty( $partner['link_' . $i . '_name' ] ) ) {
+            $links[] = array( 'label' => $partner['link_' . $i . '_name' ], 'url' => $partner['link_' . $i . '_url' ] );
+          }
+        }
+      }
+    }
+  }
+}
+					</code></pre>
+				</section>
+
+				<section class="full-screen-slide">
+					<pre><code>$html .= "<li class='group'>";
+
+$html .= "<a href='".get_permalink()."'>";
+
+if ( $image )
+  $html .= "<img src='$image'>";
+
+$html .= "</a>";
+
+$html .= "<h3>Boat Name: <span class='small'>".get_the_title()."</span></h3>";
+$html .= "<h3>Location: <span class='small'>$marina_list</h3></span>";
+
+if ( current_user_can('view_boats') )
+  $html .= "<$title_tag>Rate: <span class='small'>$$price</span></$title_tag>";
+
+$html .= "<a href='".get_permalink()."' class='button small'>$button_string</a>";
+
+$html .= "</li>";</code></pre>
+				</section>
+
+				<section class="full-screen-slide"><pre><code>$posts = new WP_Query( [
+  'orderby' => 'title',
+  'order' => 'ASC',
+  'nopaging' => true,
+  'posts_per_page' => '-1',
+  'meta_query' => [
+    [
+      'key' => 'featured',
+      'value' => 1,
+      'compare' => '=',
+    ],
+  ],
+  'orderby' => 'RAND',
+] );</code></pre></section>
+
+<section class="full-screen-slide"><pre><code>function hello_dashboard_widget() {
+  global $wpdb;
+
+  echo "<h2>Hello!</h2>";
+  echo "<p>What would you like to do today?</p>";
+
+  $querystr = "SELECT DISTINCT post_type\n";
+  $querystr .= "FROM $wpdb->posts\n";
+  $types = $wpdb->get_results($querystr, ARRAY_A);
+
+  // Declare post types we don't want to show
+  $bad_types[] = 'attachment';
+  $bad_types[] = 'deprecated_log';
+  $bad_types[] = 'nav_menu_item';
+  $bad_types[] = 'revision';
+
+  foreach ( $types as $type ) {
+     // if post type isn't one of the ones we declared
+     if ( !in_array( $type['post_type'], $bad_types ) ) {
+       $type_clean = ucwords($type['post_type']);
+       echo "<li><a href='".admin_url()."post-new.php?post_type=$type[post_type]'>Create a new $type_clean</a></li>";
+     }
+  }
+}
+</code></pre></section>
+
+<section><pre><code>// Show quotes that are stored as "funny-quote" post type on the site
+function quotes( $number_to_show ) {
+	global $wpdb;
+	$sql = "SELECT * FROM wp_posts WHERE post_type = 'funny-quote'";
+	$quotes = $wpdb->get_results( $sql, ARRAY_A );
+
+	$output = 'Showing '.$number_to_show.' quotes:';
+	foreach ( $quotes as $quote ) {
+		$output .= wpautop( $quote['post_content'] );
+	}
+	return $output;
+}</code></pre></section>
+
 			</div>
 		</div>
 
