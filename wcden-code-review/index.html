@@ -13,6 +13,8 @@
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="css/theme/highlight/github.css">
 
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i,800,800i" rel="stylesheet">
+
 		<!-- Printing and PDF exports -->
 		<script>
 			var link = document.createElement( 'link' );
@@ -78,6 +80,7 @@
 					</code></pre>
 				</section>
 
+				<!-- Nesting and nesting and nesting and nesting -->
 				<section class="full-screen-slide">
 					<pre><code class="php">function find_partners( $partners ) {
   $links = array();
@@ -96,6 +99,7 @@
 					</code></pre>
 				</section>
 
+				<!-- Optimizing output + escaping -->
 				<section class="full-screen-slide">
 					<pre><code>$html .= "<li class='group'>";
 
@@ -117,7 +121,24 @@ $html .= "<a href='".get_permalink()."' class='button small'>$button_string</a>"
 $html .= "</li>";</code></pre>
 				</section>
 
-				<section class="full-screen-slide"><pre><code>$posts = new WP_Query( [
+				<!-- SQL Injection -->
+				<section class="full-screen-slide"><pre><code>if(isset($_POST['disable']))
+{
+  foreach ( $_POST['users'] as $userid ) {
+    $wpdb->query("UPDATE ".$wpdb->prefix."usercontrol SET disable_status = 'disabled' WHERE ID = ".$wpdb->escape($userid));
+  }
+}
+
+if(isset($_POST['enable']))
+{
+  foreach ( $_POST['users'] as $userid ) {
+    $wpdb->query("UPDATE ".$wpdb->prefix."usercontrol SET disable_status = 'enabled' WHERE ID = ".$wpdb->escape($userid));
+  }
+}</code></pre></section>
+
+	<!-- Optimizing WP_Query results -->
+	<section class="full-screen-slide">
+		<pre><code>$posts = new WP_Query( [
   'orderby' => 'title',
   'order' => 'ASC',
   'nopaging' => true,
@@ -132,7 +153,24 @@ $html .= "</li>";</code></pre>
   'orderby' => 'RAND',
 ] );</code></pre></section>
 
-<section class="full-screen-slide"><pre><code>function hello_dashboard_widget() {
+<!-- Avoiding raw SQL queries -->
+<section class="full-screen-slide">
+	<pre><code>// Show quotes that are stored as "funny-quote" post type on the site
+function quotes( $number_to_show ) {
+  global $wpdb;
+  $sql = "SELECT * FROM wp_posts WHERE post_type = 'funny-quote'";
+  $quotes = $wpdb->get_results( $sql, ARRAY_A );
+
+  $output = 'Showing '.$number_to_show.' quotes:';
+  foreach ( $quotes as $quote ) {
+    $output .= wpautop( $quote['post_content'] );
+  }
+  return $output;
+}</code></pre></section>
+
+<!-- Could have used core functions -->
+<section class="full-screen-slide">
+	<pre><code>function hello_dashboard_widget() {
   global $wpdb;
 
   echo "<h2>Hello!</h2>";
@@ -156,20 +194,16 @@ $html .= "</li>";</code></pre>
      }
   }
 }
-</code></pre></section>
+</code></pre>
+</section>
 
-<section><pre><code>// Show quotes that are stored as "funny-quote" post type on the site
-function quotes( $number_to_show ) {
-	global $wpdb;
-	$sql = "SELECT * FROM wp_posts WHERE post_type = 'funny-quote'";
-	$quotes = $wpdb->get_results( $sql, ARRAY_A );
+	<section>
+		<pre><code></code></pre>
+	</section>
 
-	$output = 'Showing '.$number_to_show.' quotes:';
-	foreach ( $quotes as $quote ) {
-		$output .= wpautop( $quote['post_content'] );
-	}
-	return $output;
-}</code></pre></section>
+			<section>
+				<h1>Q&A</h1>
+			</section>
 
 			</div>
 		</div>
