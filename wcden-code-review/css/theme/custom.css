@@ -52,7 +52,10 @@
   .reveal pre {
     width: 100%;
     box-shadow: none;
-    z-index: 11; }
+    z-index: 11;
+    white-space: pre-wrap; }
     .reveal pre code {
       max-height: 90vh;
-      max-width: 110%; }
+      max-width: 110%;
+      white-space: pre-wrap;
+      word-break: break-all; }

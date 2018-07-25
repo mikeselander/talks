@@ -72,10 +72,13 @@
 		width: 100%;
 		box-shadow: none;
 		z-index: 11;
+    white-space: pre-wrap;
 
 		code {
 			max-height: 90vh;
 			max-width: 110%;
+    	white-space: pre-wrap;
+			word-break: break-all;
 		}
 	}
 }
