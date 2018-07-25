@@ -1,64 +1,58 @@
 /**
  *  General
  */
-img {
-  max-width: 100%;
-  display: block; }
-
-.reveal .slides section.full-screen-slide {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  z-index: 25;
-  background-color: #fff; }
-
-@media screen and (min-width: 960px) {
-  .reveal .slides {
-    width: 100vw !important; } }
-
-/**
- * All-around background.
- */
-.background {
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  position: relative;
-  z-index: 10;
-  pointer-events: none; }
-
-.background-logo {
-  position: absolute;
-  bottom: 4%;
-  left: 4%;
-  width: 18vw; }
-
-/**
- * Bios.
- */
-.bios {
-  display: flex;
-  justify-content: space-between; }
-
-.bios__person {
-  flex: 0 1 30%; }
-
-.bios__person__image {
-  border-radius: 50%;
-  width: 80%;
-  margin: auto; }
-
-.bios__person__title {
-  font-size: 1em; }
-
-/**
- * Code Styles.
- */
-.reveal pre {
-  width: 100%;
-  box-shadow: none;
-  z-index: 11; }
-  .reveal pre code {
-    max-height: 90vh;
-    max-width: 110%; }
+.reveal {
+  /**
+	 * All-around background.
+	 */
+  /**
+	 * Bios.
+	 */
+  /**
+	 * Code Styles.
+	 */ }
+  .reveal img {
+    max-width: 100%;
+    display: block; }
+  .reveal .slides section.full-screen-slide {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 25;
+    background-color: #fff; }
+  @media screen and (min-width: 960px) {
+    .reveal .slides {
+      width: 100vw !important; } }
+  .reveal .background {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    z-index: 10;
+    pointer-events: none; }
+  .reveal .background-logo {
+    position: absolute;
+    bottom: 4%;
+    left: 4%;
+    width: 18vw; }
+  .reveal .bios {
+    display: flex;
+    justify-content: space-between; }
+  .reveal .bios__person {
+    flex: 0 1 30%; }
+  .reveal .bios__person__image {
+    border-radius: 50%;
+    width: 80%;
+    margin: auto;
+    display: block; }
+  .reveal .bios__person__title {
+    margin-top: .5em;
+    font-size: 1em; }
+  .reveal pre {
+    width: 100%;
+    box-shadow: none;
+    z-index: 11; }
+    .reveal pre code {
+      max-height: 90vh;
+      max-width: 110%; }
