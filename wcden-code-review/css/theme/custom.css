@@ -20,7 +20,9 @@
     left: 0;
     height: 100vh;
     z-index: 25;
-    background-color: #fff; }
+    background-color: #f8f8f8;
+    padding-top: 0;
+    padding-bottom: 30px; }
   @media screen and (min-width: 960px) {
     .reveal .slides {
       width: 100vw !important; } }
