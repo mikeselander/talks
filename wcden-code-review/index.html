@@ -56,6 +56,8 @@
 					</div>
 				</section>
 
+				<section><h1 class="counter">1</h1></section>
+
 				<section class="full-screen-slide">
 					<pre><code class="php">function save_options() {
   global $themename, $shortname, $options;
@@ -80,24 +82,7 @@
 					</code></pre>
 				</section>
 
-				<!-- Nesting and nesting and nesting and nesting -->
-				<section class="full-screen-slide">
-					<pre><code class="php">function find_partners( $partners ) {
-  $links = array();
-  if ( isset( $partners ) ) {
-    foreach( $partners as $partner ) {
-      if( $partner['partner_name'] == 'AngelList' ) {
-        for( $i = 1; $i <= 3; $i++ ) {
-          if( isset( $partner['link_' . $i . '_url' ] ) && !empty( $partner['link_' . $i . '_url' ] ) && isset( $partner['link_' . $i . '_name' ] ) && ! empty( $partner['link_' . $i . '_name' ] ) ) {
-            $links[] = array( 'label' => $partner['link_' . $i . '_name' ], 'url' => $partner['link_' . $i . '_url' ] );
-          }
-        }
-      }
-    }
-  }
-}
-					</code></pre>
-				</section>
+				<section><h1 class="counter">2</h1></section>
 
 				<!-- Object injection -->
 				<section class="full-screen-slide">
@@ -123,27 +108,24 @@
 }</code></pre>
 				</section>
 
-				<!-- Optimizing output + escaping -->
+				<section><h1 class="counter">3</h1></section>
+
+				<!-- Avoiding raw SQL queries -->
 				<section class="full-screen-slide">
-					<pre><code class="php">$html .= "<li class='group'>";
+					<pre><code class="php">// Show quotes that are stored as "funny-quote" post type on the site
+function quotes( $number_to_show ) {
+	global $wpdb;
+	$sql = "SELECT * FROM wp_posts WHERE post_type = 'funny-quote'";
+	$quotes = $wpdb->get_results( $sql, ARRAY_A );
 
-$html .= "<a href='".get_permalink()."'>";
+	$output = 'Showing '.$number_to_show.' quotes:';
+	foreach ( $quotes as $quote ) {
+	  $output .= wpautop( $quote['post_content'] );
+	}
+	return $output;
+}</code></pre></section>
 
-if ( $image )
-  $html .= "<img src='$image'>";
-
-$html .= "</a>";
-
-$html .= "<h3>Boat Name: <span class='small'>".get_the_title()."</span></h3>";
-$html .= "<h3>Location: <span class='small'>$marina_list</h3></span>";
-
-if ( current_user_can('view_boats') )
-  $html .= "<$title_tag>Rate: <span class='small'>$$price</span></$title_tag>";
-
-$html .= "<a href='".get_permalink()."' class='button small'>$button_string</a>";
-
-$html .= "</li>";</code></pre>
-				</section>
+				<section><h1 class="counter">4</h1></section>
 
 				<!-- Optimizing output + escaping -->
 				<section class="full-screen-slide">
@@ -166,6 +148,8 @@ $html .= "</li>";</code></pre>
 </code></pre>
 				</section>
 
+				<section><h1 class="counter">5</h1></section>
+
 				<!-- SQL Injection -->
 				<section class="full-screen-slide"><pre><code class="php">if(isset($_POST['disable']))
 {
@@ -180,6 +164,8 @@ if(isset($_POST['enable']))
     $wpdb->query("UPDATE ".$wpdb->prefix."usercontrol SET disable_status = 'enabled' WHERE ID = ".$wpdb->escape($userid));
   }
 }</code></pre></section>
+
+<section><h1 class="counter">6</h1></section>
 
 	<!-- Optimizing WP_Query results -->
 	<section class="full-screen-slide">
@@ -198,22 +184,54 @@ if(isset($_POST['enable']))
   'orderby' => 'RAND',
 ] );</code></pre></section>
 
-<!-- Avoiding raw SQL queries -->
+<section><h1 class="counter">7</h1></section>
+
+<!-- Optimizing output + escaping -->
 <section class="full-screen-slide">
-	<pre><code class="php">// Show quotes that are stored as "funny-quote" post type on the site
-function quotes( $number_to_show ) {
-  global $wpdb;
-  $sql = "SELECT * FROM wp_posts WHERE post_type = 'funny-quote'";
-  $quotes = $wpdb->get_results( $sql, ARRAY_A );
+	<pre><code class="php">$html .= "<li class='group'>";
 
-  $output = 'Showing '.$number_to_show.' quotes:';
-  foreach ( $quotes as $quote ) {
-    $output .= wpautop( $quote['post_content'] );
-  }
-  return $output;
-}</code></pre></section>
+$html .= "<a href='".get_permalink()."'>";
 
-<!-- Could have used core functions -->
+if ( $image )
+$html .= "<img src='$image'>";
+
+$html .= "</a>";
+
+$html .= "<h3>Boat Name: <span class='small'>".get_the_title()."</span></h3>";
+$html .= "<h3>Location: <span class='small'>$marina_list</h3></span>";
+
+if ( current_user_can('view_boats') )
+$html .= "<$title_tag>Rate: <span class='small'>$$price</span></$title_tag>";
+
+$html .= "<a href='".get_permalink()."' class='button small'>$button_string</a>";
+
+$html .= "</li>";</code></pre>
+</section>
+
+<section><h1 class="counter">8</h1></section>
+
+<!-- Nesting and nesting and nesting and nesting -->
+<section class="full-screen-slide">
+	<pre><code class="php">function find_partners( $partners ) {
+	$links = array();
+	if ( isset( $partners ) ) {
+		foreach( $partners as $partner ) {
+			if( $partner['partner_name'] == 'AngelList' ) {
+				for( $i = 1; $i <= 3; $i++ ) {
+					if( isset( $partner['link_' . $i . '_url' ] ) && !empty( $partner['link_' . $i . '_url' ] ) && isset( $partner['link_' . $i . '_name' ] ) && ! empty( $partner['link_' . $i . '_name' ] ) ) {
+						$links[] = array( 'label' => $partner['link_' . $i . '_name' ], 'url' => $partner['link_' . $i . '_url' ] );
+					}
+				}
+			}
+		}
+	}
+}
+	</code></pre>
+</section>
+
+<!-- <section><h1 class="counter">9</h1></section> -->
+
+<!-- Could have used core functions
 <section class="full-screen-slide">
 	<pre><code class="php">function hello_dashboard_widget() {
   global $wpdb;
@@ -236,7 +254,7 @@ function quotes( $number_to_show ) {
      }
   }
 }</code></pre>
-	</section>
+	</section> -->
 
 			<section>
 				<h1>Q&A</h1>
@@ -253,6 +271,7 @@ function quotes( $number_to_show ) {
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+				history: true,
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },

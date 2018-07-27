@@ -7,6 +7,17 @@
 		display: block;
 	}
 
+	h1.counter {
+		font-size: 6em;
+		transform: translate( -20%, 0 );
+		color: #147EE1;
+
+		span {
+			vertical-align: super;
+			font-size: .8em;
+		}
+	}
+
 	.slides section.full-screen-slide {
 		position: fixed;
 		top: 0;

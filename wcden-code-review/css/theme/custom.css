@@ -14,6 +14,13 @@
   .reveal img {
     max-width: 100%;
     display: block; }
+  .reveal h1.counter {
+    font-size: 6em;
+    transform: translate(-20%, 0);
+    color: #147EE1; }
+    .reveal h1.counter span {
+      vertical-align: super;
+      font-size: .8em; }
   .reveal .slides section.full-screen-slide {
     position: fixed;
     top: 0;
