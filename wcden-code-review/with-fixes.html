@@ -1,0 +1,349 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>WCDEN - Code Review Panel</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css">
+		<link rel="stylesheet" href="css/theme/custom.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="css/theme/highlight/github.css">
+
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i,800,800i" rel="stylesheet">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="background">
+					<img src="images/wc_logo.png" class="background-logo">
+			</div>
+
+			<div class="slides">
+				<section>
+					<h1>A Code Commentary</h1>
+				</section>
+
+				<section>
+					<h2>Panelists</h2>
+
+					<div class="bios">
+						<div class="bios__person">
+							<img src="images/mike.jpg" class="bios__person__image">
+							<h3 class="bios__person__title">Mike</h3>
+						</div>
+
+						<div class="bios__person">
+							<img src="images/robert.jpg" class="bios__person__image">
+							<h3 class="bios__person__title">Robert</h3>
+						</div>
+
+						<div class="bios__person">
+							<img src="images/zack.jpg" class="bios__person__image">
+							<h3 class="bios__person__title">Zack</h3>
+						</div>
+					</div>
+				</section>
+
+				<section><h1 class="counter">1</h1></section>
+
+				<section class="full-screen-slide">
+					<pre><code class="php">function save_options() {
+  global $themename, $shortname, $options;
+  if ( $_GET['page'] == basename(__FILE__) ) {
+    if ( 'save' == $_REQUEST['action'] ) {
+      foreach ($options as $value) {
+        update_option( $value['id'], $_REQUEST[ $value['id'] ] ); }
+      foreach ($options as $value) {
+        if( isset( $_REQUEST[ $value['id'] ] ) )
+        { update_option( $value['id'], $_REQUEST[ $value['id'] ] ); } else
+        { delete_option( $value['id'] ); } }
+      header("Location: themes.php?page=functions.php&saved=true");
+      die;
+    } else if( 'reset' == $_REQUEST['action'] ) {
+      foreach ($options as $value) {
+        delete_option( $value['id'] ); }
+      header("Location: themes.php?page=functions.php&reset=true");
+      die;
+    }
+  }
+}
+					</code></pre>
+				</section>
+
+				<section class="full-screen-slide">
+					<pre><code class="php">function save_options() {
+   // Nonce check.
+   if (
+     ! isset( $_POST['my_nonce'] )
+|| ! wp_verify_nonce( $_POST['my_nonce'], 'nonce_action' ) ){
+return; }
+   // Validate that option is being pushed.
+   if ( ! isset( $_POST['my_value'] ) ) {
+     return;
+}
+   // Only update one option at a time.
+   // Sanitize and unslash before saving.
+   update_option(
+'my_value',
+     sanitize_text_field( wp_unslash( $_POST['my_value'] ) )
+   );
+}</code></pre>
+				</section>
+
+				<section><h1 class="counter">2</h1></section>
+
+				<!-- Object injection -->
+				<section class="full-screen-slide">
+					<pre><code class="php">function TOsaveAjaxOrder()
+{
+  global $wpdb;
+  $taxonomy = stripslashes($_POST['taxonomy']);
+  $data = stripslashes($_POST['order']);
+  $unserialised_data = unserialize($data);
+
+  if (is_array($unserialised_data))
+  foreach($unserialised_data as $key => $values )
+    {
+      //$key_parent = str_replace("item_", "", $key);
+      $items = explode("&", $values);
+
+      if (is_array($items) && count($items) > 0)
+      foreach( $items as $item_key => $term_id )
+        {
+          $wpdb->update( $wpdb->terms, array('term_order' => ($item_key + 1)), array('term_id' => $term_id) );
+        }
+  }
+}</code></pre>
+				</section>
+
+				<section><h1 class="counter">3</h1></section>
+
+				<!-- Avoiding raw SQL queries -->
+				<section class="full-screen-slide">
+					<pre><code class="php">// Show quotes that are stored as "funny-quote" post type on the site
+function quotes( $number_to_show ) {
+	global $wpdb;
+	$sql = "SELECT * FROM wp_posts WHERE post_type = 'funny-quote'";
+	$quotes = $wpdb->get_results( $sql, ARRAY_A );
+
+	$output = 'Showing '.$number_to_show.' quotes:';
+	foreach ( $quotes as $quote ) {
+	  $output .= wpautop( $quote['post_content'] );
+	}
+	return $output;
+}</code></pre></section>
+
+				<section><h1 class="counter">4</h1></section>
+
+				<!-- Optimizing output + escaping -->
+				<section class="full-screen-slide">
+					<pre><code class="js">document.addEventListener( 'DOMContentLoaded', function () {
+		/* global player, title_block */
+		if ( typeof player !== 'undefined' && typeof title_block !== 'undefined' ) {
+			title_block.forEach( function ( item ) {
+				player.onInit( function () {
+					player.addEventListener( 'OnMediaStart', function () {
+						var cid = document.getElementById( item.container_id );
+						var title = cid.getElementsByClassName( item.title_classname );
+						if ( title && title.length > 0 ) {
+							title[0].style.visibility = 'hidden';
+						}
+					}, item.player_id );
+				});
+			});
+		}``
+	});
+</code></pre>
+				</section>
+
+				<section><h1 class="counter">5</h1></section>
+
+				<!-- SQL Injection -->
+				<section class="full-screen-slide"><pre><code class="php">if(isset($_POST['disable']))
+{
+  foreach ( $_POST['users'] as $userid ) {
+    $wpdb->query("UPDATE ".$wpdb->prefix."usercontrol SET disable_status = 'disabled' WHERE ID = ".$wpdb->escape($userid));
+  }
+}
+
+if(isset($_POST['enable']))
+{
+  foreach ( $_POST['users'] as $userid ) {
+    $wpdb->query("UPDATE ".$wpdb->prefix."usercontrol SET disable_status = 'enabled' WHERE ID = ".$wpdb->escape($userid));
+  }
+}</code></pre></section>
+
+<section><h1 class="counter">6</h1></section>
+
+	<!-- Optimizing WP_Query results -->
+	<section class="full-screen-slide">
+		<pre><code class="php">$posts = new WP_Query( [
+  'orderby' => 'title',
+  'order' => 'ASC',
+  'nopaging' => true,
+  'posts_per_page' => '-1',
+  'meta_query' => [
+    [
+      'key' => 'featured',
+      'value' => 1,
+      'compare' => '=',
+    ],
+  ],
+  'orderby' => 'RAND',
+] );</code></pre></section>
+
+<section class="full-screen-slide">
+	<pre><code class="php">$posts = new WP_Query( [
+		'orderby'                => 'title',
+		'order'                  => 'ASC',
+		'posts_per_page'         => 100,
+		'no_found_rows'          => true,
+		'update_post_term_cache' => false,
+		'update_post_meta_cache' => false,
+		'meta_query'             => [
+			[
+				'key'     => 'featured',
+				'value'   => 'bug #23268',
+				'compare' => 'EXISTS',
+			],
+		],
+	] );
+	shuffle( $posts->posts );</code></pre></section>
+
+<section><h1 class="counter">7</h1></section>
+
+<!-- Optimizing output + escaping -->
+<section class="full-screen-slide">
+	<pre><code class="php">$html .= "<li class='group'>";
+
+$html .= "<a href='".get_permalink()."'>";
+
+if ( $image )
+$html .= "<img src='$image'>";
+
+$html .= "</a>";
+
+$html .= "<h3>Boat Name: <span class='small'>".get_the_title()."</span></h3>";
+$html .= "<h3>Location: <span class='small'>$marina_list</h3></span>";
+
+if ( current_user_can('view_boats') )
+$html .= "<$title_tag>Rate: <span class='small'>$$price</span></$title_tag>";
+
+$html .= "<a href='".get_permalink()."' class='button small'>$button_string</a>";
+
+$html .= "</li>";</code></pre>
+</section>
+
+<pre><code class="php"><li class='group'>
+	<?php if ( ! empty( $image ) ) : ?>
+		<a href='<?php echo esc_url( get_permalink() ); ?>'>
+			<img src='<?php echo esc_url( $image ); ?>'>
+		</a>
+	<?php endif; ?>
+
+	<h3>
+		<?php esc_html_e( 'Boat Name:', 'my-theme' ); ?>
+		<span class='small'>".get_the_title()."</span>
+	</h3>
+
+	<?php if ( current_user_can('view_boats') ) : ?>
+		<h4>
+			<?php esc_html_e( 'Rate:', 'my-theme' ); ?>
+			<span class='small'>$<?php esc_html( $price ); ?></span>
+		</h4>
+	<?php endif; ?>
+
+	<a href='<?php echo esc_url( get_permalink() ) ?>' class='button small'><?php echo esc_html( $permalink ); ?></a>
+</li></code></pre>
+</section>
+
+<section><h1 class="counter">8</h1></section>
+
+<!-- Nesting and nesting and nesting and nesting -->
+<section class="full-screen-slide">
+	<pre><code class="php">function find_partners( $partners ) {
+	$links = array();
+	if ( isset( $partners ) ) {
+		foreach( $partners as $partner ) {
+			if( $partner['partner_name'] == 'AngelList' ) {
+				for( $i = 1; $i <= 3; $i++ ) {
+					if( isset( $partner['link_' . $i . '_url' ] ) && !empty( $partner['link_' . $i . '_url' ] ) && isset( $partner['link_' . $i . '_name' ] ) && ! empty( $partner['link_' . $i . '_name' ] ) ) {
+						$links[] = array( 'label' => $partner['link_' . $i . '_name' ], 'url' => $partner['link_' . $i . '_url' ] );
+					}
+				}
+			}
+		}
+	}
+}</code></pre>
+</section>
+
+<section class="full-screen-slide">
+	<pre><code class="php">function find_partners( $partners ) {
+	// Make sure that we have valid partners first.
+	if ( empty( $partners ) ) { return []; }
+
+	// We only want to look at AngelList partners.
+	$angellist_partners = array_filter( $partners, function( $partner ) {
+		return 'AngelList' === $partner['partner_name'];
+	} );
+
+	// Map AngelList partners to their links and append to our links array.
+	$links = [];
+	foreach ( $angellist_partners as $partner ) {
+		$i = 1;
+		while ( ! empty( $partner[ 'link_' . $i . '_url' ] ) ) {
+			$links[] = [
+				'label' => $partner[ 'link_' . $i . '_name' ],
+				'url'   => $partner[ 'link_' . $i . '_url'  ],
+			]; $i++;
+		}
+	}
+
+	return $links;
+	}</code></pre>
+</section>
+
+			<section>
+				<h1>Q&A</h1>
+			</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				history: true,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() {
+						hljs.configure( {
+							languages: [ 'php', 'js' ],
+							tabReplace: '  ',
+						} );
+						hljs.initHighlightingOnLoad();
+					} }
+				]
+			});
+		</script>
+	</body>
+</html>
