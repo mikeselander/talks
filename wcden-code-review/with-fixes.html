@@ -85,20 +85,24 @@
 				<section class="full-screen-slide">
 					<pre><code class="php">function save_options() {
    // Nonce check.
-   if (
-     ! isset( $_POST['my_nonce'] )
-|| ! wp_verify_nonce( $_POST['my_nonce'], 'nonce_action' ) ){
-return; }
-   // Validate that option is being pushed.
-   if ( ! isset( $_POST['my_value'] ) ) {
-     return;
-}
-   // Only update one option at a time.
-   // Sanitize and unslash before saving.
-   update_option(
-'my_value',
-     sanitize_text_field( wp_unslash( $_POST['my_value'] ) )
-   );
+	if (
+		! isset( $_POST['my_nonce'] )
+		|| ! wp_verify_nonce( $_POST['my_nonce'], 'nonce_action' )
+	) {
+		return;
+	}
+
+	// Validate that option is being pushed.
+	if ( ! isset( $_POST['my_value'] ) ) {
+		return;
+	}
+
+	// Only update one option at a time.
+	// Sanitize and unslash before saving.
+	update_option(
+		'my_value',
+		 sanitize_text_field( wp_unslash( $_POST['my_value'] ) )
+	);
 }</code></pre>
 				</section>
 
@@ -128,6 +132,30 @@ return; }
 }</code></pre>
 				</section>
 
+				<section class="full-screen-slide">
+					<pre><code class="php">function TOsaveAjaxOrder() {
+	global $wpdb;
+	$data              = stripslashes( $_POST['order'] );
+	$unserialised_data = json_decode( $data, TRUE );
+
+	if ( ! is_array( $unserialised_data ) ) {
+		return;
+	}
+
+	foreach( $unserialised_data as $key => $values ) {
+		$items = explode( "&", $values );
+
+		if ( is_array( $items ) && count( $items ) ) {
+			continue;
+		}
+
+		foreach( $items as $item_key => $term_id ) {
+			$wpdb->update( $wpdb->terms, [ 'term_order' => ( $item_key + 1 ) ], [ 'term_id' => $term_id ] );
+		}
+	}
+}</code></pre>
+				</section>
+
 				<section><h1 class="counter">3</h1></section>
 
 				<!-- Avoiding raw SQL queries -->
@@ -145,28 +173,71 @@ function quotes( $number_to_show ) {
 	return $output;
 }</code></pre></section>
 
+				<section class="full-screen-slide">
+					<pre><code class="php">// Show quotes that are stored as "funny-quote" post type on the site
+function quotes( int $number_to_show ) : string {
+	$posts = new WP_Query( [
+		'post_type'      => 'funny-quote',
+		'posts_per_page' => 100,
+		'no_found_rows'  => true,
+	] );
+
+	$output = 'Showing ' . esc_html( $number_to_show ) . ' quotes:';
+
+	while ( ( $posts->have_posts() ) : $posts->the_post()
+		$output .= apply_filters( 'the_content', get_the_content() );
+	endwhile;
+
+	return $output;
+}</code></pre></section>
+
 				<section><h1 class="counter">4</h1></section>
 
 				<!-- Optimizing output + escaping -->
 				<section class="full-screen-slide">
 					<pre><code class="js">document.addEventListener( 'DOMContentLoaded', function () {
-		/* global player, title_block */
-		if ( typeof player !== 'undefined' && typeof title_block !== 'undefined' ) {
-			title_block.forEach( function ( item ) {
-				player.onInit( function () {
-					player.addEventListener( 'OnMediaStart', function () {
-						var cid = document.getElementById( item.container_id );
-						var title = cid.getElementsByClassName( item.title_classname );
-						if ( title && title.length > 0 ) {
-							title[0].style.visibility = 'hidden';
-						}
-					}, item.player_id );
-				});
+	/* global player, title_block */
+	if ( typeof player !== 'undefined' && typeof title_block !== 'undefined' ) {
+		title_block.forEach( function ( item ) {
+			player.onInit( function () {
+				player.addEventListener( 'OnMediaStart', function () {
+					var cid = document.getElementById( item.container_id );
+					var title = cid.getElementsByClassName( item.title_classname );
+					if ( title && title.length > 0 ) {
+						title[0].style.visibility = 'hidden';
+					}
+				}, item.player_id );
 			});
-		}``
-	});
+		});
+	}
+});
 </code></pre>
 				</section>
+
+				<section class="full-screen-slide">
+					<pre><code class="js">const initTitles = function( item ) {
+	player.onInit( function ( item ) {
+		player.addEventListener( 'OnMediaStart', function () {
+			var cid   = document.getElementById( item.container_id );
+			var title = cid.querySelector( '.' + item.title_classname );
+			title.classList.add( 'hidden' );
+		}, item.player_id );
+	});
+}
+
+const playerInit =  function () {
+	if ( typeof player === 'undefined' || typeof title_block === 'undefined' ) {
+		return;
+	}
+
+	title_block.forEach( function ( item ) {
+		initTitles( item );
+	} );
+});
+
+document.addEventListener( 'DOMContentLoaded', playerInit );
+</code></pre>
+			</section>
 
 				<section><h1 class="counter">5</h1></section>
 
@@ -183,6 +254,28 @@ if(isset($_POST['enable']))
   foreach ( $_POST['users'] as $userid ) {
     $wpdb->query("UPDATE ".$wpdb->prefix."usercontrol SET disable_status = 'enabled' WHERE ID = ".$wpdb->escape($userid));
   }
+}</code></pre></section>
+
+				<section class="full-screen-slide"><pre><code class="php">check_ajax_referer( 'check-action', 'my-action' );
+
+if( isset( $_POST['disable'] ) ) {
+	foreach ( $_POST['users'] as $userid ) {
+		$wpdb->query( $wpdb->prepare(
+			"UPDATE %s SET disable_status = 'disabled' WHERE ID = %d",
+			$wpdb->prefix . 'usercontrol',
+			absint( $userid )
+		) );
+	}
+}
+
+if( isset( $_POST['enable'] ) ) {
+	foreach ( $_POST['users'] as $userid ) {
+		$wpdb->query( $wpdb->prepare(
+			"UPDATE %s SET disable_status = 'enabled' WHERE ID = %d",
+			$wpdb->prefix . 'usercontrol',
+			absint( $userid )
+		) );
+	}
 }</code></pre></section>
 
 <section><h1 class="counter">6</h1></section>
@@ -246,6 +339,7 @@ $html .= "<a href='".get_permalink()."' class='button small'>$button_string</a>"
 $html .= "</li>";</code></pre>
 </section>
 
+				<section class="full-screen-slide">
 <pre><code class="php"><li class='group'>
 	<?php if ( ! empty( $image ) ) : ?>
 		<a href='<?php echo esc_url( get_permalink() ); ?>'>
@@ -255,7 +349,7 @@ $html .= "</li>";</code></pre>
 
 	<h3>
 		<?php esc_html_e( 'Boat Name:', 'my-theme' ); ?>
-		<span class='small'>".get_the_title()."</span>
+		<span class='small'><?php esc_html( get_the_title() ); ?></span>
 	</h3>
 
 	<?php if ( current_user_can('view_boats') ) : ?>
@@ -312,11 +406,12 @@ $html .= "</li>";</code></pre>
 	}
 
 	return $links;
-	}</code></pre>
+}</code></pre>
 </section>
 
 			<section>
-				<h1>Q&A</h1>
+				<h1>Thank you! 👏</h1>
+				<h2>Q&A</h2>
 			</section>
 
 			</div>

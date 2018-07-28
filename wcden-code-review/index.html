@@ -143,7 +143,7 @@ function quotes( $number_to_show ) {
 					}, item.player_id );
 				});
 			});
-		}``
+		}
 	});
 </code></pre>
 				</section>
@@ -229,35 +229,9 @@ $html .= "</li>";</code></pre>
 	</code></pre>
 </section>
 
-<!-- <section><h1 class="counter">9</h1></section> -->
-
-<!-- Could have used core functions
-<section class="full-screen-slide">
-	<pre><code class="php">function hello_dashboard_widget() {
-  global $wpdb;
-
-  $querystr = "SELECT DISTINCT post_type\n";
-  $querystr .= "FROM $wpdb->posts\n";
-  $types = $wpdb->get_results($querystr, ARRAY_A);
-
-  // Declare post types we don't want to show
-  $bad_types[] = 'attachment';
-  $bad_types[] = 'deprecated_log';
-  $bad_types[] = 'nav_menu_item';
-  $bad_types[] = 'revision';
-
-  foreach ( $types as $type ) {
-     // if post type isn't one of the ones we declared
-     if ( !in_array( $type['post_type'], $bad_types ) ) {
-       $type_clean = ucwords($type['post_type']);
-       echo "<li><a href='".admin_url()."post-new.php?post_type=$type[post_type]'>Create a new $type_clean</a></li>";
-     }
-  }
-}</code></pre>
-	</section> -->
-
 			<section>
-				<h1>Q&A</h1>
+				<h1>Thank you! 👏</h1>
+				<h2>Q&A</h2>
 			</section>
 
 			</div>
