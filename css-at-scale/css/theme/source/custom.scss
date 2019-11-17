@@ -1,0 +1,195 @@
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #fff;
+
+$mainColor: #222;
+$headingColor: #222;
+
+$mainFontSize: 42px;
+$mainFont: 'Open Sans', sans-serif;
+$headingFont: 'Viga', sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: none;
+$headingFontWeight: 800;
+$linkColor: #2a76dd;
+$linkColorHover: lighten( $linkColor, 15% );
+$selectionBackgroundColor: lighten( $linkColor, 25% );
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+section.has-dark-background {
+  &, h1, h2, h3, h4, h5, h6 {
+    color: #fff;
+  }
+}
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+.background {
+  position: fixed;
+  top: -12%;
+  right: -3%;
+  bottom: -12%;
+  left: -7%;
+}
+
+.background__block {
+  position: absolute;
+  width: 10%;
+  transform: rotate( 25deg );
+
+  @media screen and (max-width: 700px) {
+    width: 16.67%
+  }
+}
+
+.background__block--bottom {
+  bottom: 0;
+}
+
+$crazy-80s: #ff48c4, #2bd1fc, #f3ea5f, #c04df9, #ff3f3f,
+            #ff48c4, #2bd1fc, #f3ea5f, #c04df9, #ff3f3f;
+
+@for $i from 1 through 10 {
+  $color: nth( $crazy-80s, $i );
+  $height: random( 250 );
+
+
+  .background-#{$i} {
+    height: 150px;
+
+    //@if $height < 125 {
+    //  height: 125px;
+    //}
+
+    background-color: $color;
+    left: calc( ( #{$i} - 1 ) * 11% );
+
+    @media screen and (max-width: 700px) {
+      left: calc( ( #{$i} - 1 ) * 18% );
+    }
+
+    @if $i > 6 {
+      @media screen and (max-width: 700px) {
+        display: none;
+      }
+    }
+  }
+}
+
+strong,
+b {
+  font-family: $headingFont;
+}
+
+.reveal {
+  h3,
+  h4,
+  h5 {
+    //font-family: $mainFont;
+    //font-weight: 500;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  &.normal-font {
+    font-family: $mainFont;
+  }
+
+  small {
+    line-height: 1em !important;
+    margin-bottom: -2em;
+    display: block !important;
+  }
+}
+
+.reveal {
+  .slides {
+    text-align: left;
+  }
+
+  pre {
+    width: 100%;
+
+    &.break-me-up {
+      white-space: normal;
+    }
+
+    code {
+      padding: 0.5em;
+    }
+  }
+}
+
+.faded {
+  opacity: 0.5;
+}
+
+.slides {
+  counter-reset: slideset;
+}
+
+.slides .count-me {
+  counter-increment: slideset;
+
+  // Browser's won't count items that aren't displayed, and due to the way
+  // that Reveal hides old items, we can never get higher than 3 unless we
+  // forcibly cause the browser to think that the old slides are still displayed.
+  display: block !important;
+
+  &:before {
+    content: counter( slideset );
+    position: absolute;
+    font-size: 10em;
+    z-index: -1;
+    opacity: 0.075;
+    font-family: $headingFont;
+  }
+}
+
+.full-width-table {
+  width: 100%;
+}
+
+.big-first-letter::first-letter {
+  font-family: $headingFont;
+  font-size: 1.2em;
+}
+
+.normal-font {
+  font-family: $mainFont;
+}
+
+.side-by-side-parent {
+  width: 100%;
+  display: flex;
+  height: 100%;
+
+  & > * {
+    width: 50%;
+    //height: 100%;
+
+    & > code {
+      height: 100%;
+    }
+  }
+}
+
+.full-height {
+  display: block;
+  height: 100%;
+}

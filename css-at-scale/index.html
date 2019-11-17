@@ -1,0 +1,730 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>CSS @ Scale</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/custom.css">
+
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Viga&display=swap" rel="stylesheet">
+
+		<!-Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="background">
+			<div class="background__block background-1"></div>
+			<div class="background__block background-2"></div>
+			<div class="background__block background-3"></div>
+			<div class="background__block background-4"></div>
+			<div class="background__block background-5"></div>
+			<div class="background__block background-6"></div>
+			<div class="background__block background-7"></div>
+			<div class="background__block background-8"></div>
+			<div class="background__block background-9"></div>
+			<div class="background__block background-10"></div>
+
+			<div class="background__block background__block--bottom background-1"></div>
+			<div class="background__block background__block--bottom background-2"></div>
+			<div class="background__block background__block--bottom background-3"></div>
+			<div class="background__block background__block--bottom background-4"></div>
+			<div class="background__block background__block--bottom background-5"></div>
+			<div class="background__block background__block--bottom background-6"></div>
+			<div class="background__block background__block--bottom background-7"></div>
+			<div class="background__block background__block--bottom background-8"></div>
+			<div class="background__block background__block--bottom background-9"></div>
+			<div class="background__block background__block--bottom background-10"></div>
+		</div>
+
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>CSS @ Scale</h1>
+					<h3 class="normal-font"><i>Writing Maintainable Styles</i></h3>
+					<h2>Mike Selander</h2>
+				</section>
+
+				<section>
+					<h1>CSS is Easy</h1>
+				</section>
+
+				<section>
+					<h1>
+						CSS is <strike class="faded">Easy</strike><br>
+						Hard
+					</h1>
+				</section>
+
+				<section>
+					<h1>
+						CSS is <strike class="faded">Easy</strike><br>
+						First-Class
+					</h1>
+				</section>
+
+				<section>
+					<img src="images/brag.png" />
+				</section>
+
+                <section>
+                    <img src="images/humble-brag.png" />
+                </section>
+
+				<section class="count-me">
+					<section><h1>Avoid Specificity Like the Plague</h1></section>
+
+					<section>
+						<h2>Specificity:</h2>
+						<h4>1. A really hard to say word</h4>
+						<h4 class="fragment">2. A measure of how certain that a selector will take precedent</h4>
+					</section>
+
+					<section>
+						<table class="full-width-table">
+							<tr>
+								<td><pre><code class="css">p { ... }</code></pre></td>
+								<td>1</td>
+								<td>😄</td>
+							</tr>
+							<tr class="fragment">
+								<td><pre><code class="css">.class { ... }, selector:hover</code></pre></td>
+								<td>10</td>
+								<td>🙂</td>
+							</tr>
+							<tr class="fragment">
+								<td><pre><code class="css">#id { ... }</code></pre></td>
+								<td>100</td>
+								<td>😱</td>
+							</tr>
+
+                            <tr class="fragment">
+                                <td><pre><code class="html"><br style="..." /></code></pre></td>
+                                <td>1,000</td>
+                                <td>💩</td>
+                            </tr>
+
+                            <tr class="fragment">
+								<td><pre><code class="css">p !important { ... }</code></pre></td>
+								<td>1,000,000,000</td>
+								<td>💩🔥</td>
+							</tr>
+						</table>
+					</section>
+
+                    <section>
+                        <table class="full-width-table">
+                            <tr>
+                                <td><pre><code class="css">.list-item { ... }</code></pre></td>
+                                <td class="fragment">10</td>
+                            </tr>
+                            <tr>
+                                <td class="fragment"><pre><code class="css">ul ol li.red  { ... }</code></pre></td>
+                                <td class="fragment">13</td>
+                            </tr>
+                            <tr>
+                                <td class="fragment"><pre><code class="css">li.red.level { ... }</code></pre></td>
+                                <td class="fragment">21</td>
+                            </tr>
+                            <tr>
+                                <td class="fragment"><pre><code class="css">ul#summer-drinks li { ... }</code></pre></td>
+                                <td class="fragment">102</td>
+                            </tr>
+                            <tr>
+                                <td class="fragment"><pre><code class="css">body #content .data img:hover { ... }</code></pre></td>
+                                <td class="fragment">122</td>
+                            </tr>
+                        </table>
+<!--                        Which rule overrides which?-->
+                    </section>
+
+
+                    <section>
+						<h2 class="normal-font">Classes offer <u>high clarity</u> with <u>low specificity</u></h2>
+					</section>
+
+					<section>
+						<h3>Avoid:</h3>
+						<pre><code class="css">html body .group p span .something-specific</code></pre>
+						<div class="fragment">
+							<h3>Prefer:</h3>
+							<pre><code class="css">.something-specific</code></pre>
+						</div>
+					</section>
+
+				</section>
+
+				<section class="count-me">
+					<section><h1>Classes<br> Are King</h1></section>
+
+					<section>
+						<ol>
+							<li>Low specificity, high clarity</li>
+							<li class="fragment">Classes can be re-used</li>
+							<li class="fragment">We can stack classes, but not IDs</li>
+							<li class="fragment">We can decouple markup from styling</li>
+						</ol>
+					</section>
+
+					<section>
+						<pre><code><div class="element">
+	<div>
+		<h2>Title</h2>
+		<p>Text</p>
+		<p>Text</p>
+		<ul>
+			<li>List item</li>
+		</ul>
+		<div>
+			<h2>Title</h2>
+			<p>Text</p>
+		</div>
+	</div>
+	<div>...</div>
+</div></code></pre>
+					</section>
+
+					<section>
+						<div class="side-by-side-parent">
+							<pre><code><div class="element">
+	<div>
+		<h2>Title</h2>
+		<p>Text</p>
+		<p>Text</p>
+		<ul>
+			<li>List item</li>
+		</ul>
+		<div>
+			<h2>Title</h2>
+			<p>Text</p>
+		</div>
+	</div>
+	<div>...</div>
+</div></code></pre>
+							<pre><code>.element > div p {
+    color: blue;
+}</code></pre>
+						</div>
+					</section>
+
+					<section>
+						<div class="side-by-side-parent">
+							<pre><code><div class="element">
+	<div>
+		<div>
+			<h2>Title</h2>
+			<p>Text</p>
+			<p>Text</p>
+			<ul>
+				<li>List item</li>
+			</ul>
+		</div>
+		<div>
+			<h2>Title</h2>
+			<p>Text</p>
+		</div>
+	</div>
+	<div>...</div>
+</div></code></pre>
+							<pre><code>.element > div > div p {
+    color: blue;
+}</code></pre>
+						</div>
+					</section>
+
+					<section>
+						<div class="side-by-side-parent">
+							<pre><code><div class="element">
+	<div>
+		<div>
+			<h2>Title</h2>
+			<p>Text</p>
+			<p>Text</p>
+			<ul>
+				<li>List item</li>
+			</ul>
+		</div>
+		<div>
+			<h2>Title</h2>
+			<p>Text</p>
+		</div>
+	</div>
+	<div>...</div>
+</div></code></pre>
+							<pre><code>.element > div > div:not(:last-child) p {
+    color: blue;
+}</code></pre>
+						</div>
+					</section>
+
+					<section>
+						<div class="side-by-side-parent">
+							<pre><code><div class="element">
+	<div>
+		<div>
+			<h2>Title</h2>
+			<p>Text</p>
+			<p>Text</p>
+			<ul>
+				<li>List item</li>
+			</ul>
+		</div>
+		<div>
+			<h2>Title</h2>
+			<p>Text</p>
+		</div>
+	</div>
+	<div>...</div>
+</div></code></pre>
+							<pre><code>.element > div > div:not(:last-child) p,
+.element > div > div:not(:last-child) li {
+    color: blue;
+}</code></pre>
+						</div>
+					</section>
+
+					<section>
+						<div class="side-by-side-parent">
+							<pre><code><div class="element">
+	<div>
+		<h2>Title</h2>
+		<p>Text</p>
+		<p>Text</p>
+		<ul>
+			<li>List item</li>
+		</ul>
+		<div>
+			<h2>Title</h2>
+			<p>Text</p>
+		</div>
+	</div>
+	<div>...</div>
+</div></code></pre>
+							<pre><code>.element > div > div:not(:last-child) p,
+.element > div > div:not(:last-child) li {
+    color: blue;
+}</code></pre>
+						</div>
+					</section>
+
+					<section>
+						<div class="side-by-side-parent">
+							<pre><code><div class="element">
+	<div>
+		<div>
+			<h2>Title</h2>
+			<p class="blue-text">Text</p>
+			<p class="blue-text">Text</p>
+			<ul>
+				<li class="blue-text">List item</li>
+			</ul>
+		</div>
+        <div>
+            <h2>Title</h2>
+            <p>Text</p>
+        </div>
+	</div>
+	<div>...</div>
+</div></code></pre>
+							<pre><code>.blue-text {
+    color: blue;
+}</code></pre>
+						</div>
+
+
+					</section>
+
+<!--					<section>-->
+<!--						<h2 class="normal-font">CSS looks <b>backwards</b> up the tree</h2>-->
+<!--					</section>-->
+
+<!--					<section>-->
+<!--						<pre><code class="css">body .main .content p span</code></pre>-->
+
+<!--						<ol>-->
+<!--							<li class="fragment"><b>All</b> <code>span</code> tags</li>-->
+<!--							<li class="fragment"><b>All</b> <code>p</code> tags</li>-->
+<!--							<li class="fragment"><b>All</b> <code>elements with the class of <code>.content</code></code></li>-->
+<!--							<li class="fragment"><b>All</b> <code>elements with the class of <code>.main</code></code></li>-->
+<!--							<li class="fragment"><b>All</b> <code>body</code> tags</li>-->
+<!--						</ol>-->
+<!--					</section>-->
+
+<!--                    <section>-->
+<!--                        <h2>🤦‍♀️🤦‍♂️</h2>-->
+<!--                        <pre><code class="css">.wp-responsive-open #wpadminbar #wp-admin-bar-menu-toggle .ab-icon</code></pre>-->
+
+<!--						<div class="fragment">-->
+<!--							<h2>🥰</h2>-->
+<!--							<pre><code class="css">.wp-admin-bar__icon</code></pre>-->
+<!--						</div>-->
+<!--                    </section>-->
+
+<!--					<section>-->
+<!--						<h2>🤦‍♀️🤦‍♂️</h2>-->
+<!--						<pre><code class="css">table.form-table+input+input+p.submit</code></pre>-->
+
+<!--						<div class="fragment">-->
+<!--							<h2>🥰</h2>-->
+<!--							<pre><code class="css">.form-table__submit-button</code></pre>-->
+<!--						</div>-->
+<!--					</section>-->
+				</section>
+
+				<section class="count-me">
+					<section><h1>Use ________ Naming Methodology</h1></section>
+
+					<section>
+						<h2>Naming conventions <u>provide<br> logic</u> to your classes</h2>
+					</section>
+
+					<section>
+						<h2>It's not <u>which</u> methodology you choose, it's <u>choosing one at all</u></h2>
+					</section>
+
+					<section>
+						<h3>Many Options</h3>
+						<ul>
+							<li>BEM<span class="fragment"> &larr; 😍</span></li>
+							<li>OOCSS</li>
+							<li>ITCSS</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>BEM</h3>
+
+						<table class="full-width-table">
+							<tr>
+								<td class="big-first-letter">Block</td>
+								<td class="fragment" data-fragment-index="1"><pre><code class="css">.block</code></pre></td>
+								<td class="fragment" data-fragment-index="4"><pre><code class="css">.human</code></pre></td>
+							</tr>
+
+							<tr>
+								<td class="big-first-letter">Element</td>
+								<td class="fragment" data-fragment-index="2"><pre><code class="css">.block__element</code></pre></td>
+								<td class="fragment" data-fragment-index="5"><pre><code class="css">.human__arm</code></pre></td>
+							</tr>
+
+							<tr>
+								<td class="big-first-letter">Modifier</td>
+								<td class="fragment" data-fragment-index="3"><pre><code class="css">.block--modifier</code></pre></td>
+								<td class="fragment" data-fragment-index="6"><pre><code class="css">.human--standing</code></pre></td>
+							</tr>
+						</table>
+					</section>
+
+					<section>
+						<div>
+							<pre class="full-height"><code class="html"><div class="block left md-1120">
+	<ul class="navigation nav-header nav-blue">
+		<li class="list-item md-240"></li>
+		<li class="list-item md-320"></li>
+	</ul>
+</div></code></pre>
+							<pre class="fragment full-height"><code class="html"><div class="header">
+	<ul class="header__navigation">
+		<li class="header__navigation__item"></li>
+		<li class="header__navigation__item navigation__item--large"></li>
+	</ul>
+</div></code></pre>
+						</div>
+					</section>
+				</section>
+
+                <section class="count-me">
+                    <section><h1><code>:root</code> is Your Friend</h1></section>
+
+                    <section>
+						<h2>
+							<code>:root</code> is always the highest-level "parent" element
+						</h2>
+					</section>
+
+					<section>
+						<h2>
+							<code>:root</code> gives us a single place to define global styles<br>
+						</h2>
+					</section>
+
+					<section>
+						!!! maybe talk about CSS variables here?
+					</section>
+
+                    <section>
+                        <h3>Avoid:</h3>
+                        <pre><code class="css">.header { line-height: 1.5; ... }
+.main { line-height: 1.5; ... }
+.sidebar { line-height: 1.5; ... }
+.footer { line-height: 1.5; ... }
+...</code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Prefer:</h3>
+                        <pre><code class="css">:root { line-height: 1.5; ... }</code></pre>
+                    </section>
+                </section>
+
+				<section class="count-me">
+					<section><h1>Start with a blank slate</h1></section>
+
+					<section>
+						<h3>
+                            <ul>
+                                <li><a href="https://necolas.github.io/normalize.css/">normalize.css</a></li>
+                                <li><a href="https://csstools.github.io/sanitize.css/">sanitize.css</a></li>
+                                <li>Roll your own</li>
+                            </ul>
+						</h3>
+					</section>
+
+					<section>
+						<h3>Normalizing Styles</h3>
+						<ul>
+							<li>Preserves useful defaults.</li>
+							<li>Normalizes styles.</li>
+							<li>Corrects bugs and common browser inconsistencies.</li>
+							<li>It's super easy to use!</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Install</h4>
+						<pre><code class="bash">$ npm install --save normalize.css</code></pre>
+
+						<h4>Use</h4>
+						<pre><code class="css">@import "~normalize.css"</code></pre>
+					</section>
+				</section>
+
+				<section class="count-me">
+					<section><h1>Co-locate <br><small>(and break up)</small><br> Your CSS</h1></section>
+
+					<section>
+						<video src="images/all-the-files.mp4" autoplay controls />
+					</section>
+
+					<section>
+						<h2>Avoid:</h2>
+						<pre><code>-> blocks
+	-> my-block.php
+
+-> styles
+	-> my-block.scss
+
+-> src
+	-> my-block.js</code></pre>
+					</section>
+
+					<section>
+						<h2>Prefer:</h2>
+						<pre><code>-> blocks
+	-> my-block
+		-> index.js
+		-> block.php
+		-> styles.scss</code></pre>
+					</section>
+
+					<section>
+						!!! Talk about how this loading pattern works in Webpack, et. al
+					</section>
+				</section>
+
+				<section class="count-me">
+					<section><h1>Document<br> your CSS</h1></section>
+
+					<section>
+						<h2>Types of Documentation</h2>
+
+                        <ul>
+                            <li>File Documentation</li>
+                            <li>Section Documentation</li>
+                            <li>Inline Documentation</li>
+                        </ul>
+					</section>
+
+					<section>
+						<h3>File Documentation</h3>
+						<pre><code class="css">/**
+ * Button styles.
+ */
+
+/**
+ * WordPress-specific styles
+ *
+ * Styles for over-riding or adapting WordPress-specific classes and hacks.
+ * The HTML used with these styles is out of our control, and thusly may not
+ * adhere to our normal standards.
+ */</code></pre>
+					</section>
+
+					<section>
+						<h3>Section Documentation</h3>
+						<pre><code class="css">/**
+ * Media query mixins.
+ *
+ * All styles should be written mobile-first, only a limited few should be max-width.
+ */
+
+/**
+ * Colors
+ */
+
+/**
+ * Breakpoints
+ */</code></pre>
+					</section>
+
+					<section>
+						<h3>Inline Documentation</h3>
+						<pre><code class="scss">/* The high-specificity is necessary to override the Bootstrap style . */
+.my-class__item a:nth-of-type(3n):after { /* … */ }
+
+/* Prevent a sliver of the photo from showing up behind the banner */
+transform: translate( 1px, 1px );
+
+/* All WP images should get some margin and start out centered. */
+[class*="wp-image"] {
+	display: block;
+	margin: 10px auto;
+}
+
+/*
+* Multiline comments are formatted with asterisk
+* at the start of each line.
+*/</code></pre>
+					</section>
+
+				</section>
+
+				<section class="count-me">
+					<section><h1>Find<br> a style guide</h1></section>
+
+					<section>
+						<h2>Lots of Options</h2>
+						<ul>
+							<li><h3><a href="https://10up.github.io/Engineering-Best-Practices/css/">10up</a></h3></li>
+							<li><h3><a href="https://engineering.hmn.md/standards/style/css/">Human Made</a><span class="fragment"> &larr; 😍</span></h3></li>
+							<li><h3><a href="https://google.github.io/styleguide/htmlcssguide.html">Google</a></h3></li>
+						</ul>
+					</section>
+				</section>
+
+				<section class="count-me">
+					<section><h1>Use<br> Stylelint</h1></section>
+
+                    <section>
+                        <h1>Stylelint</h1>
+                        <h4>A mighty, modern linter that helps you avoid errors and enforce conventions in your styles.</h4>
+                    </section>
+
+					<section>
+                        <h4>Install</h4>
+                        <pre><code class="bash">$ npm install @humanmade/stylelint</code></pre>
+
+                        <h4>Use</h4>
+                        <pre><code class="bash">$ stylelint "foo/*.css"</code></pre>
+                    </section>
+
+					<section>
+                        <img src="images/example.png" />
+                    </section>
+				</section>
+
+				<section class="count-me">
+					<section><h1>Autoprefix<br> All the Things</h1></section>
+
+					<section>
+						<h1>Autoprefixer:</h1>
+						<h3>Parses CSS and adds vendor prefixes to rules, automagically</h3>
+					</section>
+
+					<section>
+						<pre><code class="css">.example {
+    display: grid;
+    transition: all .5s;
+    user-select: none;
+    background: linear-gradient(to bottom, white, black);
+}</code></pre>
+					</section>
+
+					<section>
+						<pre><code class="css">.example {
+    display: -ms-grid;
+    display: grid;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    background: -webkit-gradient(linear, left top, left bottom, from(white), to(black));
+    background: -o-linear-gradient(top, white, black);
+    background: linear-gradient(to bottom, white, black);
+}</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<h1>Thank You!</h1>
+					<h3>🐦 @Mike_Selander</h3>
+				</section>
+
+				<section>
+					<h2>But wait, there's more!</h2>
+					<ul>
+						<li>Sass vs Stylus vs CSS vs ...</li>
+						<li>CSS Variables vs CSS Modules vs SCSS Variables</li>
+						<li>Serving a single stylesheet vs code splitting</li>
+						<li>Critical delivery building</li>
+						<li>Webpack vs Parcel vs Grunt</li>
+						<li>CSS in JS 😱🙅‍♂️</li>
+						<li>The meaning of life</li>
+					</ul>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// https://github.com/hakimel/reveal.js#configuration
+			// https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				controls: false,
+				history: true,
+				transition: 'none',
+				autoPlayMedia: true,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() {
+							hljs.configure( {
+								languages: [ 'js', 'bash', 'css', 'scss', 'html' ],
+								tabReplace: '  ',
+							} );
+							hljs.initHighlightingOnLoad();
+						} }
+				]
+			});
+		</script>
+	</body>
+</html>
