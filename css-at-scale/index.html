@@ -57,6 +57,14 @@
 					<h2>Mike Selander</h2>
 				</section>
 
+<!--				<section>-->
+<!--					<img src="images/brag.png" />-->
+<!--				</section>-->
+
+<!--				<section>-->
+<!--					<img src="images/humble-brag.png" />-->
+<!--				</section>-->
+
 				<section>
 					<h1>CSS is Easy</h1>
 				</section>
@@ -74,14 +82,6 @@
 						First-Class
 					</h1>
 				</section>
-
-				<section>
-					<img src="images/brag.png" />
-				</section>
-
-                <section>
-                    <img src="images/humble-brag.png" />
-                </section>
 
 				<section class="count-me">
 					<section><h1>Avoid Specificity Like the Plague</h1></section>
@@ -157,10 +157,10 @@
 
 					<section>
 						<h3>Avoid:</h3>
-						<pre><code class="css">html body .group p span .something-specific</code></pre>
+						<pre><code class="css">html body .group p span .something-specific { ... }</code></pre>
 						<div class="fragment">
 							<h3>Prefer:</h3>
-							<pre><code class="css">.something-specific</code></pre>
+							<pre><code class="css">.something-specific { ... }</code></pre>
 						</div>
 					</section>
 
@@ -460,10 +460,6 @@
 						</h2>
 					</section>
 
-					<section>
-						!!! maybe talk about CSS variables here?
-					</section>
-
                     <section>
                         <h3>Avoid:</h3>
                         <pre><code class="css">.header { line-height: 1.5; ... }
@@ -477,6 +473,14 @@
                         <h3>Prefer:</h3>
                         <pre><code class="css">:root { line-height: 1.5; ... }</code></pre>
                     </section>
+
+					<section>
+						<h3>Bonus: <br><code>:root</code> is also where your CSS variables land</h3>
+						<pre><code class="css">:root {
+	--bkg-color: black;
+	...
+}</code></pre>
+					</section>
                 </section>
 
 				<section class="count-me">
@@ -539,9 +543,9 @@
 		-> styles.scss</code></pre>
 					</section>
 
-					<section>
-						!!! Talk about how this loading pattern works in Webpack, et. al
-					</section>
+<!--					<section>-->
+<!--						!!! Talk about how this loading pattern works in Webpack, et. al-->
+<!--					</section>-->
 				</section>
 
 				<section class="count-me">
