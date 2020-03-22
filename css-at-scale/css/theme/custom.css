@@ -420,7 +420,7 @@ h5 small {
     position: absolute;
     font-size: 10em;
     z-index: -1;
-    opacity: 0.075;
+    opacity: 0.25;
     font-family: "Viga", sans-serif; }
 
 .full-width-table {
